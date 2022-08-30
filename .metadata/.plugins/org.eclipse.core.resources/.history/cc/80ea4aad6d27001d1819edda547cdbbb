@@ -1,0 +1,11 @@
+<html>                                 
+	<body>                              
+		<h4> 이미지 파일 선택</h4>        	
+		<form action='#cPath#/image'>
+			<select name ='name'>       
+				#options#
+			</select>                   
+<input type = 'submit' value ='전송'/>
+		</form>                       
+	</body>                          
+</html>                             

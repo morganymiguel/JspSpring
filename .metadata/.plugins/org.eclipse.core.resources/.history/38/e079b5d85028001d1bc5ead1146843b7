@@ -1,0 +1,47 @@
+<html>            
+   <head>
+      <style type="text/css">
+         select{
+            background-color: aqua;
+         }
+      </style>
+      <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+      
+      <script type="text/javascript">
+         const PATTERN = "#cPath#/image?name=%V";  //const : 상수선언 java에선 final
+         $(document).ready(function(){
+            $("form").on("submit", function(event){
+               event.preventDefault();
+//               <img src="#cPath#/image?name=cat1.jpg" />
+               //let name = this.name.value;      //this = form, this의 프로퍼티명(name)의 value
+               //jquery방식으로 만들면
+               let name = $(this).find("[name='name']").val();
+               let newIMG = $("<img>").attr("src",PATTERN.replace("%V",name))   //img태그를 새로만든다
+               $("#imageArea").html(newIMG);
+               return false;
+            })
+          })
+      </script>
+   </head>            
+   <body>                    
+      <h4>이미지 파일 선택</h4>
+      <form action='#cPath#/image'>
+         <select name='name'>
+            #options#
+         </select>           
+         <input type='submit' value='전송' />
+      </form>
+      
+      <div id="imageArea">
+      </div>
+<!--          <img id="img" src="">           
+         <script type="text/javascript">
+           $(function() {
+                  $("#imgList").change(function() {
+                     $("#img").attr("src","image?name="+$(this).val()) 
+                  });
+              });
+         </script>
+ -->
+   </body>                     
+</html>                         

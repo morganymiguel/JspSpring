@@ -1,0 +1,11 @@
+<html>                                 
+	<body>                              
+		<h4>이미지 파일 선택</h4>        	
+		<form action='"+req.getContextPath()+"/image'>
+			<select name ='name'>       
+
+			</select>                   
+<input type = 'submit' value ='전송' />
+		</form>                       
+	</body>                          
+</html>                             

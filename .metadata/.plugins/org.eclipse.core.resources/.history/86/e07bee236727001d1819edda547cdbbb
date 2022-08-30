@@ -1,0 +1,99 @@
+package ker.or.ddit.servlet01;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
+
+@WebServlet("/imageForm") //요청을 받는다.
+class ImageFormServlet extends HttpServlet{
+	private ServletContext application;
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		super.init(config);
+		application = getServletContext();
+	}
+	@Override
+
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String imageFolderPath = "D:/contents/images";
+		File imageFoler = new File(imageFolderPath);
+		
+		StringBuffer html = new StringBuffer();
+		String[] children = imageFoler.list((file, name) ->{
+			String mime = application.getMimeType(name);
+			return mime !=null && mime.startsWith("image");
+		
+		String pattern = "<option>%s</option>\n";
+		StringBuffer options = new StringBuffer();
+		for(String image: children) {
+			options.append(String.format(pattern,image));
+		}
+		html.append("<html>                                  ");
+		html.append("	<body>                               ");
+		html.append("		<h4>이미지 파일 선택</h4>        	 ");
+		html.append("		<form action='/second/image'>    ");
+		html.append("			<select name ='name'>        ");
+		html.append(options);
+		html.append("			</select>                    ");
+		html.append("		</form>                          ");
+		html.append("	</body>                              ");
+		html.append("</html>                                 ");
+				
+		resp.setContentType("text/html;charset=utf-8");
+		PrintWriter out = null;
+		try {
+			out = resp.getWriter();
+			out.println(html);
+		}finally {
+			if(out!= null)
+				out.close();
+		}
+		
+	}
+	
+}
+
+	
+	
+	
+//	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException{
+//		String imageName = req.getParameter("name");
+//		if(imageName == null || imageName.isEmpty()){
+//				//imageName.isEmpty()와 "".equals(imageName)
+//				//개발자인 나에게 문제가 없다는 걸 client에게 알려야한다.
+//				resp.sendError(400,"필수 파라미터 누락, 이미지명 없음.");
+//				return;
+//				
+//			}
+//				
+//			String mime = getServletContext().getMimeType(imageName);
+//			resp.setContentType(mime);
+//			//String mime ="image/jpeg"
+//			//resp.setContentType(mime);
+//			
+//			//resp.setContentType("image/jpeg; charset=UTF-8");//필요한 파일의 mime를 검색을 하고, 확장자를 찾는다.
+//			String imageFolder = "D:/contents/images";
+//			//String imageName = "cat1.jpg";
+//			
+//			File imageFile = new File(imageFolder, imageName);
+//			if(!imageFile.exists()){
+//				resp.sendError(404,imageName+"에 해당 파일이 없음.");
+//				return;
+//				
+//			}
+//			byte[] buffer = new byte[1024];
+//			int length = -1;
+//			FileInputStream fis = new FileInputStream(imageFile);//빨대라 생각해라, 병에서 땡겨와
+//			OutputStream os = resp.getOutputStream();
+//			while((length = fis.read(buffer))!= -1){
+//				os.write(buffer, 0, length);//stream copy
+//			
+//			}
+//			fis.close();
+//			os.close();
+//				
+//		
+//		
+//	}
+}

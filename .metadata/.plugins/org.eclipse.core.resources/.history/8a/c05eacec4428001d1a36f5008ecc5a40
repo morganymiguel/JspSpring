@@ -1,0 +1,32 @@
+ <html>   
+ 	<head>
+ 		<style type="text/css">
+ 			select{
+ 				background-color: aqua;
+ 			}
+ 		</style>
+ 		<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+ 		<script type ="text/javascript">
+ 	//	$(function(){ })= 
+ 		$(document).ready(function(){
+ 			$("form").on("submit",function(){
+ 				event.preventDefault();
+ 				
+ 				return false;
+ 			});
+ 		});
+ 		</script>                           
+ 	</head>
+ 	<body>                               
+ 		<h4> 이미지 파일 선택</h4>       
+ 		<form action='#cPath#/image'>       
+ 			<select name='name'>    
+ 				#options#         
+ 			</select>                        
+			<input type='submit' value='전송' />
+ 		</form>   
+ 		<div id ="imageArea">
+ 			<img src="#cPath#/image?name=cat1.jpg"/>
+ 		</div>
+ 	</body>                               
+ </html>                                  

@@ -1,0 +1,45 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<h4>구구단</h4>
+		<pre>2단부터 9단까지의 구구단 랜더링.</pre>
+		<pre>출력되는 구구단 text형식: "2 * 2 = 4"</pre>
+		<script type="text/javascript">
+		$(function(){
+			$('#submit').click(function(){
+				var mindan = $('#min_dan').val()
+				var maxdan = $('#max_dan').val()
+				str ="";
+				var request = $.ajax({
+					//url:	,
+					method:"post",
+					//data: {},
+					dataType:"html",
+					success:function(data){
+						str+= "hihi"
+						$('#dans').innerHTML(str);
+					}
+				});
+				
+			})
+		})
+		</script>
+		<form>
+			최소단 : <input type="number" id = "min_dan" name ="minDan" min="2" max="9" required />
+			최대단 :
+			<select name = "maxDan" id= "max_dan" required >
+				<option value>최대단</option>			
+							
+				#option#
+			</select>
+			<input type = "submit" id="submit" value ="전송"/>
+		</form>
+		<table id = "dans">
+		
+		</table>
+		<!-- <table id = "dans">
+			#gugudan#
+		</table> -->
+	</body>
+</html>

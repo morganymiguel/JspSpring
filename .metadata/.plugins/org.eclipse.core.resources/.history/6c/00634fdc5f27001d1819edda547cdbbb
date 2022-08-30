@@ -1,0 +1,48 @@
+package kr.or.ddit.servlet01;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+
+/**
+ * 서블릿
+ * : 웹상의 요청을 받고, 그에 대한 응답한 생성할 수 있는 객체가 가져야하는 조건들에 대한 명세서(Spec) ->HttpServlet
+ * 
+ *  개발 단계
+ *  1.HttpServlet 스펙 상속
+ *  2.Compile -> classpath에 배치
+ *  3.서블릿 컨테이너에 등록
+ *  	1) servlet 2.x: web.xml에 servlet 엘리먼트로 등록
+ *		2) servlet 3.x: @WebServlet으로 등록
+ *	4. 서블릿 매핑 등록
+ *		1) servlet 2.x: web.xml에 servlet-mapping으로 등록
+ *		2) servlet 3.x: @WebServlet(urlPatterns)등록
+ *	5. Container 재구동.
+ *
+ *	servlet Container ? 서블릿의 생명주기 관리자 (생명주기 내에서 호출되는 callback을 정의함)
+ *		callback: 특정 이벤트가 발생했을 때 시스템 내부적으로 자동 호출되는 구조.
+ *		생성 : init, 특별한 설정이 없는 한 해당 서블릿을 대상으로 최초의 요청이 발생하면 객체가 생성됨.
+ *			  생성 시점에 parameter(String) 넘길 수 있는 구조를 가짐.
+ *			  서블릿을 싱글턴(singleton)의 형태로 관리함.
+ *		요청 : 
+ *		소멸 : desttroy
+ *
+ */
+@SuppressWarnings("serial")
+public class DescriptionServlet extends HttpServlet{
+	@Override
+	public void init(ServletConfig config)throws ServletException{
+		super.init(config);
+		String paramValue = config.getInitParameter("param1");
+		System.out.printf("%s 객체 생성 및 초기화, 전달 파라미터: %s \n"
+							, this.getClass().getName(), paramValue);
+		System.out.printf("%객체 생성 및 초기화 \n", this.getClass().getName());
+	}
+	
+	
+	@Override
+	public void destroy() {
+		super.destroy();
+		System.out.printf("%객체 생성 및 초기화 \n", this.getClass().getName());
+	}
+}

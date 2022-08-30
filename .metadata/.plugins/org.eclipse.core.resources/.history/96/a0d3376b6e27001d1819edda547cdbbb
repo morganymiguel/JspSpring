@@ -1,0 +1,9 @@
+package kr.or.ddit.servlet01;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet("/01/imageForm.tmpl")
+public class TMPLServlet extends HttpServlet{
+	
+}
