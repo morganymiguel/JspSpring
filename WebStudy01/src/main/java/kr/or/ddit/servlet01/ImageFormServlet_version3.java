@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//@WebServlet(value="/imageForm", loadOnStartup = 1)
-public class ImageFormServlet_version2 extends HttpServlet{
+@WebServlet(value="/imageForm", loadOnStartup = 1)
+public class ImageFormServlet_version3 extends HttpServlet{
 	private ServletContext application;
 	private String imageFolderPath;
 	
@@ -44,7 +44,7 @@ public class ImageFormServlet_version2 extends HttpServlet{
 		req.setAttribute("cPath", req.getContextPath());
 		req.setAttribute("options", options);
 		
-		req.getRequestDispatcher("/01/imageForm.tmpl").forward(req, resp);
+		req.getRequestDispatcher("/02/imageForm.jsp").forward(req, resp);
 
 	}
 }
