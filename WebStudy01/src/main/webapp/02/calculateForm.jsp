@@ -1,3 +1,4 @@
+<%@page import="kr.or.ddit.enumpkg.OperatorType"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,13 +12,17 @@
 <form action="<%=request.getContextPath() %>/calculate">
 	<input type = "number" name = "leftOp" />
 	<select name ="operator">
-		<option value ="PLUS">+</option>
-		<option value ="MINUS">-</option>
-		<option value ="MULTIPLY">*</option>
-		<option value ="DIVIDE">/</option>
+	<%
+		for(OperatorType single: OperatorType.values()){
+		%>
+			<option value ="<%=single.name() %>"><%=single.getSign() %></option>
+		<%	
+		}
+		%>
+
 	</select>
 	<input type = "number" name = "rightOp" />
-	<input tyep = "submit" value ="=">
+	<input type = "submit" value ="=">
 	
 </form>
 2+ 2= 4
