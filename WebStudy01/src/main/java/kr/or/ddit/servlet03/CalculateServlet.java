@@ -20,18 +20,33 @@ public class CalculateServlet extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String bodyContentType = req.getContentType();
+		int statusCode = HttpServletResponse.SC_OK;
+		if(!bodyContentType.contains("json")) {
+			statusCode = HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE;
+			
+		}
+		String accept = req.getHeader("Accept");
+		if(statusCode ==200 && !accept.contains("json")) {
+			statusCode = HttpServletResponse.SC_NOT_ACCEPTABLE;
+		}
 		
-		resp.setContentType("application/json;charset=UTF-8");
-		try(
-		InputStream is = req.getInputStream();
-		PrintWriter out = resp.getWriter();
-		
-		){
-			ObjectMapper mapper = new ObjectMapper();
-			CalculateVO vo = mapper.readValue(is,CalculateVO.class);
-		
-			mapper.writeValue(out, vo);
-		
+		if(statusCode == HttpServletResponse.SC_OK) {
+			resp.setContentType("application/json;charset=UTF-8");
+			try(
+					InputStream is = req.getInputStream();
+					PrintWriter out = resp.getWriter();
+					
+					){
+				ObjectMapper mapper = new ObjectMapper();
+				CalculateVO vo = mapper.readValue(is,CalculateVO.class);
+				
+				mapper.writeValue(out, vo);
+				
+			}
+			
+		}else {
+			resp.sendError(statusCode);
 		}
 	}
 	
