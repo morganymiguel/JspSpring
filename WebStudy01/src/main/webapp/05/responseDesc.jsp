@@ -16,16 +16,16 @@
 		Status Code : 요청 처리 성공 여부를 알려주는 상태코드
 		100~ : ING...(WebSocket을 이용한 실시간 양방향 처리), WebRTC
 		200~ : OK
-		300~ : 클라이언트의 추가 액션이 필요함.
+		300~ : 클라이언트의 추가 액션이 필요함.(정보가 response에 있따???)
 		 	301 / 302 / 307(Moved) - Location 헤더의 병행. Redirect 이동구조에서 활용.
 			304(Not Modified) 
-		400~ : 클라이언트측 오류로 실패
+		400~ : 클라이언트측 오류로 실패(연관된 Header들???request쪽 오류)
 			404(Not Found, Not Exist)
 			405(Method Not Allowed)
 			400(Bad Request) : 필수 데이터 누락. 데이터 타입 부적절, 데이터 길이 부적절...
 			401(UnAuthorized)/403(Forbidden) : 보안 처리를 위한 접근 제어. 
-			406(Not Acceptable, request Accept Header) : 서버가 해당 응답 컨텐츠 타입을 처리할 수 없음.
-			415(Unsupported Media Type, request Content-Type Header) : 서버가 요청의 포함된 컨텐츠를 처리할 수 없음.
+			406(Not Acceptable, request Accept Header) : 서버가 해당 응답 컨텐츠 타입을 처리할 수 없음. (dataType불일치???)
+			415(Unsupported Media Type, request Content-Type Header) : 서버가 요청의 포함된 컨텐츠를 처리할 수 없음. ()
 			<%
 // 				response.setStatus(sc);
 // 				response.sendError(sc);
