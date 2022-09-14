@@ -1,4 +1,4 @@
-package kr.or.ddit.exception;
+package kr.or.ddit.commons.exception;
 
 public class CustomException extends RuntimeException{
 
