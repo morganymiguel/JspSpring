@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -26,6 +27,7 @@ public class PropertiesControllerServlet extends HttpServlet{
 		String servletPath = req.getServletPath();
 		Object model = null;
 		int statusCode = 200;
+		HttpSession session = req.getSession();
 		if("/properties".equals(servletPath)) {
 			model = service.readProperties();
 		}else {
@@ -34,6 +36,9 @@ public class PropertiesControllerServlet extends HttpServlet{
 				statusCode = HttpServletResponse.SC_BAD_REQUEST;
 			else
 				model = service.readProperty(name);
+			String message =(String) session.getAttribute("message");
+			session.removeAttribute("message"); // flash attribute
+			System.out.println(message);
 		}
 		if(statusCode==200) {
 			req.setAttribute("model", model);
@@ -61,6 +66,8 @@ public class PropertiesControllerServlet extends HttpServlet{
 		boolean valid = validate(newProp);
 		if(valid) {
 			service.createProperty(newProp);
+			String message = "성공";
+			req.getSession().setAttribute("message", message);
 			String viewName = "/property?name="+newProp.getPropertyName();
 			resp.sendRedirect(req.getContextPath() + viewName);
 		}else {
