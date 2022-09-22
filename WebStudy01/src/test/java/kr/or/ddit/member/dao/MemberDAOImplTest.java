@@ -1,5 +1,6 @@
 package kr.or.ddit.member.dao;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
@@ -14,11 +15,26 @@ public class MemberDAOImplTest {
 	MemberDAO dao = new MemberDAOImpl();
 	@Test
 	public void testInsertMember() {
-		fail("Not yet implemented");
+		MemberVO member = new MemberVO();
+		member.setMemId("a002");
+		member.setMemPass("java");
+		member.setMemName("신규");
+		member.setMemZip("000");
+		member.setMemAdd1("대전");
+		member.setMemAdd2("오류");
+		member.setMemMail("aa@naver.com");
+		int rowcnt = dao.insertMember(member);
+		assertEquals(1, rowcnt);
+		
 	}
 
 	@Test
 	public void testSelectMember() {
+		MemberVO member = dao.selectMember("a001");
+		assertNotNull(member);
+	}
+	@Test
+	public void testSelectMemberNotExist() {
 		MemberVO member = dao.selectMember("a001");
 		assertNotNull(member);
 	}

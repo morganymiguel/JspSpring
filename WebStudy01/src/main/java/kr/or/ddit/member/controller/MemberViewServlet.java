@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.ddit.member.service.MemberService;
 import kr.or.ddit.member.service.MemberServiceImpl;
+import kr.or.ddit.vo.MemberVO;
 
 @WebServlet("/member/memberView.do")
 public class MemberViewServlet extends HttpServlet{
@@ -18,6 +19,32 @@ public class MemberViewServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
+		
+		String memId = req.getParameter("who");
+		if(memId==null || memId.isEmpty()) {
+			resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+			return;
+		}
+		
+		MemberVO member = service.retrieveMember(memId);
+		
+		req.setAttribute("member", member);
+		
+		String viewName = "/WEB-INF/views/member/memberView.jsp";
+		req.getRequestDispatcher(viewName).forward(req, resp);
 	}
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

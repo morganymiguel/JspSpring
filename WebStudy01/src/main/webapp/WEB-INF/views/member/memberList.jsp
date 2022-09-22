@@ -25,9 +25,8 @@
 			}else{
 				for(MemberVO member : memberList){
 					%>
-					<tr data-who="<%=member.getMemId() %>"
-					 data-bs-target="#exampleModal">
-  >
+					<tr data-who="<%=member.getMemId() %>" 
+							data-bs-toggle="modal" data-bs-target="#exampleModal">
 						<td><%=member.getMemId() %></td>
 						<td><%=member.getMemName() %></td>
 						<td><%=member.getMemMail() %></td>
@@ -45,6 +44,9 @@
 <form id='viewForm' action="<%=request.getContextPath() %>/member/memberView.do">
 	<input type='hidden' name='who'  />
 </form>
+<form id="deleteForm" action="<%=request.getContextPath() %>/member/memberDelete.do" method="post">
+	<input type='hidden' name='who'  />
+</form>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -58,46 +60,12 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-danger" id="deleteBtn">DELETE</button>
       </div>
     </div>
   </div>
 </div>
-<script type="text/javascript">
-	let viewModal = $("#exampleModal").on("hidden.bs.modal",function(event){
-		$(this).find(".modal-body").empty();
-	}).on("click",function(){	
-	});
-	let viewForm = $("#viewForm").on("submit", function(event){
-		event.preventDefault();
-		let url = this.action;
-		let method = this.method;
-		let data = $(this).serialize(); // ajaxForm 적용
-		$.ajax({
-			url : url,dd
-			method : method,
-			data : data,
-			dataType : "html",
-			success : function(resp) {
-				viewModal.find(".modal-body").html(resp);
-				viewModal.modal('show');
-			},
-			error : function(errorResp) {
-				console.log(errorResp.status);
-				viewModal.find(".modal-body").html(errorResp.responseText);
-				viewModal.modal('show');
-			}
-		});
-		return false;
-	});
-// 	$(document).on("click", '.dataTr', function(event){
-// 		let who = $(this).data('who');
-// 		viewForm.find('[name=who]').val(who);
-// 		viewForm.submit();
-// 		viewForm.get(0).reset();
-<%-- <%-- 		location.href="<%=request.getContextPath() %>/member/memberView.do?who="+who; --%> --%>
-// 	});
-</script>
+<script type="text/javascript" src='<%=request.getContextPath() %>/resources/js/member/memberList.js?<%=System.currentTimeMillis()%>'></script>
 
 
 
