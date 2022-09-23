@@ -177,8 +177,46 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public int updateMember(MemberVO member) {
-		// TODO Auto-generated method stub
-		return 0;
+		StringBuffer sql = new StringBuffer();
+		
+		sql.append(" UPDATE MEMBER                   ");
+	    sql.append(" SET                             ");
+	    sql.append("     MEM_ZIP = ?                 ");
+	    sql.append("     , MEM_ADD1 = ?              ");
+	    sql.append("     , MEM_ADD2 = ?              ");
+	    sql.append("     , MEM_HOMETEL = ?           ");
+	    sql.append("     , MEM_COMTEL = ?            ");
+	    sql.append("     , MEM_HP = ?                ");
+	    sql.append("     , MEM_MAIL = ?              ");
+	    sql.append("     , MEM_JOB = ?               ");
+	    sql.append("     , MEM_LIKE = ?              ");
+	    sql.append("     , MEM_MEMORIAL = ?          ");
+	    sql.append("     , MEM_MEMORIALDAY = TO_DATE(?, 'YYYY-MM-DD' )      ");
+		sql.append(" WHERE MEM_ID = ?                ");
+		
+		try(
+			Connection conn = ConnectionFactory.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql.toString());	
+		){
+			int index = 1;
+			pstmt.setString(index++, member.getMemZip());
+			pstmt.setString(index++, member.getMemAdd1());
+			pstmt.setString(index++, member.getMemAdd2());
+			pstmt.setString(index++, member.getMemHometel());
+			pstmt.setString(index++, member.getMemComtel());
+			pstmt.setString(index++, member.getMemHp());
+			pstmt.setString(index++, member.getMemMail());
+			pstmt.setString(index++, member.getMemJob());
+			pstmt.setString(index++, member.getMemLike());
+			pstmt.setString(index++, member.getMemMemorial());
+			pstmt.setString(index++, member.getMemMemorialday());
+			pstmt.setString(index++, member.getMemId());
+			
+			return pstmt.executeUpdate();
+			
+		}catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override

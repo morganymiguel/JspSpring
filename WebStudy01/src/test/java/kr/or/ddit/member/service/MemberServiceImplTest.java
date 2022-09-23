@@ -4,11 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import kr.or.ddit.commons.exception.UserNotFoundException;
 import kr.or.ddit.enumpkg.ServiceResult;
 import kr.or.ddit.vo.MemberVO;
 
 public class MemberServiceImplTest {
+
 	MemberService service = new MemberServiceImpl();
+	
 	@Test
 	public void testCreateMember() {
 		MemberVO member = new MemberVO();
@@ -24,12 +27,11 @@ public class MemberServiceImplTest {
 		member.setMemId("a003");
 		result = service.createMember(member);
 		assertEquals(ServiceResult.OK, result);
-		
 	}
 
-	@Test
+	@Test(expected = UserNotFoundException.class)
 	public void testRetrieveMember() {
-		
+		service.retrieveMember("dfasdfasdfasdf");
 	}
 
 	@Test
