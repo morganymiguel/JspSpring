@@ -9,7 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class CustomSqlSessionFactoryBuilder {
 	private static SqlSessionFactory sqlSessionFactory;
-	static {
+	static {//한번만 빌드됨. 여기까지가 mybatis의 세팅, 그 다음은 dao.
 		String resource = "kr/or/ddit/mybatis/Configuration.xml";
 		
 		try(

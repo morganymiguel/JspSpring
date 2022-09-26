@@ -2,6 +2,8 @@ package kr.or.ddit.member.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import kr.or.ddit.vo.MemberVO;
 
 /**
@@ -35,10 +37,12 @@ public interface MemberDAO {
 	public int updateMember(MemberVO member);
 	/**
 	 * 회원 정보 삭제(???)
+	 * @param  
 	 * @param memId
 	 * @return 성공 : 1 실패 : 0
 	 */
-	public int deleteMember(String memId);
+	public int deleteMember(@Param("memId") String memId);
+
 }
 
 

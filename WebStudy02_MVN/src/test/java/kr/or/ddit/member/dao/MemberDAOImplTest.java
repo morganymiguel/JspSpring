@@ -1,15 +1,19 @@
 package kr.or.ddit.member.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
+import org.apache.ibatis.exceptions.PersistenceException;
 import org.junit.Before;
 import org.junit.Test;
 
 import kr.or.ddit.vo.MemberVO;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class MemberDAOImplTest {
+//	private static final  Logger log = LoggerFactory.getLogger(MemberDAOImplTest.class);
 	
 	MemberDAO dao = new MemberDAOImpl();
 	
@@ -25,32 +29,36 @@ public class MemberDAOImplTest {
 		member.setMemAdd2("오류");
 		member.setMemMail("aa@naver.com");
 	}
-	@Test
+	@Test(expected = PersistenceException.class)
 	public void testInsertMember() {
 		int rowcnt = dao.insertMember(member);
-		System.out.println(rowcnt);
+		log.info("rowcnt : {}", rowcnt);
 	}
 
 	@Test
 	public void testSelectMember() {
-		MemberVO member = dao.selectMember("b003");
-		System.out.println(member);
+		MemberVO member = dao.selectMember("a001");
+		log.info("memId : {}", member.getMemId());
+		log.info("memBir : {}", member.getMemBir());
+		log.info("prodList : {}", member.getProdList());
 	}
 
 	@Test
 	public void testSelectMemberList() {
 		List<MemberVO> memberList = dao.selectMemberList();
-		System.out.println(memberList);
+		log.info("memberList : {}", memberList);
 	}
 
 	@Test
 	public void testUpdateMember() {
-		fail("Not yet implemented");
+		int rowcnt = dao.updateMember(member);
+		assertEquals(1, rowcnt);
 	}
 
 	@Test
 	public void testDeleteMember() {
-		fail("Not yet implemented");
+		int rowcnt = dao.deleteMember(member.getMemId());
+		assertEquals(1, rowcnt);
 	}
 
 }
