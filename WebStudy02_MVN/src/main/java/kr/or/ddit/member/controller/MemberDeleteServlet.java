@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 
 import kr.or.ddit.enumpkg.ServiceResult;
-import kr.or.ddit.member.service.MemberService;
+import kr.or.ddit.member.service.ProdService;
 import kr.or.ddit.member.service.MemberServiceImpl;
 import kr.or.ddit.vo.MemberVO;
 
 @WebServlet("/member/memberDelete.do")
 public class MemberDeleteServlet extends HttpServlet{
-	private MemberService service = new MemberServiceImpl();
+	private ProdService service = new MemberServiceImpl();
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

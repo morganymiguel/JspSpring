@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap w-100 p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Company403</a>
+  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="<%=request.getContextPath() %>/index.do">Company403</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -10,7 +10,7 @@
       <a class="nav-link" href="<%=request.getContextPath() %>/member/memberList.do">회원관리</a>
     </li>
     <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">상품관리</a>
+      <a class="nav-link" href="<%=request.getContextPath() %>/prod/prodList.do">상품관리</a>
     </li>
     <li class="nav-item text-nowrap">
       <a class="nav-link" href="#">거래처관리</a>

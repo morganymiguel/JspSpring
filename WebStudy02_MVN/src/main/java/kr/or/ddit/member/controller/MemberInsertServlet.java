@@ -17,26 +17,25 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import kr.or.ddit.enumpkg.ServiceResult;
-import kr.or.ddit.member.service.MemberService;
+import kr.or.ddit.member.service.ProdService;
 import kr.or.ddit.member.service.MemberServiceImpl;
 import kr.or.ddit.vo.MemberVO;
 
 @WebServlet("/member/memberInsert.do")
 public class MemberInsertServlet extends HttpServlet{
 	
-	private MemberService service = new MemberServiceImpl();
+	private ProdService service = new MemberServiceImpl();
 	
 	private void viewResolve(
-			String commandPage, 
+			String logicalViewName, 
 			HttpServletRequest req, 
 			HttpServletResponse resp
 	) throws ServletException, IOException{
-		if(commandPage.startsWith("redirect:")) {
-			commandPage = commandPage.substring("redirect:".length());
-			resp.sendRedirect(req.getContextPath() + commandPage);
+		if(logicalViewName.startsWith("redirect:")) {
+			logicalViewName = logicalViewName.substring("redirect:".length());
+			resp.sendRedirect(req.getContextPath() + logicalViewName);
 		}else {
-			req.setAttribute("commandPage", commandPage);
-			String viewName = "/WEB-INF/views/template.jsp";
+			String viewName = "/"+logicalViewName+".tiles";
 			req.getRequestDispatcher(viewName).forward(req, resp);
 		}
 	}
@@ -44,8 +43,8 @@ public class MemberInsertServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setAttribute("command", "INSERT");
-		String commandPage = "/WEB-INF/views/member/memberForm.jsp";
-		viewResolve(commandPage, req, resp);
+		String logicalViewName = "member/memberForm";
+		viewResolve(logicalViewName, req, resp);
 	}
 	
 	@Override
@@ -66,27 +65,27 @@ public class MemberInsertServlet extends HttpServlet{
 		
 		boolean valid = validate(member, errors);
 		
-		String commandPage = null;
+		String logicalViewName = null;
 		if(valid) {
 			ServiceResult result = service.createMember(member);
 			switch (result) {
 			case PKDUPLICATED:
 				req.setAttribute("message", "아이디 중복");
-				commandPage = "/WEB-INF/views/member/memberForm.jsp";
+				logicalViewName = "member/memberForm";
 				break;
 			case OK:
-				commandPage = "redirect:/member/memberList.do";
+				logicalViewName = "redirect:/member/memberList.do";
 				break;
 
 			default:
 				req.setAttribute("message", "서버 오류, 쫌따 다시 하셈.");
-				commandPage = "/WEB-INF/views/member/memberForm.jsp";
+				logicalViewName = "member/memberForm";
 				break;
 			}
 		}else {
-			commandPage = "/WEB-INF/views/member/memberForm.jsp";
+			logicalViewName = "member/memberForm";
 		}
-		viewResolve(commandPage, req, resp);
+		viewResolve(logicalViewName, req, resp);
 	}
 
 	// Hibernate validator 

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.or.ddit.member.service.MemberService;
+import kr.or.ddit.member.service.ProdService;
 import kr.or.ddit.member.service.MemberServiceImpl;
 import kr.or.ddit.vo.MemberVO;
 
@@ -33,15 +33,13 @@ import kr.or.ddit.vo.MemberVO;
 @WebServlet("/member/memberList.do")
 public class MemberListServlet extends HttpServlet{
 	
-	private MemberService service = new MemberServiceImpl();
+	private ProdService service = new MemberServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<MemberVO> memberList = service.retrieveMemberList();
 		req.setAttribute("memberList", memberList);
-		String commandPage = "/WEB-INF/views/member/memberList.jsp";
-		req.setAttribute("commandPage", commandPage);
-		String viewName = "/WEB-INF/views/template.jsp";
+		String viewName = "/member/memberList.tiles";
 		req.getRequestDispatcher(viewName).forward(req, resp);
 	}
 }
