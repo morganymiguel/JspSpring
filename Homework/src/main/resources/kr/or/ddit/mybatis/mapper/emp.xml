@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.ddit.emp.dao.EmpDAO">
+
+	<resultMap type="EmpVO" id="memberMap" autoMapping="true">
+		<id property="empno" column="EMPNO"/>
+		<collection property="prodList" ofType="ProdVO" autoMapping="true">
+			<id property="prodId" column="PROD_ID"/>
+			<association property="buyer" javaType="BuyerVO" autoMapping="true" />
+		</collection>
+	</resultMap>
+	
+	<select id="selectEmp" parameterType="string" resultMap="memberMap">
+		SELECT A.EMPNO 
+	    	 , A.ENAME 
+	    	 , A.JOB 
+	    	 , A.MGR 
+	    	 , (SELECT B.ENAME FROM EMP B WHERE B.EMPNO = A.EMPNO)
+	    	 , A.HIREDATE
+	         , A.SAL
+	         , A.COMM
+	         , A.DEPTNO
+	      FROM EMP A
+	     WHERE A.EMPNO = #{empno} 
+	       AND A.MGR IS NOT NULL;
+
+	</select>
+	<insert id="insertEmp" parameterType="EmpVO">
+		INSERT INTO EMP (
+			        EMPNO
+			      , ENAME
+			      , JOB
+			      , MGR
+			      , HIREDATE
+			      , SAL
+			      , COMM
+			      , DEPTNO 
+			      ) VALUES (
+			        EMPNO_SEQ.NEXTVAL
+			      , #{ename,jdbcType=VARCHAR}
+			      , #{job,jdbcType=VARCHAR}
+			      , #{mgr,jdbcType=INTEGER}
+			      , #{hiredate,jdbcType=DATE}
+			      , #{sal,jdbcType=INTEGER}
+			      , #{comm,jdbcType=INTEGER}
+			      , #{deptno,jdbcType=INTEGER}
+			);  
+		
+	</insert>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
