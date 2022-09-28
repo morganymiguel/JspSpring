@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import kr.or.ddit.mybatis.CustomSqlSessionFactoryBuilder;
 import kr.or.ddit.vo.MemberVO;
+import kr.or.ddit.vo.PagingVO;
 
 public class MemberDAOImpl implements MemberDAO {
 	private SqlSessionFactory sqlSessionFactory = 
@@ -37,13 +38,24 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public List<MemberVO> selectMemberList() {
+	public int selectTotalRecord(PagingVO pagingVO) {
+		try(
+			SqlSession sqlSession = sqlSessionFactory.openSession();	
+		){
+//				return sqlSession.selectList("kr.or.ddit.member.dao.MemberDAO.selectMemberList");
+			MemberDAO mapper = sqlSession.getMapper(MemberDAO.class);
+			return mapper.selectTotalRecord(pagingVO);
+		}
+	}
+	
+	@Override
+	public List<MemberVO> selectMemberList(PagingVO pagingVO) {
 		try(
 			SqlSession sqlSession = sqlSessionFactory.openSession();	
 		){
 //			return sqlSession.selectList("kr.or.ddit.member.dao.MemberDAO.selectMemberList");
 			MemberDAO mapper = sqlSession.getMapper(MemberDAO.class);
-			return mapper.selectMemberList();
+			return mapper.selectMemberList(pagingVO);
 		}
 	}
 

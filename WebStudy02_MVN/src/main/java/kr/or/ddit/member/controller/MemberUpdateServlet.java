@@ -17,14 +17,14 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import kr.or.ddit.enumpkg.ServiceResult;
-import kr.or.ddit.member.service.ProdService;
+import kr.or.ddit.member.service.MemberService;
 import kr.or.ddit.member.service.MemberServiceImpl;
 import kr.or.ddit.vo.MemberVO;
 
 @WebServlet("/member/memberUpdate.do")
 public class MemberUpdateServlet extends HttpServlet{
 	
-	private ProdService service = new MemberServiceImpl();
+	private MemberService service = new MemberServiceImpl();
 	
 	private void viewResolve(
 			String logicalViewName, 
@@ -57,7 +57,7 @@ public class MemberUpdateServlet extends HttpServlet{
 		req.setAttribute("member", member);
 		req.setAttribute("command", "UPDATE");
 		
-		String logicalViewName = "/member/memberForm";
+		String logicalViewName = "member/memberForm";
 		viewResolve(logicalViewName, req, resp);
 	}
 	
@@ -79,21 +79,21 @@ public class MemberUpdateServlet extends HttpServlet{
 		
 		boolean valid = validate(member, errors);
 		
-		String logicalViewName= null;
+		String logicalViewName = null;
 		if(valid) {
 			ServiceResult result = service.modifyMember(member);
 			switch (result) {
 			case OK:
-				logicalViewName= "redirect:/member/memberList.do";
+				logicalViewName = "redirect:/member/memberList.do";
 				break;
 
 			default:
 				req.setAttribute("message", "서버 오류, 쫌따 다시 하셈.");
-				logicalViewName = "/WEB-INF/views/member/memberForm.jsp";
+				logicalViewName = "member/memberForm";
 				break;
 			}
 		}else {
-			logicalViewName = "/member/memberForm";
+			logicalViewName = "member/memberForm";
 		}
 		viewResolve(logicalViewName, req, resp);
 	}
@@ -101,12 +101,32 @@ public class MemberUpdateServlet extends HttpServlet{
 	// Hibernate validator 
 	private boolean validate(MemberVO member, Map<String, String> errors) {
 		boolean valid = true;
-		if(StringUtils.isBlank(member.getMemId()) ) {
-			errors.put("memId", "아이디 누락");
+		if (StringUtils.isBlank(member.getMemId())) {
+			errors.put("memId", "회원아이디누락");
 			valid = false;
 		}
-		if(StringUtils.isBlank(member.getMemPass())) {
-			errors.put("memPass", "비밀번호 누락");
+		if (StringUtils.isBlank(member.getMemPass())) {
+			errors.put("memPass", "비밀번호누락");
+			valid = false;
+		}
+		if (StringUtils.isBlank(member.getMemName())) {
+			errors.put("memName", "회원명누락");
+			valid = false;
+		}
+		if (StringUtils.isBlank(member.getMemZip())) {
+			errors.put("memZip", "우편번호누락");
+			valid = false;
+		}
+		if (StringUtils.isBlank(member.getMemAdd1())) {
+			errors.put("memAdd1", "주소1누락");
+			valid = false;
+		}
+		if (StringUtils.isBlank(member.getMemAdd2())) {
+			errors.put("memAdd2", "주소2누락");
+			valid = false;
+		}
+		if (StringUtils.isBlank(member.getMemMail())) {
+			errors.put("memMail", "이메일누락");
 			valid = false;
 		}
 		

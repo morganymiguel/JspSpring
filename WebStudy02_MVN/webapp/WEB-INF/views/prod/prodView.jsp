@@ -1,20 +1,16 @@
-<%@page import="kr.or.ddit.vo.MemberVO"%>
-<%@page import="kr.or.ddit.vo.BuyerVO"%>
-<%@page import="kr.or.ddit.vo.ProdVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	ProdVO prod = (ProdVO) request.getAttribute("prod");
-%>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <table class="table table-bordered">
 	<tr>
 		<th>상품명</th>
-		<td><%=prod.getProdName()%></td>
+		<td>${prod.prodName }</td>
 	</tr>
 	<tr>
 		<th>분류명</th>
-		<td><%=prod.getLprodNm()%></td>
+		<td>${prod.lprodNm }</td>
 	</tr>
+	<tr>
 	<th>거래처</th>
 	<td>
 		<table class="table table-bordered">
@@ -29,108 +25,112 @@
 				</tr>
 			</thead>
 			<tbody>
-				<%
-					BuyerVO buyer = prod.getBuyer();
-				%>
+				<c:set var="buyer" value="${prod.buyer }" />
 				<tr>
-					<td><%=buyer.getBuyerName() %></td>
-					<td><%=buyer.getBuyerAdd1() %></td>
-					<td><%=buyer.getBuyerCharger() %></td>
-					<td><%=buyer.getBuyerComtel() %></td>
-					<td><%=buyer.getBuyerBankname() %></td>
-					<td><%=buyer.getBuyerBankno() %></td>
+					<td>${buyer.buyerName }</td>
+					<td>${buyer.buyerAdd1 }</td>
+					<td>${buyer.buyerCharger }</td>
+					<td>${buyer.buyerComtel }</td>
+					<td>${buyer.buyerBankname }</td>
+					<td>${buyer.buyerBankno }</td>
 				</tr>
 			</tbody>
 		</table>
 	</td>
 	<tr>
 		<th>구매가</th>
-		<td><%=prod.getProdCost()%></td>
+		<td>${prod.prodCost }</td>
 	</tr>
 	<tr>
 		<th>판매가</th>
-		<td><%=prod.getProdPrice()%></td>
+		<td>${prod.prodPrice }</td>
 	</tr>
 	<tr>
 		<th>세일가</th>
-		<td><%=prod.getProdSale()%></td>
+		<td>${prod.prodSale }</td>
 	</tr>
 	<tr>
 		<th>개요</th>
-		<td><%=prod.getProdOutline()%></td>
+		<td>${prod.prodOutline }</td>
 	</tr>
 	<tr>
 		<th>상세정보</th>
-		<td><%=prod.getProdDetail()%></td>
+		<td>${prod.prodDetail }</td>
 	</tr>
 	<tr>
 		<th>상품이미지</th>
-		<td><%=prod.getProdImg()%></td>
+		<td>${prod.prodImg }</td>
 	</tr>
 	<tr>
 		<th>총재고</th>
-		<td><%=prod.getProdTotalstock()%></td>
+		<td>${prod.prodTotalstock }</td>
 	</tr>
 	<tr>
 		<th>입고일</th>
-		<td><%=prod.getProdInsdate()%></td>
+		<td>${prod.prodInsdate }</td>
 	</tr>
 	<tr>
 		<th>적정재고</th>
-		<td><%=prod.getProdProperstock()%></td>
+		<td>${prod.prodProperstock }</td>
 	</tr>
 	<tr>
 		<th>크기</th>
-		<td><%=prod.getProdSize()%></td>
+		<td>${prod.prodSize }</td>
 	</tr>
 	<tr>
 		<th>색상</th>
-		<td><%=prod.getProdColor()%></td>
+		<td>${prod.prodColor }</td>
 	</tr>
 	<tr>
 		<th>배송방법</th>
-		<td><%=prod.getProdDelivery()%></td>
+		<td>${prod.prodDelivery }</td>
 	</tr>
 	<tr>
 		<th>단위</th>
-		<td><%=prod.getProdUnit()%></td>
+		<td>${prod.prodUnit }</td>
 	</tr>
 	<tr>
 		<th>입고량</th>
-		<td><%=prod.getProdQtyin() %></td>
+		<td>${prod.prodQtyin }</td>
 	</tr>
 	<tr>
 		<th>판매량</th>
-		<td><%=prod.getProdQtysale() %></td>
+		<td>${prod.prodQtysale }</td>
 	</tr>
 	<tr>
 		<th>마일리지</th>
-		<td><%=prod.getProdMileage() %></td>
+		<td>${prod.prodMileage }</td>
 	</tr>
 	<tr>
 		<th>구매자 정보</th>
 		<td>
-			<table>
-			<thead>
-			<tr>
-			<th>아이디</th><th>이름</th><th>지역</th><th>마일리지</th>
-			</tr>
-			</thead>
-			<tbody>
-			<%
-				for(MemberVO member : prod.getMemberList()){
-									
-			%>
-				<tr>
-				<td><%=member.getMemId() %></td>
-				<td><%=member.getMemName() %></td>
-				<td><%=member.getMemAdd1() %></td>
-				<td><%=member.getMemMileage() %></td>
-			</tr>
-			<%
-				}
-			%>
-			</tbody>
+			<table class="table table-bordered">
+				<thead class="table-dark">
+					<tr>
+						<th>아이디</th>
+						<th>이름</th>
+						<th>지역</th>
+						<th>마일리지</th>
+					</tr>
+				</thead>
+				<tbody>
+				<c:set var="memberList" value="${prod.memberList }" />
+				<c:if test="${not empty memberList }">
+					<c:forEach items="${memberList }" var="member">
+						<tr>
+							<td>${member['memId'] }</td>
+							<td>${member['memName'] }</td>
+							<td>${member['memAdd1'] }</td>
+							<td>${member['memMileage'] }</td>
+						</tr>
+					</c:forEach>
+				</c:if>
+				<c:if test="${empty memberList }">
+					<tr>
+						<td colspan="4">구매 기록 없음.</td>
+					</tr>
+				</c:if>
+				</tbody>
 			</table>
 		</td>
 	</tr>

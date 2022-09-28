@@ -45,7 +45,7 @@ public class MemberDAOImplTest {
 
 	@Test
 	public void testSelectMemberList() {
-		List<MemberVO> memberList = dao.selectMemberList();
+		List<MemberVO> memberList = dao.selectMemberList(pagingVO);
 		log.info("memberList : {}", memberList);
 	}
 

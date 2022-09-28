@@ -1,10 +1,10 @@
-<%@page import="kr.or.ddit.vo.MemberVO"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <table class="table table-bordered">
 	<thead>
 		<tr>
+			<th>일련번호</th>
 			<th>회원아이디</th>
 			<th>회원명</th>
 			<th>이메일</th>
@@ -14,40 +14,44 @@
 		</tr>
 	</thead>
 	<tbody>
-		<%
-			List<MemberVO> memberList = (List) request.getAttribute("memberList");
-			if(memberList.isEmpty()){
-				%>
+		<c:set var="memberList" value="${pagingVO.dataList }" />
+		<c:choose>
+			<c:when test="${not empty memberList }">
+				<c:forEach items="${memberList }" var="member">
+					<tr data-who="${member['memId'] }" 
+							data-bs-toggle="modal" data-bs-target="#exampleModal">
+						<td>${member.rnum }</td>
+						<td>${member['memId'] }</td>
+						<td>${member['memName'] }</td>
+						<td>${member['memMail'] }</td>
+						<td>${member['memHp'] }</td>
+						<td>${member['memAdd1'] }</td>
+						<td>${member['memMileage'] }</td>
+					</tr>
+				</c:forEach>
+			</c:when>
+			<c:otherwise>
 				<tr>
 					<td colspan="6">회원이 없음.</td>
 				</tr>
-				<%
-			}else{
-				for(MemberVO member : memberList){
-					%>
-					<tr data-who="<%=member.getMemId() %>" 
-							data-bs-toggle="modal" data-bs-target="#exampleModal">
-						<td><%=member.getMemId() %></td>
-						<td><%=member.getMemName() %></td>
-						<td><%=member.getMemMail() %></td>
-						<td><%=member.getMemHp() %></td>
-						<td><%=member.getMemAdd1() %></td>
-						<td><%=member.getMemMileage() %></td>
-					</tr>
-					<%
-				}
-			}
-		%>
-	
+			</c:otherwise>
+		</c:choose>
 	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="7">
+				${pagingVO.pagingHTML }
+			</td>
+		</tr>
+	</tfoot>
 </table>
-<form id='viewForm' action="<%=request.getContextPath() %>/member/memberView.do">
+<form id='viewForm' action="${pageContext.request.contextPath }/member/memberView.do">
 	<input type='hidden' name='who'  />
 </form>
-<form id='updateForm' action="<%=request.getContextPath() %>/member/memberUpdate.do">
+<form id='updateForm' action="${pageContext.request.contextPath }/member/memberUpdate.do">
 	<input type='hidden' name='who'  />
 </form>
-<form id="deleteForm" action="<%=request.getContextPath() %>/member/memberDelete.do" method="post">
+<form id="deleteForm" action="${pageContext.request.contextPath }/member/memberDelete.do" method="post">
 	<input type='hidden' name='who'  />
 </form>
 <!-- Modal -->
@@ -63,13 +67,13 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger" id="updateBtn">UPDATE</button>
+        <button type="button" class="btn btn-primary" id="updateBtn">UPDATE</button>
         <button type="button" class="btn btn-danger" id="deleteBtn">DELETE</button>
       </div>
     </div>
   </div>
 </div>
-<script type="text/javascript" src='<%=request.getContextPath() %>/resources/js/member/memberList.js?<%=System.currentTimeMillis()%>'></script>
+<script type="text/javascript" src='${pageContext.request.contextPath }/resources/js/member/memberList.js?<%=System.currentTimeMillis()%>'></script>
 
 
 

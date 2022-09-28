@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd" >
 <tiles-definitions>
-<!-- 	<defination name == logical view name -->
+<!--  	definition name == logical view name -->
+ 
   <definition name="parent" template="/WEB-INF/views/template.jsp">
   	<put-attribute name="title" value="Company403" />
   	<put-attribute name="preScript" value="/includee/preScript.jsp"/>
@@ -21,7 +22,6 @@
   </definition>
   
   <definition name="prod/*" extends="parent" preparer="kr.or.ddit.prod.view.ProdViewPreparer">
-  
   	<put-attribute name="main" value="/WEB-INF/views/prod/{1}.jsp" />
   </definition>
   

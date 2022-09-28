@@ -9,9 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.or.ddit.member.service.ProdService;
+import org.apache.commons.lang3.StringUtils;
+
+import kr.or.ddit.member.service.MemberService;
 import kr.or.ddit.member.service.MemberServiceImpl;
 import kr.or.ddit.vo.MemberVO;
+import kr.or.ddit.vo.PagingVO;
 
 /**
  * RESTful URI
@@ -33,12 +36,29 @@ import kr.or.ddit.vo.MemberVO;
 @WebServlet("/member/memberList.do")
 public class MemberListServlet extends HttpServlet{
 	
-	private ProdService service = new MemberServiceImpl();
+	private MemberService service = new MemberServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<MemberVO> memberList = service.retrieveMemberList();
-		req.setAttribute("memberList", memberList);
+		req.setCharacterEncoding("UTF-8");
+		
+		String pageParam = req.getParameter("page");
+		int currentPage = 1;
+		if(StringUtils.isNumeric(pageParam)) {
+			currentPage = Integer.parseInt(pageParam);
+		}
+		
+		PagingVO<MemberVO> pagingVO = new PagingVO<>(3,2);
+		pagingVO.setCurrentPage(currentPage);
+		int totalRecord = service.retrieveMemberCount(pagingVO);
+		pagingVO.setTotalRecord(totalRecord);
+		
+		List<MemberVO> memberList = service.retrieveMemberList(pagingVO);
+		pagingVO.setDataList(memberList);
+		
+//		req.setAttribute("memberList", memberList);
+		req.setAttribute("pagingVO", pagingVO);
+		
 		String viewName = "/member/memberList.tiles";
 		req.getRequestDispatcher(viewName).forward(req, resp);
 	}

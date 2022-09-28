@@ -14,8 +14,8 @@ public class ProdServiceImpl implements ProdService {
 
 	@Override
 	public ServiceResult createProd(ProdVO prod) {
-		// TODO Auto-generated method stub
-		return null;
+		int rowcnt = dao.insertProd(prod);
+		return rowcnt > 0 ? ServiceResult.OK : ServiceResult.FAIL;
 	}
 
 	@Override
@@ -33,8 +33,10 @@ public class ProdServiceImpl implements ProdService {
 
 	@Override
 	public ServiceResult modifyProd(ProdVO prod) {
-		// TODO Auto-generated method stub
-		return null;
+		retrieveProd(prod.getProdId());
+		
+		int rowcnt = dao.updateProd(prod);
+		return rowcnt > 0 ? ServiceResult.OK : ServiceResult.FAIL;
 	}
 
 }

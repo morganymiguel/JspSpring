@@ -13,7 +13,7 @@ import kr.or.ddit.vo.MenuVO;
 public class ProdViewPreparer implements ViewPreparer {
 
 	@Override
-	public void execute(Request req, AttributeContext Context) {
+	public void execute(Request req, AttributeContext context) {
 		MenuVO menu1 = new MenuVO("/prod/prodList.do", "상품목록조회");
 		MenuVO menu2 = new MenuVO("/prod/prodInsert.do", "신규상품등록");
 		List<MenuVO> menuList = Arrays.asList(menu1, menu2);

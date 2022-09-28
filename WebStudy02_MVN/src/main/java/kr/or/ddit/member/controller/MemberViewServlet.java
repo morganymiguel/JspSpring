@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.or.ddit.member.service.ProdService;
+import kr.or.ddit.member.service.MemberService;
 import kr.or.ddit.member.service.MemberServiceImpl;
 import kr.or.ddit.vo.MemberVO;
 
 @WebServlet("/member/memberView.do")
 public class MemberViewServlet extends HttpServlet{
-	private ProdService service = new MemberServiceImpl();
+	private MemberService service = new MemberServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

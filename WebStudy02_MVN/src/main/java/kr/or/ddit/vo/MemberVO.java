@@ -37,6 +37,9 @@ import lombok.ToString;
 @EqualsAndHashCode(of="memId")
 @ToString(exclude = {"memPass", "memRegno1", "memRegno2"})
 public class MemberVO implements Serializable{
+	
+	private int rnum;
+	
 	private String memId;
 	@JsonIgnore
 	private transient String memPass;
@@ -61,6 +64,11 @@ public class MemberVO implements Serializable{
 	private Boolean memDelete;
 	
 	private Set<ProdVO> prodList; // has Many
+	
+	
+	public String getMemTest() {
+		return "테스트";
+	}
 }
 
 
