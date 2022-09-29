@@ -4,25 +4,18 @@
 
 	<resultMap type="EmpVO" id="memberMap" autoMapping="true">
 		<id property="empno" column="EMPNO"/>
-		<collection property="prodList" ofType="ProdVO" autoMapping="true">
-			<id property="prodId" column="PROD_ID"/>
-			<association property="buyer" javaType="BuyerVO" autoMapping="true" />
-		</collection>
 	</resultMap>
 	
-	<select id="selectEmp" parameterType="string" resultMap="memberMap">
-		SELECT A.EMPNO 
-	    	 , A.ENAME 
-	    	 , A.JOB 
-	    	 , A.MGR 
-	    	 , (SELECT B.ENAME FROM EMP B WHERE B.EMPNO = A.EMPNO)
-	    	 , A.HIREDATE
-	         , A.SAL
-	         , A.COMM
-	         , A.DEPTNO
-	      FROM EMP A
-	     WHERE A.EMPNO = #{empno} 
-	       AND A.MGR IS NOT NULL;
+	<select id="selectEmp" parameterType="Integer" resultMap="memberMap">
+
+	SELECT C.*, B.EMPNO, B.ENAME
+      FROM (SELECT A.EMPNO, A.ENAME, A.MGR, A.DEPTNO, D.DNAME
+	  FROM EMP A INNER JOIN DEPT D ON(A.DEPTNO = D.DEPTNO)
+		 ) C 
+     INNER JOIN EMP B ON(C.MGR = B.EMPNO)
+     WHERE C.EMPNO = #{empno,jdbcType=INTEGER}
+
+
 
 	</select>
 	<insert id="insertEmp" parameterType="EmpVO">

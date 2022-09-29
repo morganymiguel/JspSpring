@@ -17,12 +17,8 @@
   	<put-attribute name="main" value="/WEB-INF/views/index.jsp" />
   </definition>
   
-  <definition name="member/*" extends="parent" preparer="kr.or.ddit.member.view.MemberViewPreparer">
-  	<put-attribute name="main" value="/WEB-INF/views/member/{1}.jsp" />
-  </definition>
-  
-  <definition name="prod/*" extends="parent" preparer="kr.or.ddit.prod.view.ProdViewPreparer">
-  	<put-attribute name="main" value="/WEB-INF/views/prod/{1}.jsp" />
+  <definition name="emp/*" extends="parent" preparer="kr.or.ddit.emp.view.ProdViewPreparer">
+  	<put-attribute name="main" value="/WEB-INF/views/emp/{1}.jsp" />
   </definition>
   
 </tiles-definitions>

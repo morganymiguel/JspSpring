@@ -7,16 +7,7 @@
   </button>
   <ul class="nav px-3 col">
     <li class="nav-item text-nowrap">
-      <a class="nav-link" href="<%=request.getContextPath() %>/member/memberList.do">회원관리</a>
-    </li>
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="<%=request.getContextPath() %>/prod/prodList.do">상품관리</a>
-    </li>
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">거래처관리</a>
-    </li>
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">게시판</a>
+      <a class="nav-link" href="<%=request.getContextPath() %>/emp/empList.do">회원관리</a>
     </li>
   </ul>
   <ul class="nav px-3 col-2">

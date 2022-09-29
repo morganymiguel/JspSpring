@@ -24,6 +24,5 @@
 	</environments>
 	<mappers>
 		<mapper resource="kr/or/ddit/mybatis/mapper/emp.xml"/>
-		<mapper resource="kr/or/ddit/mybatis/mapper/dept.xml"/>
 	</mappers>
 </configuration>
