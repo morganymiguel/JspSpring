@@ -26,7 +26,18 @@ public class PagingVO<T> {
 	private int startPage;
 	private int endPage;
 	
+	private SearchVO simpleCondition;
+	private T detailCondition;
+	
 	private List<T> dataList;
+	
+	public void setDetailCondition(T detailCondition) {
+		this.detailCondition = detailCondition;
+	}
+	
+	public void setSimpleCondition(SearchVO simpleCondition) {
+		this.simpleCondition = simpleCondition;
+	}
 	
 	public void setTotalRecord(int totalRecord) {
 		this.totalRecord = totalRecord;
@@ -45,7 +56,7 @@ public class PagingVO<T> {
 		this.dataList = dataList;
 	}
 	
-	String pattern = "<a href='?page=%d'>%s</a>";
+	String pattern = "<a href='#' data-page='%d'>%s</a>";
 	public String getPagingHTML() {
 		StringBuffer html = new StringBuffer();
 		
@@ -75,6 +86,22 @@ public class PagingVO<T> {
 		
 		return html.toString();
 	}
+	
+//	<nav aria-label="Page navigation example">
+//	  <ul class="pagination justify-content-center">
+//	    <li class="page-item disabled">
+//	      <a class="page-link">Previous</a>
+//	    </li>
+//	    <li class="page-item"><a class="page-link" href="#">1</a></li>
+//	    <li class="page-item active"><a class="page-link" href="#">2</a></li>
+//	    <li class="page-item"><a class="page-link" href="#">3</a></li>
+//	    <li class="page-item">
+//	      <a class="page-link" href="#">Next</a>
+//	    </li>
+//	  </ul>
+//	</nav>
+	
+//	public String getPagingHTMLBS
 }
 
 

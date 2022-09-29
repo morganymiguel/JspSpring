@@ -18,6 +18,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProdVO implements Serializable{
+	
+	private int rnum;
+	
 	private String prodId;
 	private String prodName;
 	private String prodLgu;

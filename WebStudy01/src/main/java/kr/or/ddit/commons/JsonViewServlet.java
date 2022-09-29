@@ -15,25 +15,33 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebServlet("/jsonView.do")
-public class JsonViewServlet extends HttpServlet {
+public class JsonViewServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Map<String, Object> model = new HashMap<>();
-		Enumeration<String> attributeNames = request.getAttributeNames();//
+		Enumeration<String> attributeNames = request.getAttributeNames();
 		while (attributeNames.hasMoreElements()) {
 			String name = (String) attributeNames.nextElement();
 			Object value = request.getAttribute(name);
 			model.put(name, value);
-			
 		}
-		String contentType ="application/json;charset=UTF-8";
+		
+		String contentType = "application/json;charset=UTF-8";
 		response.setContentType(contentType);
 		try(
-			PrintWriter out = response.getWriter();
+			PrintWriter out = response.getWriter();	
 		){
 			new ObjectMapper().writeValue(out, model);
 		}
-		
-		
 	}
 }
+
+
+
+
+
+
+
+
+
+

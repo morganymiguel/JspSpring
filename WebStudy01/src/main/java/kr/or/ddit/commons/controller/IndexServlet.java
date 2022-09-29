@@ -26,6 +26,7 @@ public class IndexServlet extends HttpServlet{
 		commandDB.put("CALCULATOR", "/02/calculateForm.jsp");
 		application.setAttribute("commandDB", commandDB);
 	}
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Map<String, String> commandDB = (Map) application.getAttribute("commandDB");
@@ -34,7 +35,7 @@ public class IndexServlet extends HttpServlet{
 		String commandPage = null;
 		int status = 200;
 		if(command==null || command.isEmpty()) {
-			commandPage= "/WEB-INF/views/index.jsp";
+			commandPage = "/WEB-INF/views/index.jsp";
 		}else {
 			if(!commandDB.containsKey(command)) {
 				status = HttpServletResponse.SC_NOT_FOUND;
@@ -45,9 +46,30 @@ public class IndexServlet extends HttpServlet{
 		if(status==200) {
 			req.setAttribute("commandPage", commandPage);
 			String viewName = "/WEB-INF/views/template.jsp";
-			req.getRequestDispatcher(viewName).forward(req,resp);
+			req.getRequestDispatcher(viewName).forward(req, resp);
 		}else {
 			resp.sendError(status);
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

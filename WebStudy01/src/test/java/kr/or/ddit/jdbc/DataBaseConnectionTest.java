@@ -21,7 +21,7 @@ public class DataBaseConnectionTest {
 	private Connection mariaDBConn;
 	private Statement oracleStmt;
 	private Statement mariaDBStmt;
-//@test를 기준으로 before, after
+
 	@BeforeClass
 	public static void setUpClass() {
 		try {
@@ -97,7 +97,7 @@ public class DataBaseConnectionTest {
 		}
 	}
 	
-	@AfterClass 
+	@AfterClass
 	public static void tearDownClass() {
 		System.out.println("테스트 종료");
 	}

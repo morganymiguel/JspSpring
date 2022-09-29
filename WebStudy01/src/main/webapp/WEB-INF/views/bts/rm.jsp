@@ -267,7 +267,7 @@
 		</div>
 		<script> naver.search.option.append_params(jQuery("#nx_option_form")[0]); </script>
 		<script> (function() { var jsFileURL = "https://ssl.pstatic.net/sstatic/fe/sfe/searchOption/Controller_220519.js"; var startApplication = function() { var require = window.require.config({ "context": "_fe_search_option", "paths": { /* Controller.js의 경로 지정. */ "Controller": jsFileURL.replace(/\.js$/, "") } }); /* module define은 require의 context별로 호출해야함. */ define("jquery", [], function() { return jQuery; }); require(["Controller"], function(Controller) { var oSearchOption = new Controller({ "$form": jQuery("#nx_option_form") }); oSearchOption.on({ "selectCalendar": function(e) { var param = e.param; var cr = { "area": e.$item.data("cr-area") }; var date_from = e.startDate; var date_to = e.endDate; var from = date_from.year + "." + date_from.month + "." + date_from.date; from = from.replace(/\./g, ''); var to = date_to.year + "." + date_to.month + "." + date_to.date; to = to.replace(/\./g, ''); var opt_p = "p:from" + (from < to ? from : to) + "to" + (from < to ? to : from); var params = naver.search.option.params; var nso = params["nso"]; if (nso) { var arr = nso.split(","); var isPeriodExist = false; arr.forEach(function(element, index, arr){ if (element.indexOf("p:") == 0) { arr[index] = opt_p; isPeriodExist = true; } }); if (!isPeriodExist){ arr.push(opt_p); } nso = arr.join(","); } else { nso = opt_p; } params["nso"] = nso; param = ""; for (var k in params) { var v = params[k]; param += "&" + k + "=" + urlencode(v); } if (param[0] === "&") { param = param.substring(1); } /* formCR 클릭로그 호출 */ this.submit(param, cr); } }); }); }; var requirejs = naver.common.gv.REQUIRE_JS; naver.common.load_js(window.require ? null : requirejs, startApplication, true, 150); })(); </script>
-		<script type="text/javascript">var g_uad = true; </script>
+		<script type="text/javascript">var g_uad = false; </script>
 		<section
 			class="sc_new cs_common_module case_empasis _au_people_content_wrap _people_star color_23"
 			data-dss-logarea="x29">
@@ -717,7 +717,8 @@
 									당사자 본인은 직접 또는 대리인을 통해 언제든지 네이버에 수정 또는 삭제를 신청하실 수 있으며 본인 또는 그
 									대리인이 마지막으로 수정 요청이 처리된 날짜가 본인참여 일자로 표시·제공됩니다. <br>네이버는 인물
 									본인이 제공하거나 일반에 공개된 자료를 매개 서비스하는 제공자로서 해당 정보의 정확성, 신뢰성 또는 최신성을
-									보증하지 않습니다. <br> <br> <a nocr=""
+									보증하지 않습니다. <br>
+									<br> <a nocr=""
 										onclick="return goOtherCR(this, 'a=nco_x29*u.infupd&amp;r=1&amp;i=1800000D_00000008EF3C&amp;u=' + urlencode(this.href));"
 										target="_blank" href="https://myprofile.naver.com/Main.nhn"
 										class="link_more">인물정보 수정신청</a>, <a nocr=""
@@ -2140,34 +2141,6 @@
 											<div class="area_card">
 												<a nocr=""
 													onclick="return goOtherCR(this, 'a=nco_x29*u.rplayimg&amp;r=1&amp;i=1800000D_00000008EF3C&amp;u=' + urlencode(this.href));"
-													href="https://search.naver.com/search.naver?where=nexearch&amp;sm=mbg_nex.people&amp;mra=bkkw&amp;pkid=269&amp;os=28705038&amp;qvt=0&amp;query=2030%20%EB%B6%80%EC%82%B0%EC%84%B8%EA%B3%84%EB%B0%95%EB%9E%8C%ED%9A%8C%20%EC%9C%A0%EC%B9%98%20%EA%B8%B0%EC%9B%90%20%EC%BD%98%EC%84%9C%ED%8A%B8%20BTS%20Yet%20To%20Come%20in%20BUSAN%20%EC%98%A8%EB%9D%BC%EC%9D%B8"
-													class="area_link_box">
-													<div class="thumb">
-														<img
-															src="https://search.pstatic.net/common?type=f&amp;size=210x296&amp;quality=75&amp;direct=true&amp;src=https%3A%2F%2Fcsearch-phinf.pstatic.net%2F20220824_299%2F1661318708361AI8zB_JPEG%2F269_image_url_1661318708349.jpg"
-															width="105" height="148"
-															alt="2030 부산세계박람회 유치 기원 콘서트 BTS 'Yet To Come' in BUSAN - 온라인 이미지"
-															onerror="this.onerror = null; this.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'; this.alt = '이미지 준비중'; this.className='bg_nimg2';">
-													</div>
-												</a>
-												<div class="title_box">
-													<strong class="name " data-kgs-ellipsis=""
-														style="max-height: 36px" ellipsis-line="2"> <a
-														nocr=""
-														onclick="return goOtherCR(this, 'a=nco_x29*u.rplaytit&amp;r=1&amp;i=1800000D_00000008EF3C&amp;u=' + urlencode(this.href));"
-														href="https://search.naver.com/search.naver?where=nexearch&amp;sm=mbg_nex.people&amp;mra=bkkw&amp;pkid=269&amp;os=28705038&amp;qvt=0&amp;query=2030%20%EB%B6%80%EC%82%B0%EC%84%B8%EA%B3%84%EB%B0%95%EB%9E%8C%ED%9A%8C%20%EC%9C%A0%EC%B9%98%20%EA%B8%B0%EC%9B%90%20%EC%BD%98%EC%84%9C%ED%8A%B8%20BTS%20Yet%20To%20Come%20in%20BUSAN%20%EC%98%A8%EB%9D%BC%EC%9D%B8"
-														class="_text">2030 부산세계박람회 유치 기원 콘서트 BTS 'Yet To Come'
-															in BUSAN - 온라인</a></strong> <span class="sub_text"
-														data-kgs-ellipsis="" style="max-height: 36px"
-														ellipsis-line="2"> <span class="_text"></span>
-													</span> <span class="sub_text"> 2022.10.15. </span>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="area_card">
-												<a nocr=""
-													onclick="return goOtherCR(this, 'a=nco_x29*u.rplayimg&amp;r=1&amp;i=1800000D_00000008EF3C&amp;u=' + urlencode(this.href));"
 													href="https://search.naver.com/search.naver?where=nexearch&amp;sm=mbg_nex.people&amp;mra=bkkw&amp;pkid=269&amp;os=28705023&amp;qvt=0&amp;query=2030%20%EB%B6%80%EC%82%B0%EC%84%B8%EA%B3%84%EB%B0%95%EB%9E%8C%ED%9A%8C%20%EC%9C%A0%EC%B9%98%20%EA%B8%B0%EC%9B%90%20%EC%BD%98%EC%84%9C%ED%8A%B8%20BTS%20Yet%20To%20Come%20in%20BUSAN"
 													class="area_link_box">
 													<div class="thumb">
@@ -2196,13 +2169,13 @@
 											<div class="area_card">
 												<a nocr=""
 													onclick="return goOtherCR(this, 'a=nco_x29*u.rplayimg&amp;r=1&amp;i=1800000D_00000008EF3C&amp;u=' + urlencode(this.href));"
-													href="https://search.naver.com/search.naver?where=nexearch&amp;sm=mbg_nex.people&amp;mra=bkkw&amp;pkid=269&amp;os=25795659&amp;qvt=0&amp;query=BTS%20PERMISSION%20TO%20DANCE%20ON%20STAGE%20LAS%20VEGAS%20%EC%98%A8%EB%9D%BC%EC%9D%B8"
+													href="https://search.naver.com/search.naver?where=nexearch&amp;sm=mbg_nex.people&amp;mra=bkkw&amp;pkid=269&amp;os=28705038&amp;qvt=0&amp;query=2030%20%EB%B6%80%EC%82%B0%EC%84%B8%EA%B3%84%EB%B0%95%EB%9E%8C%ED%9A%8C%20%EC%9C%A0%EC%B9%98%20%EA%B8%B0%EC%9B%90%20%EC%BD%98%EC%84%9C%ED%8A%B8%20BTS%20Yet%20To%20Come%20in%20BUSAN%20%EC%98%A8%EB%9D%BC%EC%9D%B8"
 													class="area_link_box">
 													<div class="thumb">
 														<img
-															src="https://search.pstatic.net/common?type=f&amp;size=210x296&amp;quality=75&amp;direct=true&amp;src=https%3A%2F%2Fcsearch-phinf.pstatic.net%2F20220223_171%2F1645586472873nx0QD_PNG%2F269_image_url_1645586472807.png"
+															src="https://search.pstatic.net/common?type=f&amp;size=210x296&amp;quality=75&amp;direct=true&amp;src=https%3A%2F%2Fcsearch-phinf.pstatic.net%2F20220824_299%2F1661318708361AI8zB_JPEG%2F269_image_url_1661318708349.jpg"
 															width="105" height="148"
-															alt="BTS PERMISSION TO DANCE ON STAGE - LAS VEGAS - 온라인 이미지"
+															alt="2030 부산세계박람회 유치 기원 콘서트 BTS 'Yet To Come' in BUSAN - 온라인 이미지"
 															onerror="this.onerror = null; this.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'; this.alt = '이미지 준비중'; this.className='bg_nimg2';">
 													</div>
 												</a>
@@ -2211,12 +2184,12 @@
 														style="max-height: 36px" ellipsis-line="2"> <a
 														nocr=""
 														onclick="return goOtherCR(this, 'a=nco_x29*u.rplaytit&amp;r=1&amp;i=1800000D_00000008EF3C&amp;u=' + urlencode(this.href));"
-														href="https://search.naver.com/search.naver?where=nexearch&amp;sm=mbg_nex.people&amp;mra=bkkw&amp;pkid=269&amp;os=25795659&amp;qvt=0&amp;query=BTS%20PERMISSION%20TO%20DANCE%20ON%20STAGE%20LAS%20VEGAS%20%EC%98%A8%EB%9D%BC%EC%9D%B8"
-														class="_text">BTS PERMISSION TO DANCE ON STAGE - LAS
-															VEGAS - 온라인</a></strong> <span class="sub_text" data-kgs-ellipsis=""
-														style="max-height: 36px" ellipsis-line="2"> <span
-														class="_text"></span>
-													</span> <span class="sub_text"> 2022.04.16. </span>
+														href="https://search.naver.com/search.naver?where=nexearch&amp;sm=mbg_nex.people&amp;mra=bkkw&amp;pkid=269&amp;os=28705038&amp;qvt=0&amp;query=2030%20%EB%B6%80%EC%82%B0%EC%84%B8%EA%B3%84%EB%B0%95%EB%9E%8C%ED%9A%8C%20%EC%9C%A0%EC%B9%98%20%EA%B8%B0%EC%9B%90%20%EC%BD%98%EC%84%9C%ED%8A%B8%20BTS%20Yet%20To%20Come%20in%20BUSAN%20%EC%98%A8%EB%9D%BC%EC%9D%B8"
+														class="_text">2030 부산세계박람회 유치 기원 콘서트 BTS 'Yet To Come'
+															in BUSAN - 온라인</a></strong> <span class="sub_text"
+														data-kgs-ellipsis="" style="max-height: 36px"
+														ellipsis-line="2"> <span class="_text"></span>
+													</span> <span class="sub_text"> 2022.10.15. </span>
 												</div>
 											</div>
 										</li>
@@ -2253,13 +2226,13 @@
 											<div class="area_card">
 												<a nocr=""
 													onclick="return goOtherCR(this, 'a=nco_x29*u.rplayimg&amp;r=1&amp;i=1800000D_00000008EF3C&amp;u=' + urlencode(this.href));"
-													href="https://search.naver.com/search.naver?where=nexearch&amp;sm=mbg_nex.people&amp;mra=bkkw&amp;pkid=269&amp;os=25764512&amp;qvt=0&amp;query=BTS%20PERMISSION%20TO%20DANCE%20ON%20STAGE%20SEOUL%20%EC%98%A8%EB%9D%BC%EC%9D%B8"
+													href="https://search.naver.com/search.naver?where=nexearch&amp;sm=mbg_nex.people&amp;mra=bkkw&amp;pkid=269&amp;os=25795659&amp;qvt=0&amp;query=BTS%20PERMISSION%20TO%20DANCE%20ON%20STAGE%20LAS%20VEGAS%20%EC%98%A8%EB%9D%BC%EC%9D%B8"
 													class="area_link_box">
 													<div class="thumb">
 														<img
-															src="https://search.pstatic.net/common?type=f&amp;size=210x296&amp;quality=75&amp;direct=true&amp;src=https%3A%2F%2Fcsearch-phinf.pstatic.net%2F20220216_106%2F1644989391610MEU2B_GIF%2F269_25764512_image_url_1644989391540.gif"
+															src="https://search.pstatic.net/common?type=f&amp;size=210x296&amp;quality=75&amp;direct=true&amp;src=https%3A%2F%2Fcsearch-phinf.pstatic.net%2F20220223_171%2F1645586472873nx0QD_PNG%2F269_image_url_1645586472807.png"
 															width="105" height="148"
-															alt="BTS PERMISSION TO DANCE ON STAGE - SEOUL - 온라인 이미지"
+															alt="BTS PERMISSION TO DANCE ON STAGE - LAS VEGAS - 온라인 이미지"
 															onerror="this.onerror = null; this.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'; this.alt = '이미지 준비중'; this.className='bg_nimg2';">
 													</div>
 												</a>
@@ -2268,13 +2241,12 @@
 														style="max-height: 36px" ellipsis-line="2"> <a
 														nocr=""
 														onclick="return goOtherCR(this, 'a=nco_x29*u.rplaytit&amp;r=1&amp;i=1800000D_00000008EF3C&amp;u=' + urlencode(this.href));"
-														href="https://search.naver.com/search.naver?where=nexearch&amp;sm=mbg_nex.people&amp;mra=bkkw&amp;pkid=269&amp;os=25764512&amp;qvt=0&amp;query=BTS%20PERMISSION%20TO%20DANCE%20ON%20STAGE%20SEOUL%20%EC%98%A8%EB%9D%BC%EC%9D%B8"
-														class="_text">BTS PERMISSION TO DANCE ON STAGE - SEOUL
-															- 온라인</a></strong> <span class="sub_text" data-kgs-ellipsis=""
+														href="https://search.naver.com/search.naver?where=nexearch&amp;sm=mbg_nex.people&amp;mra=bkkw&amp;pkid=269&amp;os=25795659&amp;qvt=0&amp;query=BTS%20PERMISSION%20TO%20DANCE%20ON%20STAGE%20LAS%20VEGAS%20%EC%98%A8%EB%9D%BC%EC%9D%B8"
+														class="_text">BTS PERMISSION TO DANCE ON STAGE - LAS
+															VEGAS - 온라인</a></strong> <span class="sub_text" data-kgs-ellipsis=""
 														style="max-height: 36px" ellipsis-line="2"> <span
 														class="_text"></span>
-													</span> <span class="sub_text"> 2022.03.10.~<br>2022.03.13.
-													</span>
+													</span> <span class="sub_text"> 2022.04.16. </span>
 												</div>
 											</div>
 										</li>
@@ -2302,6 +2274,35 @@
 													<span class="sub_text" data-kgs-ellipsis=""
 														style="max-height: 36px" ellipsis-line="2"> <span
 														class="_text">잠실종합운동장 주경기장</span>
+													</span> <span class="sub_text"> 2022.03.10.~<br>2022.03.13.
+													</span>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="area_card">
+												<a nocr=""
+													onclick="return goOtherCR(this, 'a=nco_x29*u.rplayimg&amp;r=1&amp;i=1800000D_00000008EF3C&amp;u=' + urlencode(this.href));"
+													href="https://search.naver.com/search.naver?where=nexearch&amp;sm=mbg_nex.people&amp;mra=bkkw&amp;pkid=269&amp;os=25764512&amp;qvt=0&amp;query=BTS%20PERMISSION%20TO%20DANCE%20ON%20STAGE%20SEOUL%20%EC%98%A8%EB%9D%BC%EC%9D%B8"
+													class="area_link_box">
+													<div class="thumb">
+														<img
+															src="https://search.pstatic.net/common?type=f&amp;size=210x296&amp;quality=75&amp;direct=true&amp;src=https%3A%2F%2Fcsearch-phinf.pstatic.net%2F20220216_106%2F1644989391610MEU2B_GIF%2F269_25764512_image_url_1644989391540.gif"
+															width="105" height="148"
+															alt="BTS PERMISSION TO DANCE ON STAGE - SEOUL - 온라인 이미지"
+															onerror="this.onerror = null; this.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'; this.alt = '이미지 준비중'; this.className='bg_nimg2';">
+													</div>
+												</a>
+												<div class="title_box">
+													<strong class="name " data-kgs-ellipsis=""
+														style="max-height: 36px" ellipsis-line="2"> <a
+														nocr=""
+														onclick="return goOtherCR(this, 'a=nco_x29*u.rplaytit&amp;r=1&amp;i=1800000D_00000008EF3C&amp;u=' + urlencode(this.href));"
+														href="https://search.naver.com/search.naver?where=nexearch&amp;sm=mbg_nex.people&amp;mra=bkkw&amp;pkid=269&amp;os=25764512&amp;qvt=0&amp;query=BTS%20PERMISSION%20TO%20DANCE%20ON%20STAGE%20SEOUL%20%EC%98%A8%EB%9D%BC%EC%9D%B8"
+														class="_text">BTS PERMISSION TO DANCE ON STAGE - SEOUL
+															- 온라인</a></strong> <span class="sub_text" data-kgs-ellipsis=""
+														style="max-height: 36px" ellipsis-line="2"> <span
+														class="_text"></span>
 													</span> <span class="sub_text"> 2022.03.10.~<br>2022.03.13.
 													</span>
 												</div>
@@ -3087,6 +3088,152 @@
 								</div>
 							</li>
 							<li class="bx _svp_item" data-cr-rank="2" data-cr-area="rvw*b"
+								data-cr-gdid="90000003_0000000000000033E483AAD2">
+								<div class="total_wrap api_ani_send">
+									<div class="total_area">
+										<div class="total_info">
+											<div class="api_save_group _keep_wrap">
+												<a href="#" role="button" class="btn_save _keep_trigger"
+													data-url="https://blog.naver.com/wjddl504/222877166290"
+													onclick="tCR('a=rvw*b.kep&amp;r=2&amp;i=90000003_0000000000000033E483AAD2&amp;u=javascript'); return false;"
+													aria-pressed="false"><i class="spnew ico_save">문서
+														저장하기</i></a>
+												<div class="api_ly_save _keep_save_layer">
+													<a href="#" role="button"
+														class="spnew_af item item_save _keep_save"
+														data-cr-on="a=rvw*b.kepon&amp;r=2&amp;i=90000003_0000000000000033E483AAD2&amp;u=javascript"
+														data-cr-off="a=rvw*b.kepoff&amp;r=2&amp;i=90000003_0000000000000033E483AAD2&amp;u=javascript">Keep에
+														저장</a> <a href="https://keep.naver.com/"
+														class="spnew_af item item_quick" target="_blank"
+														onclick="return goOtherCR(this,'a=rvw*b.kephome&amp;r=2&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href));">Keep
+														바로가기</a>
+												</div>
+											</div>
+											<div class="total_sub">
+												<a href="https://blog.naver.com/wjddl504" class="sub_thumb"
+													target="_blank"
+													onclick="return goOtherCR(this, 'a=rvw*b.writer&amp;r=2&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))">
+													<span class="thumb"><img
+														src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogpfthumb.phinf.naver.net%2FMjAyMjA2MjdfMjY3%2FMDAxNjU2MzQxNjc0NTA5.KT45TECQg2lu1WYidQbGkUQ_X61dXwOR_FdfEXnPiQ8g.iAaCJLlx2-r9onmQBnpzhE5eHNCaM_U-sWLAHP0NBh4g.JPEG.wjddl504%2FprofileImage.jpg&amp;type=f54_54"
+														width="20" height="20" alt="" class=""
+														onerror="this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';this.className='bg_npimg'"></span>
+												</a> <span class="elss etc_dsc"> <span
+													class="etc_dsc_group"> <span class="etc_dsc_area">
+															<span class="sub_time sub_txt">2일 전</span>
+													</span><span class="elss etc_dsc_inner"> <a
+															href="https://blog.naver.com/wjddl504"
+															class="sub_txt sub_name" target="_blank"
+															onclick="return goOtherCR(this, 'a=rvw*b.writer&amp;r=2&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))">EILEEN.Blog</a>
+													</span>
+												</span></span>
+											</div>
+										</div>
+										<a href="https://blog.naver.com/wjddl504/222877166290"
+											class="api_txt_lines total_tit _cross_trigger"
+											data-cr-gdid="90000003_0000000000000033E483AAD2"
+											target="_blank"
+											onclick="return goOtherCR(this, 'a=rvw*b.link&amp;r=2&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))">[<mark>방탄소년단</mark>(BTS)]
+											<mark>방탄소년단</mark> 알엠(<mark>RM</mark>) 인천공항 입국 사진 모음
+											2022.09.17
+										</a>
+										<div class="total_group">
+											<div class="total_dsc_wrap">
+												<a href="https://blog.naver.com/wjddl504/222877166290"
+													class="total_dsc _cross_trigger"
+													data-cr-gdid="90000003_0000000000000033E483AAD2"
+													target="_blank"
+													onclick="return goOtherCR(this, 'a=rvw*b.link&amp;r=2&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))">
+													<div class="api_txt_lines dsc_txt">
+														세상 쿨~하게 입국했네 #
+														<mark>방탄소년단</mark>
+														#
+														<mark>방탄소년단</mark>
+														진 #인천공항 #
+														<mark>방탄</mark>
+														입국 #알엠입국 #알엠인천공항 #bts #아미 #army #
+														<mark>RM</mark>
+														#suga #jhope #V #jin #jimin #jk #김남준 #김석진 #민윤기 #정호석 #박지민
+														#김태형 #전정국 #알엠...
+													</div>
+												</a>
+											</div>
+										</div>
+									</div>
+									<a href="https://blog.naver.com/wjddl504/222877166290"
+										class="thumb_single _cross_trigger"
+										data-cr-gdid="90000003_0000000000000033E483AAD2"
+										target="_blank"
+										onclick="return goOtherCR(this, 'a=rvw*b.link&amp;r=2&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))">
+										<span class="thumb_fix "><img
+											src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA5MTdfMjUx%2FMDAxNjYzNDExMzgwNDE4.FiCWYnP04wNsJ28-6edmJ_FOiaI6N6ISz8a-hP3NAKog.D2E8GJJDqel7C85YPS0NkYz50s-SyIWy8DaZb0CvJ2sg.JPEG.wjddl504%2F202209171837063510%25A3%25DF1%25A3%25DF20220917183803072.jpg%23430x645&amp;type=ff264_180"
+											width="132" height="90" alt="" class="thumb api_get"
+											onerror="this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';this.className='bg_nimg';this.width=132;this.alt='이미지준비중';"><span
+											class="thumb_count">18</span></span>
+									</a>
+								</div>
+								<div class="total_tag_area">
+									<a
+										href="?where=view&amp;sm=tab_viw.all&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8"
+										class="tag" role="button"
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
+										class="txt">#방탄소년단</span></a> <a
+										href="?where=view&amp;sm=tab_viw.all&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%84"
+										class="tag" role="button"
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
+										class="txt">#방탄소년단진</span></a> <a
+										href="?where=view&amp;sm=tab_viw.all&amp;query=%EC%9D%B8%EC%B2%9C%EA%B3%B5%ED%95%AD"
+										class="tag" role="button"
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
+										class="txt">#인천공항</span></a> <a
+										href="?where=view&amp;sm=tab_viw.all&amp;query=%EB%B0%A9%ED%83%84%EC%9E%85%EA%B5%AD"
+										class="tag" role="button"
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
+										class="txt">#방탄입국</span></a> <a
+										href="?where=view&amp;sm=tab_viw.all&amp;query=%EC%95%8C%EC%97%A0%EC%9E%85%EA%B5%AD"
+										class="tag" role="button"
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
+										class="txt">#알엠입국</span></a> <a
+										href="?where=view&amp;sm=tab_viw.all&amp;query=%EC%95%8C%EC%97%A0%EC%9D%B8%EC%B2%9C%EA%B3%B5%ED%95%AD"
+										class="tag" role="button"
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
+										class="txt">#알엠인천공항</span></a> <a
+										href="?where=view&amp;sm=tab_viw.all&amp;query=bts"
+										class="tag" role="button"
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
+										class="txt">#bts</span></a> <a
+										href="?where=view&amp;sm=tab_viw.all&amp;query=%EC%95%84%EB%AF%B8"
+										class="tag" role="button"
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
+										class="txt">#아미</span></a> <a
+										href="?where=view&amp;sm=tab_viw.all&amp;query=army"
+										class="tag" role="button"
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
+										class="txt">#army</span></a> <a
+										href="?where=view&amp;sm=tab_viw.all&amp;query=RM" class="tag"
+										role="button"
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
+										class="txt">#RM</span></a>
+								</div>
+								<div class="total_link_area">
+									<div class="link_inner">
+										<a href="https://blog.naver.com/wjddl504/222877722342"
+											class="link elss _cross_trigger"
+											data-cr-gdid="90000003_0000000000000033E48C26E6"
+											target="_blank"
+											onclick="return goOtherCR(this, 'a=rvw*b.series&amp;r=2&amp;i=90000003_0000000000000033E48C26E6&amp;u='+urlencode(this.href))">[<mark>방탄소년단</mark>(BTS)]
+											알엠(<mark>RM</mark>) 남준이 인스타그램 2022.09.18 'Untitled, 정상화,
+											1975'(#방탄소년단 #방탄소년단알엠)
+										</a> <a href="https://blog.naver.com/wjddl504/222875555069"
+											class="link elss _cross_trigger"
+											data-cr-gdid="90000003_0000000000000033E46B14FD"
+											target="_blank"
+											onclick="return goOtherCR(this, 'a=rvw*b.series&amp;r=2&amp;i=90000003_0000000000000033E46B14FD&amp;u='+urlencode(this.href))">[<mark>방탄소년단</mark>(BTS)]
+											알엠(<mark>RM</mark>) 남준이 인스타그램 2022.09.15 (2)(#방탄소년단 #방탄소년단알엠)
+										</a>
+									</div>
+								</div>
+							</li>
+							<li class="bx _svp_item" data-cr-rank="3" data-cr-area="rvw*b"
 								data-cr-gdid="90000003_0000000000000033E436041B">
 								<div class="total_wrap api_ani_send">
 									<div class="total_area">
@@ -3094,24 +3241,24 @@
 											<div class="api_save_group _keep_wrap">
 												<a href="#" role="button" class="btn_save _keep_trigger"
 													data-url="https://blog.naver.com/mariegnosys/222872077339"
-													onclick="tCR('a=rvw*b.kep&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u=javascript'); return false;"
+													onclick="tCR('a=rvw*b.kep&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u=javascript'); return false;"
 													aria-pressed="false"><i class="spnew ico_save">문서
 														저장하기</i></a>
 												<div class="api_ly_save _keep_save_layer">
 													<a href="#" role="button"
 														class="spnew_af item item_save _keep_save"
-														data-cr-on="a=rvw*b.kepon&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u=javascript"
-														data-cr-off="a=rvw*b.kepoff&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u=javascript">Keep에
+														data-cr-on="a=rvw*b.kepon&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u=javascript"
+														data-cr-off="a=rvw*b.kepoff&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u=javascript">Keep에
 														저장</a> <a href="https://keep.naver.com/"
 														class="spnew_af item item_quick" target="_blank"
-														onclick="return goOtherCR(this,'a=rvw*b.kephome&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href));">Keep
+														onclick="return goOtherCR(this,'a=rvw*b.kephome&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href));">Keep
 														바로가기</a>
 												</div>
 											</div>
 											<div class="total_sub">
 												<a href="https://blog.naver.com/mariegnosys"
 													class="sub_thumb" target="_blank"
-													onclick="return goOtherCR(this, 'a=rvw*b.writer&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))">
+													onclick="return goOtherCR(this, 'a=rvw*b.writer&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))">
 													<span class="thumb"><img
 														src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogpfthumb.phinf.naver.net%2FMjAyMjA4MTdfMTMx%2FMDAxNjYwNzM0NzUzMTY1.BDNpn3v2-w7IKeiwm_c0y-Rricmb7xi0CZLtDH6DibYg.glFigRtAcD_4o0lbwofVCOppCLJidFtDgHRO44lrsMMg.PNG.mariegnosys%2FprofileImage.png&amp;type=f54_54"
 														width="20" height="20" alt="" class=""
@@ -3122,7 +3269,7 @@
 													</span><span class="elss etc_dsc_inner"> <a
 															href="https://blog.naver.com/mariegnosys"
 															class="sub_txt sub_name" target="_blank"
-															onclick="return goOtherCR(this, 'a=rvw*b.writer&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))">푸푸의감성공간</a>
+															onclick="return goOtherCR(this, 'a=rvw*b.writer&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))">푸푸의감성공간</a>
 													</span>
 												</span></span>
 											</div>
@@ -3131,7 +3278,7 @@
 											class="api_txt_lines total_tit _cross_trigger"
 											data-cr-gdid="90000003_0000000000000033E436041B"
 											target="_blank"
-											onclick="return goOtherCR(this, 'a=rvw*b.link&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))">[부평]
+											onclick="return goOtherCR(this, 'a=rvw*b.link&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))">[부평]
 											카페 마르티니크, <mark>방탄소년단 RM</mark> 생일 카페
 										</a>
 										<div class="total_group">
@@ -3140,7 +3287,7 @@
 													class="total_dsc _cross_trigger"
 													data-cr-gdid="90000003_0000000000000033E436041B"
 													target="_blank"
-													onclick="return goOtherCR(this, 'a=rvw*b.link&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))">
+													onclick="return goOtherCR(this, 'a=rvw*b.link&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))">
 													<div class="api_txt_lines dsc_txt">
 														탄이들과 RM으로 도배돼 있었어요. 처음보는 것들도 많구 안내 데스크 주변도 어마어마하게 많은 방탄...
 														와야겠습니다~ #푸푸샘 #푸푸의감성공간 #푸푸샘의블로그 #foofoosam #BTS #
@@ -3157,7 +3304,7 @@
 										class="thumb_single _cross_trigger"
 										data-cr-gdid="90000003_0000000000000033E436041B"
 										target="_blank"
-										onclick="return goOtherCR(this, 'a=rvw*b.link&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))">
+										onclick="return goOtherCR(this, 'a=rvw*b.link&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))">
 										<span class="thumb_fix "><img
 											src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA5MTFfNDEg%2FMDAxNjYyODkxMjI4NjQ5.Abkbd8GupiRv_2XBmQh4urBXMf_ddmn9yyvBrIXGTe8g.Q37sWU_RNaG-46HQbVVFA0xD6W4YuARAHEhrBYl_wTAg.JPEG.mariegnosys%2FIMG_E3343.JPG%23966x1287&amp;type=ff264_180"
 											width="132" height="90" alt="" class="thumb api_get"
@@ -3169,43 +3316,43 @@
 									<a
 										href="?where=view&amp;sm=tab_viw.all&amp;query=%ED%91%B8%ED%91%B8%EC%83%98"
 										class="tag" role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
 										class="txt">#푸푸샘</span></a> <a
 										href="?where=view&amp;sm=tab_viw.all&amp;query=%ED%91%B8%ED%91%B8%EC%9D%98%EA%B0%90%EC%84%B1%EA%B3%B5%EA%B0%84"
 										class="tag" role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
 										class="txt">#푸푸의감성공간</span></a> <a
 										href="?where=view&amp;sm=tab_viw.all&amp;query=%ED%91%B8%ED%91%B8%EC%83%98%EC%9D%98%EB%B8%94%EB%A1%9C%EA%B7%B8"
 										class="tag" role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
 										class="txt">#푸푸샘의블로그</span></a> <a
 										href="?where=view&amp;sm=tab_viw.all&amp;query=foofoosam"
 										class="tag" role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
 										class="txt">#foofoosam</span></a> <a
 										href="?where=view&amp;sm=tab_viw.all&amp;query=BTS"
 										class="tag" role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
 										class="txt">#BTS</span></a> <a
 										href="?where=view&amp;sm=tab_viw.all&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8"
 										class="tag" role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
 										class="txt">#방탄소년단</span></a> <a
 										href="?where=view&amp;sm=tab_viw.all&amp;query=RM" class="tag"
 										role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
 										class="txt">#RM</span></a> <a
 										href="?where=view&amp;sm=tab_viw.all&amp;query=JIN"
 										class="tag" role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
 										class="txt">#JIN</span></a> <a
 										href="?where=view&amp;sm=tab_viw.all&amp;query=SUGA"
 										class="tag" role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
 										class="txt">#SUGA</span></a> <a
 										href="?where=view&amp;sm=tab_viw.all&amp;query=JHope"
 										class="tag" role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
+										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href))"><span
 										class="txt">#JHope</span></a>
 								</div>
 								<div class="total_link_area">
@@ -3214,7 +3361,7 @@
 											class="link elss _cross_trigger"
 											data-cr-gdid="90000003_0000000000000033E44142F5"
 											target="_blank"
-											onclick="return goOtherCR(this, 'a=rvw*b.series&amp;r=2&amp;i=90000003_0000000000000033E44142F5&amp;u='+urlencode(this.href))">[인천
+											onclick="return goOtherCR(this, 'a=rvw*b.series&amp;r=3&amp;i=90000003_0000000000000033E44142F5&amp;u='+urlencode(this.href))">[인천
 											계양] 카페 티쏘, <mark>방탄소년단 RM</mark> 생일 카페(#푸푸샘 #푸푸의감성공간)
 										</a>
 									</div>
@@ -3258,7 +3405,7 @@
 													<a
 														href="?where=nexearch&amp;sm=tab_clk.cross&amp;query=%EC%B9%B4%ED%8E%98%20%EB%A7%88%EB%A5%B4%ED%8B%B0%EB%8B%88%ED%81%AC&amp;x_nmb=%7B%22placeId%22%3A%221004004744%22%7D&amp;mra=TkJN%2CTENP"
 														class="rec_product"
-														onclick="return goOtherCR(this,'a=crs_rvw.place&amp;r=2&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href));">
+														onclick="return goOtherCR(this,'a=crs_rvw.place&amp;r=3&amp;i=90000003_0000000000000033E436041B&amp;u='+urlencode(this.href));">
 														<div class="rec_thumb">
 															<img
 																src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20180619_289%2F1529416892490AWqoV_JPEG%2F61EGX1BhrqJlD6tZt5LnFArZ.jpg&amp;type=f96_96"
@@ -3316,7 +3463,7 @@
 													<a
 														href="?where=nexearch&amp;sm=tab_clk.cross&amp;query=%ED%8B%B0%EC%8F%98%EC%BB%A4%ED%94%BC&amp;x_nmb=%7B%22placeId%22%3A%2237221596%22%7D&amp;mra=TkJN%2CTENP"
 														class="rec_product"
-														onclick="return goOtherCR(this,'a=crs_rvw.place&amp;r=2&amp;i=90000003_0000000000000033E44142F5&amp;u='+urlencode(this.href));">
+														onclick="return goOtherCR(this,'a=crs_rvw.place&amp;r=3&amp;i=90000003_0000000000000033E44142F5&amp;u='+urlencode(this.href));">
 														<div class="rec_thumb">
 															<img
 																src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220518_24%2F16528475436651w7qD_JPEG%2F1630506688092-3.jpg&amp;type=f96_96"
@@ -3334,152 +3481,6 @@
 									<a href="#" role="button" class="rec_btn_close _close"
 										onclick="tCR('a=crs_rvw.close');"><i
 										class="spnew api_ico_close">함께 볼만한 검색어 닫기</i></a>
-								</div>
-							</li>
-							<li class="bx _svp_item" data-cr-rank="3" data-cr-area="rvw*b"
-								data-cr-gdid="90000003_0000000000000033E483AAD2">
-								<div class="total_wrap api_ani_send">
-									<div class="total_area">
-										<div class="total_info">
-											<div class="api_save_group _keep_wrap">
-												<a href="#" role="button" class="btn_save _keep_trigger"
-													data-url="https://blog.naver.com/wjddl504/222877166290"
-													onclick="tCR('a=rvw*b.kep&amp;r=3&amp;i=90000003_0000000000000033E483AAD2&amp;u=javascript'); return false;"
-													aria-pressed="false"><i class="spnew ico_save">문서
-														저장하기</i></a>
-												<div class="api_ly_save _keep_save_layer">
-													<a href="#" role="button"
-														class="spnew_af item item_save _keep_save"
-														data-cr-on="a=rvw*b.kepon&amp;r=3&amp;i=90000003_0000000000000033E483AAD2&amp;u=javascript"
-														data-cr-off="a=rvw*b.kepoff&amp;r=3&amp;i=90000003_0000000000000033E483AAD2&amp;u=javascript">Keep에
-														저장</a> <a href="https://keep.naver.com/"
-														class="spnew_af item item_quick" target="_blank"
-														onclick="return goOtherCR(this,'a=rvw*b.kephome&amp;r=3&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href));">Keep
-														바로가기</a>
-												</div>
-											</div>
-											<div class="total_sub">
-												<a href="https://blog.naver.com/wjddl504" class="sub_thumb"
-													target="_blank"
-													onclick="return goOtherCR(this, 'a=rvw*b.writer&amp;r=3&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))">
-													<span class="thumb"><img
-														src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogpfthumb.phinf.naver.net%2FMjAyMjA2MjdfMjY3%2FMDAxNjU2MzQxNjc0NTA5.KT45TECQg2lu1WYidQbGkUQ_X61dXwOR_FdfEXnPiQ8g.iAaCJLlx2-r9onmQBnpzhE5eHNCaM_U-sWLAHP0NBh4g.JPEG.wjddl504%2FprofileImage.jpg&amp;type=f54_54"
-														width="20" height="20" alt="" class=""
-														onerror="this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';this.className='bg_npimg'"></span>
-												</a> <span class="elss etc_dsc"> <span
-													class="etc_dsc_group"> <span class="etc_dsc_area">
-															<span class="sub_time sub_txt">2일 전</span>
-													</span><span class="elss etc_dsc_inner"> <a
-															href="https://blog.naver.com/wjddl504"
-															class="sub_txt sub_name" target="_blank"
-															onclick="return goOtherCR(this, 'a=rvw*b.writer&amp;r=3&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))">EILEEN.Blog</a>
-													</span>
-												</span></span>
-											</div>
-										</div>
-										<a href="https://blog.naver.com/wjddl504/222877166290"
-											class="api_txt_lines total_tit _cross_trigger"
-											data-cr-gdid="90000003_0000000000000033E483AAD2"
-											target="_blank"
-											onclick="return goOtherCR(this, 'a=rvw*b.link&amp;r=3&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))">[<mark>방탄소년단</mark>(BTS)]
-											<mark>방탄소년단</mark> 알엠(<mark>RM</mark>) 인천공항 입국 사진 모음
-											2022.09.17
-										</a>
-										<div class="total_group">
-											<div class="total_dsc_wrap">
-												<a href="https://blog.naver.com/wjddl504/222877166290"
-													class="total_dsc _cross_trigger"
-													data-cr-gdid="90000003_0000000000000033E483AAD2"
-													target="_blank"
-													onclick="return goOtherCR(this, 'a=rvw*b.link&amp;r=3&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))">
-													<div class="api_txt_lines dsc_txt">
-														세상 쿨~하게 입국했네 #
-														<mark>방탄소년단</mark>
-														#
-														<mark>방탄소년단</mark>
-														진 #인천공항 #
-														<mark>방탄</mark>
-														입국 #알엠입국 #알엠인천공항 #bts #아미 #army #
-														<mark>RM</mark>
-														#suga #jhope #V #jin #jimin #jk #김남준 #김석진 #민윤기 #정호석 #박지민
-														#김태형 #전정국 #알엠...
-													</div>
-												</a>
-											</div>
-										</div>
-									</div>
-									<a href="https://blog.naver.com/wjddl504/222877166290"
-										class="thumb_single _cross_trigger"
-										data-cr-gdid="90000003_0000000000000033E483AAD2"
-										target="_blank"
-										onclick="return goOtherCR(this, 'a=rvw*b.link&amp;r=3&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))">
-										<span class="thumb_fix "><img
-											src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA5MTdfMjUx%2FMDAxNjYzNDExMzgwNDE4.FiCWYnP04wNsJ28-6edmJ_FOiaI6N6ISz8a-hP3NAKog.D2E8GJJDqel7C85YPS0NkYz50s-SyIWy8DaZb0CvJ2sg.JPEG.wjddl504%2F202209171837063510%25A3%25DF1%25A3%25DF20220917183803072.jpg%23430x645&amp;type=ff264_180"
-											width="132" height="90" alt="" class="thumb api_get"
-											onerror="this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';this.className='bg_nimg';this.width=132;this.alt='이미지준비중';"><span
-											class="thumb_count">18</span></span>
-									</a>
-								</div>
-								<div class="total_tag_area">
-									<a
-										href="?where=view&amp;sm=tab_viw.all&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8"
-										class="tag" role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
-										class="txt">#방탄소년단</span></a> <a
-										href="?where=view&amp;sm=tab_viw.all&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%84"
-										class="tag" role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
-										class="txt">#방탄소년단진</span></a> <a
-										href="?where=view&amp;sm=tab_viw.all&amp;query=%EC%9D%B8%EC%B2%9C%EA%B3%B5%ED%95%AD"
-										class="tag" role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
-										class="txt">#인천공항</span></a> <a
-										href="?where=view&amp;sm=tab_viw.all&amp;query=%EB%B0%A9%ED%83%84%EC%9E%85%EA%B5%AD"
-										class="tag" role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
-										class="txt">#방탄입국</span></a> <a
-										href="?where=view&amp;sm=tab_viw.all&amp;query=%EC%95%8C%EC%97%A0%EC%9E%85%EA%B5%AD"
-										class="tag" role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
-										class="txt">#알엠입국</span></a> <a
-										href="?where=view&amp;sm=tab_viw.all&amp;query=%EC%95%8C%EC%97%A0%EC%9D%B8%EC%B2%9C%EA%B3%B5%ED%95%AD"
-										class="tag" role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
-										class="txt">#알엠인천공항</span></a> <a
-										href="?where=view&amp;sm=tab_viw.all&amp;query=bts"
-										class="tag" role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
-										class="txt">#bts</span></a> <a
-										href="?where=view&amp;sm=tab_viw.all&amp;query=%EC%95%84%EB%AF%B8"
-										class="tag" role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
-										class="txt">#아미</span></a> <a
-										href="?where=view&amp;sm=tab_viw.all&amp;query=army"
-										class="tag" role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
-										class="txt">#army</span></a> <a
-										href="?where=view&amp;sm=tab_viw.all&amp;query=RM" class="tag"
-										role="button"
-										onclick="return goOtherCR(this, 'a=rvw*b.usertag&amp;r=3&amp;i=90000003_0000000000000033E483AAD2&amp;u='+urlencode(this.href))"><span
-										class="txt">#RM</span></a>
-								</div>
-								<div class="total_link_area">
-									<div class="link_inner">
-										<a href="https://blog.naver.com/wjddl504/222877722342"
-											class="link elss _cross_trigger"
-											data-cr-gdid="90000003_0000000000000033E48C26E6"
-											target="_blank"
-											onclick="return goOtherCR(this, 'a=rvw*b.series&amp;r=3&amp;i=90000003_0000000000000033E48C26E6&amp;u='+urlencode(this.href))">[<mark>방탄소년단</mark>(BTS)]
-											알엠(<mark>RM</mark>) 남준이 인스타그램 2022.09.18 'Untitled, 정상화,
-											1975'(#방탄소년단 #방탄소년단알엠)
-										</a> <a href="https://blog.naver.com/wjddl504/222875555069"
-											class="link elss _cross_trigger"
-											data-cr-gdid="90000003_0000000000000033E46B14FD"
-											target="_blank"
-											onclick="return goOtherCR(this, 'a=rvw*b.series&amp;r=3&amp;i=90000003_0000000000000033E46B14FD&amp;u='+urlencode(this.href))">[<mark>방탄소년단</mark>(BTS)]
-											알엠(<mark>RM</mark>) 남준이 인스타그램 2022.09.15 (2)(#방탄소년단 #방탄소년단알엠)
-										</a>
-									</div>
 								</div>
 							</li>
 							<li class="bx _svp_item" data-cr-rank="4" data-cr-area="rvw*b"
@@ -3606,20 +3607,20 @@
 								</div>
 								<div class="total_link_area">
 									<div class="link_inner">
-										<a href="https://blog.naver.com/jjanga27/222874725895"
-											class="link elss _cross_trigger"
-											data-cr-gdid="90000003_0000000000000033E45E6E07"
-											target="_blank"
-											onclick="return goOtherCR(this, 'a=rvw*b.series&amp;r=4&amp;i=90000003_0000000000000033E45E6E07&amp;u='+urlencode(this.href))">[<mark>방탄소년단</mark>
-											BTS] ‘SEXY NUKIM (feat. <mark>RM</mark> of BTS)’ 뮤직비디오 촬영 현장
-											비하인드(남준이 면허...(#방탄소년단 #bts)
-										</a> <a href="https://blog.naver.com/jjanga27/222868552448"
+										<a href="https://blog.naver.com/jjanga27/222868552448"
 											class="link elss _cross_trigger"
 											data-cr-gdid="90000003_0000000000000033E4003B00"
 											target="_blank"
 											onclick="return goOtherCR(this, 'a=rvw*b.series&amp;r=4&amp;i=90000003_0000000000000033E4003B00&amp;u='+urlencode(this.href))">[<mark>방탄소년단</mark>
 											BTS] 220906 <mark>RM</mark> &amp; 태형이의 인스타 업데이트(윤기의 댓글,
 											샤인머스캣, 한국근대미술전시회...(#방탄소년단 #bts)
+										</a> <a href="https://blog.naver.com/jjanga27/222874725895"
+											class="link elss _cross_trigger"
+											data-cr-gdid="90000003_0000000000000033E45E6E07"
+											target="_blank"
+											onclick="return goOtherCR(this, 'a=rvw*b.series&amp;r=4&amp;i=90000003_0000000000000033E45E6E07&amp;u='+urlencode(this.href))">[<mark>방탄소년단</mark>
+											BTS] ‘SEXY NUKIM (feat. <mark>RM</mark> of BTS)’ 뮤직비디오 촬영 현장
+											비하인드(남준이 면허...(#방탄소년단 #bts)
 										</a>
 									</div>
 								</div>
@@ -4018,42 +4019,42 @@
 					</div>
 					<div class="_panel" data-index="topic1">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%20RM&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585532%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8rm&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=cafe&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%20RM&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585532%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8rm&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=cafe&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic2">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%20RM&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585532%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8rm%20%EC%9B%80%EC%A7%A4&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%20RM&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585532%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8rm%20%EC%9B%80%EC%A7%A4&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic3">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%20RM&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585532%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8rm%20%EC%95%A8%EB%B2%94&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%20RM&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585532%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8rm%20%EC%95%A8%EB%B2%94&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic4">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%20RM&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585532%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8rm%20%EB%85%B8%EB%9E%98&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%20RM&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585532%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8rm%20%EB%85%B8%EB%9E%98&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic5">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%20RM&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585532%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8rm%20%ED%8C%A8%EC%85%98&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%20RM&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585532%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8rm%20%ED%8C%A8%EC%85%98&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic6">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%20RM&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585532%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8rm%20%EC%B0%A8%ED%8A%B8&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%20RM&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585532%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8rm%20%EC%B0%A8%ED%8A%B8&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic7">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%20RM&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585532%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8rm%20%EC%BD%98%EC%84%9C%ED%8A%B8&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%20RM&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585532%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8rm%20%EC%BD%98%EC%84%9C%ED%8A%B8&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic8">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%20RM&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585532%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8rm%20%ED%95%B4%EC%99%B8&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%20RM&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585532%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8rm%20%ED%95%B4%EC%99%B8&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					</panel-list>
@@ -4407,7 +4408,8 @@
 												지민, 9월 개인 브랜드평판 1위 차지</a>
 									</span></li>
 								</ul>
-							</div> <a
+							</div>
+							<a
 							href="?where=news&amp;sm=tab_tnw&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%20RM&amp;nso=so:r,p:all,a:all&amp;related=1&amp;docid=1080003087715&amp;qvt=0"
 							class="news_more"
 							onclick="return goOtherCR(this, 'a=nws_all*r.more&amp;u='+urlencode(urlexpand(this.href)));">관련뉴스

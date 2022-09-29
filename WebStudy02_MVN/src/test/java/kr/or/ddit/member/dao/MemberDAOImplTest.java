@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import kr.or.ddit.vo.MemberVO;
+import kr.or.ddit.vo.PagingVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -45,6 +46,8 @@ public class MemberDAOImplTest {
 
 	@Test
 	public void testSelectMemberList() {
+		PagingVO<MemberVO> pagingVO = new PagingVO<MemberVO>();
+		pagingVO.setCurrentPage(1);
 		List<MemberVO> memberList = dao.selectMemberList(pagingVO);
 		log.info("memberList : {}", memberList);
 	}

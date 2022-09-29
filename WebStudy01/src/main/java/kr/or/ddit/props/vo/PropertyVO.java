@@ -3,15 +3,15 @@ package kr.or.ddit.props.vo;
 import java.io.Serializable;
 
 /**
- * 
  * Property 한쌍의 정보를 관리하기 위한 Domain Layer
  *
  */
 public class PropertyVO implements Serializable{
+	
 	private String propertyName;
 	private String propertyValue;
 	
-	private String description ;
+	private String description;
 
 	public String getPropertyName() {
 		return propertyName;
@@ -36,7 +36,13 @@ public class PropertyVO implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "PropertyVO [propertyName=" + propertyName + ", propertyValue=" + propertyValue + ", description="
+				+ description + "]";
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -73,13 +79,6 @@ public class PropertyVO implements Serializable{
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return "PropertyVO [propertyName=" + propertyName + ", propertyValue=" + propertyValue + ", description="
-				+ description + "]";
-	}
-	
 	
 	
 }

@@ -10,7 +10,6 @@
 <body>
 <%
 	FormDataVO vo = (FormDataVO)request.getAttribute("vo");
-
 %>
 <table>
 	<tr>
@@ -18,6 +17,5 @@
 		<td><%=vo.getParamIpt1() %></td>
 	</tr>
 </table>
-
 </body>
 </html>

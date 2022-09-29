@@ -21,9 +21,10 @@ public class ConnectionFactory {
 	private static String oracleURL;
 	private static String oracleUser;
 	private static String oraclePassword;
+	
 	private static DataSource dataSource;
 	
-	static {//코드 블록
+	static {
 		Properties dbInfo = new Properties();
 		try(
 			InputStream is = 
@@ -34,19 +35,18 @@ public class ConnectionFactory {
 			oracleUser = dbInfo.getProperty("user");
 			oraclePassword = dbInfo.getProperty("password");
 //			Class.forName(dbInfo.getProperty("driverClassName"));
-			BasicDataSource bds = new  BasicDataSource();
+			BasicDataSource bds = new BasicDataSource();
 			bds.setDriverClassName(dbInfo.getProperty("driverClassName"));
 			bds.setUrl(oracleURL);
 			bds.setUsername(oracleUser);
 			bds.setPassword(oraclePassword);
 			
 			bds.setInitialSize(Integer.parseInt(dbInfo.getProperty("initialSize")));
-			bds.setMaxWaitMillis(Integer.parseInt(dbInfo.getProperty("maxWait")));
+			bds.setMaxWaitMillis(Long.parseLong(dbInfo.getProperty("maxWait")));
 			bds.setMaxTotal(Integer.parseInt(dbInfo.getProperty("maxTotal")));
 			bds.setMaxIdle(Integer.parseInt(dbInfo.getProperty("maxIdle")));
 			
 			dataSource = bds;
-			bds.setMaxTotal(10);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}

@@ -15,25 +15,33 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 @WebServlet("/xmlView.do")
-public class XmlViewServlet extends HttpServlet {
+public class XmlViewServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Map<String, Object> model = new HashMap<>();
-		Enumeration<String> attributeNames = request.getAttributeNames();//
+		Enumeration<String> attributeNames = request.getAttributeNames();
 		while (attributeNames.hasMoreElements()) {
 			String name = (String) attributeNames.nextElement();
 			Object value = request.getAttribute(name);
 			model.put(name, value);
-			
 		}
-		String contentType ="application/xml;charset=UTF-8";
+		
+		String contentType = "application/xml;charset=UTF-8";
 		response.setContentType(contentType);
 		try(
-			PrintWriter out = response.getWriter();
+			PrintWriter out = response.getWriter();	
 		){
 			new XmlMapper().writeValue(out, model);
 		}
-		
-		
 	}
 }
+
+
+
+
+
+
+
+
+
+

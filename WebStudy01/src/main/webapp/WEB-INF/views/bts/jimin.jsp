@@ -267,7 +267,7 @@
 		</div>
 		<script> naver.search.option.append_params(jQuery("#nx_option_form")[0]); </script>
 		<script> (function() { var jsFileURL = "https://ssl.pstatic.net/sstatic/fe/sfe/searchOption/Controller_220519.js"; var startApplication = function() { var require = window.require.config({ "context": "_fe_search_option", "paths": { /* Controller.js의 경로 지정. */ "Controller": jsFileURL.replace(/\.js$/, "") } }); /* module define은 require의 context별로 호출해야함. */ define("jquery", [], function() { return jQuery; }); require(["Controller"], function(Controller) { var oSearchOption = new Controller({ "$form": jQuery("#nx_option_form") }); oSearchOption.on({ "selectCalendar": function(e) { var param = e.param; var cr = { "area": e.$item.data("cr-area") }; var date_from = e.startDate; var date_to = e.endDate; var from = date_from.year + "." + date_from.month + "." + date_from.date; from = from.replace(/\./g, ''); var to = date_to.year + "." + date_to.month + "." + date_to.date; to = to.replace(/\./g, ''); var opt_p = "p:from" + (from < to ? from : to) + "to" + (from < to ? to : from); var params = naver.search.option.params; var nso = params["nso"]; if (nso) { var arr = nso.split(","); var isPeriodExist = false; arr.forEach(function(element, index, arr){ if (element.indexOf("p:") == 0) { arr[index] = opt_p; isPeriodExist = true; } }); if (!isPeriodExist){ arr.push(opt_p); } nso = arr.join(","); } else { nso = opt_p; } params["nso"] = nso; param = ""; for (var k in params) { var v = params[k]; param += "&" + k + "=" + urlencode(v); } if (param[0] === "&") { param = param.substring(1); } /* formCR 클릭로그 호출 */ this.submit(param, cr); } }); }); }; var requirejs = naver.common.gv.REQUIRE_JS; naver.common.load_js(window.require ? null : requirejs, startApplication, true, 150); })(); </script>
-		<script type="text/javascript">var g_uad = true; </script>
+		<script type="text/javascript">var g_uad = false; </script>
 		<section
 			class="sc_new cs_common_module case_empasis _au_people_content_wrap _people_star color_23"
 			data-dss-logarea="x29">
@@ -4283,72 +4283,72 @@
 					</div>
 					<div class="_panel" data-index="topic1">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=cafe&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=cafe&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic2">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%ED%8C%AC%EC%82%AC%EC%9D%B8%ED%9A%8C&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%ED%8C%AC%EC%82%AC%EC%9D%B8%ED%9A%8C&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic3">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EC%9B%80%EC%A7%A4&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EC%9B%80%EC%A7%A4&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic4">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EC%BD%98%EC%84%9C%ED%8A%B8&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EC%BD%98%EC%84%9C%ED%8A%B8&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic5">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%ED%8C%A8%EC%85%98&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%ED%8C%A8%EC%85%98&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic6">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EB%85%B8%EB%9E%98&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EB%85%B8%EB%9E%98&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic7">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EC%B0%A8%ED%8A%B8&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EC%B0%A8%ED%8A%B8&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic8">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%ED%95%B4%EC%99%B8&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%ED%95%B4%EC%99%B8&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic9">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EC%95%A8%EB%B2%94&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EC%95%A8%EB%B2%94&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic10">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EC%98%81%ED%99%94&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EC%98%81%ED%99%94&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic11">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EA%B5%BF%EC%A6%88&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EA%B5%BF%EC%A6%88&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic12">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EA%B0%A4%EB%9F%AC%EB%A6%AC&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EA%B0%A4%EB%9F%AC%EB%A6%AC&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic13">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EC%8B%A0%EA%B3%A1&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EC%8B%A0%EA%B3%A1&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					<div class="_panel" data-index="topic14">
 						<html-api
-							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EB%93%9C%EB%9D%BC%EB%A7%88&amp;mode=normal&amp;q_material=&amp;ac=1&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
+							data-url="https://s.search.naver.com/p/review/search.naver?rev=44&amp;where=nexearch&amp;api_type=9&amp;query=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC&amp;nso=&amp;nqx_theme=%7B%22theme%22%3A%7B%22main%22%3A%7B%22name%22%3A%22people_star%22%2C%22os%22%3A%22585549%22%2C%22pkid%22%3A%221%22%7D%7D%7D&amp;main_q=%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8%EC%A7%80%EB%AF%BC%20%EB%93%9C%EB%9D%BC%EB%A7%88&amp;mode=normal&amp;q_material=&amp;ac=0&amp;aq=0&amp;spq=1&amp;st_coll=&amp;topic_r_cat=12&amp;&amp;abt="
 							data-selector="[&quot;html&quot;]"></html-api>
 					</div>
 					</panel-list>

@@ -11,29 +11,29 @@ import java.util.Properties;
 import kr.or.ddit.props.vo.PropertyVO;
 
 public class FileSystemPropertyDAOImpl implements PropertyDAO {
-	private String path ="D:\\A_TeachingMaterial\\6.JspSpring\\workspace\\WebStudy01\\src\\main\\resources\\kr\\or\\ddit\\props\\DataStore.properties";
+	private String path = "D:\\A_TeachingMaterial\\6.JspSpring\\workspace\\WebStudy01\\src\\main\\resources\\kr\\or\\ddit\\props\\DataStore.properties";
 	private Properties properties;
 	public FileSystemPropertyDAOImpl() {
 		properties = new Properties();
-		//properties file load:  InputStream 사용됨. IOException 처리
+//		 properties file load : InputStream 사용됨.-->IOException 처리
 		try(
-			FileInputStream fis = new FileInputStream(path);
+			FileInputStream fis = new FileInputStream(path);	
 		){
 			properties.load(fis);
-		} catch (IOException e) {
+		}catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 	}
-//	TDD(Test-Driven Development방법론)
+
+//	TDD (Test-Driven Development)
 	@Override
 	public PropertyVO selectProperty(String propertyName) {
 		PropertyVO finded = null;
 		String propertyValue = properties.getProperty(propertyName);
-		if(propertyValue != null) {
+		if(propertyValue!=null) {
 			finded = new PropertyVO();
 			finded.setPropertyName(propertyName);
 			finded.setPropertyValue(propertyValue);
-			
 		}
 		return finded;
 	}
@@ -53,14 +53,30 @@ public class FileSystemPropertyDAOImpl implements PropertyDAO {
 	@Override
 	public void insertProperty(PropertyVO propertyVO) {
 		properties.setProperty(propertyVO.getPropertyName(), propertyVO.getPropertyValue());
+	
 		try(
-				FileOutputStream fos = new FileOutputStream(path);
+			FileOutputStream fos = new FileOutputStream(path);	
 		){
-			properties.store(fos, String.format("'%tc' 에 저장함.",Calendar.getInstance() ));
-		} catch (IOException e) {
-
-			e.printStackTrace();
+			properties.store(fos, String.format("'%tc' 에 저장함.", Calendar.getInstance()));
+		}catch (IOException e) {
+			throw new RuntimeException(e);
 		}
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

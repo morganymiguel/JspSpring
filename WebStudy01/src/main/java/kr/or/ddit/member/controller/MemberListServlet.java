@@ -30,14 +30,14 @@ import kr.or.ddit.vo.MemberVO;
  * /member/memberDelete.do?who=a001 (POST)
  *
  */
-@WebServlet("/member/memberList.do") // URL mappings.
+@WebServlet("/member/memberList.do")
 public class MemberListServlet extends HttpServlet{
 	
 	private MemberService service = new MemberServiceImpl();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<MemberVO> memberList = service.retrieveMemberList(); 
+		List<MemberVO> memberList = service.retrieveMemberList();
 		req.setAttribute("memberList", memberList);
 		String commandPage = "/WEB-INF/views/member/memberList.jsp";
 		req.setAttribute("commandPage", commandPage);

@@ -1,6 +1,5 @@
 package kr.or.ddit.bts;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -13,48 +12,65 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(value="/bts/getContent", loadOnStartup =1)//실행시점을 앞당기기위해서 사용 loadOnStartup
+@WebServlet(value = "/bts/getContent", loadOnStartup = 1)
 public class BTSServlet extends HttpServlet{
 	private ServletContext application;
 	
-	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
 		super.init(config);
 		application = getServletContext();
-		Map<String, String[]>btsDB = new LinkedHashMap<>();
-		btsDB.put("B001", new String[] {"뷔","/WEB-INF/views/bts/bui.jsp"});
-		btsDB.put("B002", new String[] {"제이홉","/WEB-INF/views/bts/jhop.jsp"});
-		btsDB.put("B003", new String[] {"지민","/WEB-INF/views/bts/jimin.jsp"});
-		btsDB.put("B004", new String[] {"진","/WEB-INF/views/bts/jin.jsp"});
-		btsDB.put("B005", new String[] {"정국","/WEB-INF/views/bts/jungkuk.jsp"});
-		btsDB.put("B006", new String[] {"RM","/WEB-INF/views/bts/rm.jsp"});
-		btsDB.put("B007", new String[] {"슈가","/WEB-INF/views/bts/suga.jsp"});
+		
+		Map<String, String[]> btsDB = new LinkedHashMap<>();
+		btsDB.put("B001", new String[] {"RM", "/WEB-INF/views/bts/rm.jsp"});
+		btsDB.put("B002", new String[] {"진", "/WEB-INF/views/bts/jin.jsp"});
+		btsDB.put("B003", new String[] {"슈가", "/WEB-INF/views/bts/suga.jsp"});
+		btsDB.put("B004", new String[] {"제이홉", "/WEB-INF/views/bts/jhop.jsp"});
+		btsDB.put("B005", new String[] {"지민", "/WEB-INF/views/bts/jimin.jsp"});
+		btsDB.put("B006", new String[] {"뷔", "/WEB-INF/views/bts/bui.jsp"});
+		btsDB.put("B007", new String[] {"정국", "/WEB-INF/views/bts/jungkuk.jsp"});
 		
 		application.setAttribute("btsDB", btsDB);
-		
 	}
 	
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Map<String,String[]> btsDB = (Map) application.getAttribute("btsDB");
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
-		String member = request.getParameter("member");
+		Map<String, String[]> btsDB =  (Map) application.getAttribute("btsDB");
+		
+		req.setCharacterEncoding("UTF-8");
+		String member = req.getParameter("member");
 		int status = 200;
-		if(member== null &&member.isEmpty()) {
+		if(member==null && member.isEmpty()) {
 			status = HttpServletResponse.SC_BAD_REQUEST;
-		}else if(!btsDB.containsKey(member)){
+		}else if(!btsDB.containsKey(member)) {
 			status = HttpServletResponse.SC_NOT_FOUND;
 		}
 		
 		if(status==200) {
 			String[] info = btsDB.get(member);
 			String contentURL = info[1];
-			request.getRequestDispatcher(contentURL).forward(request,response);
+			req.getRequestDispatcher(contentURL).forward(req, resp);
 		}else {
-			response.sendError(status);
+			resp.sendError(status);
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

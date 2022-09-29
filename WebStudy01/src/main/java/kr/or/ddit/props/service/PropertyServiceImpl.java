@@ -10,13 +10,13 @@ import kr.or.ddit.props.vo.PropertyVO;
 
 public class PropertyServiceImpl implements PropertyService {
 //	HighCohesionLooseCoupling
-//	private PropertyDAO dao = new FileSystemPropertyDAOImpl();// 결합력이 높아지는 코드다.
+//	private PropertyDAO dao = new FileSystemPropertyDAOImpl();
 	private PropertyDAO dao = new DataBasePropertyDAOImpl();
-	
+
 	@Override
 	public PropertyVO readProperty(String propertyName) {
 		PropertyVO vo = dao.selectProperty(propertyName);
-		if (vo == null)
+		if(vo==null)
 			throw new PKNotFoundException(propertyName);
 		return vo;
 	}
@@ -24,9 +24,9 @@ public class PropertyServiceImpl implements PropertyService {
 	@Override
 	public List<PropertyVO> readProperties() {
 		List<PropertyVO> dataList = dao.selectProperties();
-		dataList.forEach((vo) -> {
-			if (vo.getDescription() == null)
-				vo.setDescription("라볶이 만들었음.");
+		dataList.forEach((vo)->{
+			if(vo.getDescription()==null)
+				vo.setDescription("라뽂이 만들었음.");
 		});
 		return dataList;
 	}
@@ -37,3 +37,18 @@ public class PropertyServiceImpl implements PropertyService {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 welcome page
 <script>
-// $(function(){
-// 	$.fn.modal
-// })
-window.addEventListener("DOMContentLoaded", function(event){
-	console.log($.fn.modal);
-});
+// 	$(function(){
+// 		$.fn.modal
+// 	})
+	window.addEventListener("DOMContentLoaded", function(event){
+		console.log($.fn.modal);
+	});
 </script>

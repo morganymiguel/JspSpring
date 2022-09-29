@@ -12,17 +12,49 @@
 		</collection>
 	</resultMap>
 	
-	<select id="selectProdList" resultMap="prodListMap">
-		SELECT PROD_ID, PROD_NAME, PROD_PRICE
-		    , PROD_COST, PROD_MILEAGE
-		    , BUYER_NAME
-		    , LPROD_NM
-		    , (
-		        SELECT COUNT(DISTINCT CART_MEMBER)
-		        FROM CART
-		        WHERE PROD_ID = CART_PROD
-		    ) MEM_COUNT
+	<sql id="searchFrag">
+		<trim prefix=" WHERE " prefixOverrides="AND">
+			<if test="detailCondition neq null">
+				<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(detailCondition.prodLgu)">
+				AND	PROD_LGU = #{detailCondition.prodLgu}
+				</if>
+				<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(detailCondition.prodBuyer)">
+				AND	PROD_BUYER = #{detailCondition.prodBuyer}
+				</if>
+				<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(detailCondition.prodName)">
+				AND	INSTR(PROD_NAME, #{detailCondition.prodName}) > 0 
+				</if>
+			</if>
+		</trim>
+	</sql>
+	
+	<select id="selectTotalRecord" resultType="int" parameterType="PagingVO">
+		SELECT COUNT(*)
 		FROM PRODVIEW
+		<include refid="searchFrag" />
+	</select>
+	
+	<select id="selectProdList" resultMap="prodListMap" parameterType="PagingVO">
+		WITH SORTPROD AS (
+			SELECT PROD_ID, PROD_NAME, PROD_PRICE
+			    , PROD_COST, PROD_MILEAGE
+			    , BUYER_NAME
+			    , LPROD_NM
+			    , (
+			        SELECT COUNT(DISTINCT CART_MEMBER)
+			        FROM CART
+			        WHERE PROD_ID = CART_PROD
+			    ) MEM_COUNT
+			FROM PRODVIEW
+			<include refid="searchFrag" />
+			ORDER BY ROWID DESC
+		), RNUMPROD AS(
+			SELECT ROWNUM RNUM, SORTPROD.*
+			FROM SORTPROD
+		)
+		SELECT *
+		FROM RNUMPROD
+		WHERE RNUM BETWEEN #{startRow} AND #{endRow}
 	</select>
 	
 	<select id="selectProd" parameterType="string" resultMap="prodMap" >

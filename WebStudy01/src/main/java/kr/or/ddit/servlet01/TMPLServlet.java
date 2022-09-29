@@ -19,14 +19,15 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("*.tmpl")
 public class TMPLServlet extends HttpServlet{
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp) 
+			throws ServletException, IOException {
 		try {
-		StringBuffer tmplSource = readTemplate(req);
-		
-		String html = evaluateVariable(req, tmplSource);
-		
-		sendResponse(resp, html);
-		}catch(FileNotFoundException e) {
+			StringBuffer tmplSource = readTemplate(req);
+			
+			String html = evaluateVariable(req, tmplSource);
+			
+			sendResponse(resp, html);
+		}catch (FileNotFoundException e) {
 			resp.sendError(HttpServletResponse.SC_NOT_FOUND, e.getMessage());
 		}
 	}
@@ -61,7 +62,7 @@ public class TMPLServlet extends HttpServlet{
 		
 	 	InputStream is = getServletContext().getResourceAsStream(servletPath);
 	 	if(is==null) {
-	 		throw new FileNotFoundException(String.format("%s해 당 파일이 없음.",servletPath));
+	 		throw new FileNotFoundException(String.format("%s 해당 파일이 없음.", servletPath));
 	 	}
 	 	InputStreamReader isr = new InputStreamReader(is);
 	 	BufferedReader reader = new BufferedReader(isr);

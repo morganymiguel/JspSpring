@@ -3,53 +3,42 @@ package kr.or.ddit.vo;
 import java.io.File;
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.Date;
 
 import javax.servlet.http.Part;
 
 /**
- *	ValueObject, DataTransferObject, JavaBean, Model
+ *  ValueObject, DataTransferObject, JavaBean, Model
  * 
- * 	1. 값을 가질 수 있는 property 정의.
- * 	2. property 캡슐화
- * 	3. 정해진 절차에 따라 값을 변경할 수 있는 interface 메소드 제공. 
- * 		getter/setter
- * 	4. 상태를 비교할 수 있는 인터페이스 메소드 제공. : hashCode, equals
- * 		==, equals
- *	5. 상태를 확인할 수 있는 인터페이스 메소드 제공.: toString
- *	6. 직렬화 가능. : Serializable(마크인터페이스)
- *	7. property 보호 설정. : transient
- *
- *
- *
+ *  1. 값을 가질수 있는 property 정의.
+ *  2. property 캡슐화
+ *  3. 일정한 절차에 따라 값을 변경할 수 있는 interface 메소드 제공.
+ *  	getter/setter
+ *  4. 상태를 비교할 수 있는 인터페이스 메소드 제공. : hashCode, equals
+ *  	==, equals
+ *  5. 상태를 확인할 수 있는 인터페이스 메소드 제공. : toString
+ *  6. 직렬화 가능. : Serializable
+ *  7. property 보호 설정. : transient
+ *  
  */
-
 public class FormDataVO implements Serializable{
 	private String dataId;
-	
 	
 	private String paramIpt1;
 	private Integer paramIpt2;
 	private String paramIpt3;
-	private transient String paramIpt4; //직렬화에 포함이 안되는 변수로 바뀜:transient
+	private transient String paramIpt4;
 	private String[] paramIpt5;
 	private String paramIpt6;
 	private String[] paramIpt7;
 	private String paramIpt8;
 	
-	//int와 integer의 차이: int는 널이 안되고, integer는 널값이 허용.
+//	private  Part filePart;
+//	private  File filePart;
+//	private  byte[] filePart; // BLOB
 	
-//	private Part filePart;
-//	private File filePart;
-	private byte[] filePart; //BLOB
-	
-	@Override
-	public String toString() {
-		return "FormDataVO [dataId=" + dataId + ", paramIpt1=" + paramIpt1 + ", paramIpt2=" + paramIpt2 + ", paramIpt3="
-				+ paramIpt3 + ", paramIpt5=" + Arrays.toString(paramIpt5) + ", paramIpt6=" + paramIpt6 + ", paramIpt7="
-				+ Arrays.toString(paramIpt7) + ", paramIpt8=" + paramIpt8 + "]";
-	}
 	public String getDataId() {
-		return dataId;
+		return dataId; 
 	}
 	public void setDataId(String dataId) {
 		this.dataId = dataId;
@@ -71,6 +60,12 @@ public class FormDataVO implements Serializable{
 	}
 	public void setParamIpt3(String paramIpt3) {
 		this.paramIpt3 = paramIpt3;
+	}
+	public String getParamIpt4() {
+		return paramIpt4;
+	}
+	public void setParamIpt4(String paramIpt4) {
+		this.paramIpt4 = paramIpt4;
 	}
 	public String[] getParamIpt5() {
 		return paramIpt5;
@@ -96,9 +91,6 @@ public class FormDataVO implements Serializable{
 	public void setParamIpt8(String paramIpt8) {
 		this.paramIpt8 = paramIpt8;
 	}
-	
-	
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -122,4 +114,12 @@ public class FormDataVO implements Serializable{
 			return false;
 		return true;
 	}
-}
+	@Override
+	public String toString() {
+		return "FormDataVO [dataId=" + dataId + ", paramIpt1=" + paramIpt1 + ", paramIpt2=" + paramIpt2 + ", paramIpt3="
+				+ paramIpt3 + ", paramIpt5=" + Arrays.toString(paramIpt5) + ", paramIpt6=" + paramIpt6 + ", paramIpt7="
+				+ Arrays.toString(paramIpt7) + ", paramIpt8=" + paramIpt8 + "]";
+	}
+	
+	
+}	

@@ -9,11 +9,10 @@ import org.junit.Test;
 import kr.or.ddit.props.vo.PropertyVO;
 
 public class FileSystemPropertyDAOImplTest {
-	
+
 	PropertyDAO dao = new FileSystemPropertyDAOImpl();
 	
-
-	@Test
+//	@Test
 	public void testSelectProperty() {
 		PropertyVO propertyVO = dao.selectProperty("prop1");
 		assertNotNull(propertyVO);
@@ -24,17 +23,43 @@ public class FileSystemPropertyDAOImplTest {
 		List<PropertyVO> dataList = dao.selectProperties();
 		assertNotNull(dataList);
 		assertNotEquals(0, dataList.size());
-		assertEquals(3,dataList.size());
+		assertEquals(3, dataList.size());
 	}
 
-	@Test
+//	@Test
 	public void testInsertProperty() {
 		PropertyVO vo = new PropertyVO();
-	
 		vo.setPropertyName("prop3");
 		vo.setPropertyValue("value3");
 		dao.insertProperty(vo);
-		
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

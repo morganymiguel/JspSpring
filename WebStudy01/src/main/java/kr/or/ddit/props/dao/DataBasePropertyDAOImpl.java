@@ -1,7 +1,6 @@
 package kr.or.ddit.props.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -18,10 +17,9 @@ public class DataBasePropertyDAOImpl implements PropertyDAO {
 	@Override
 	public PropertyVO selectProperty(String propertyName) {
 		
-		
-		//쿼리문이 아니고 단순한 text면 공격을 막을 수 있다.
 		String sql = "SELECT PROPERTY_NAME, PROPERTY_VALUE, DESCRIPTION FROM DATABASE_PROPERTIES";
 				sql += " WHERE PROPERTY_NAME = ? ";
+		
 		PropertyVO propertyVO = null;
 		
 		String[] headers = null;
@@ -29,10 +27,9 @@ public class DataBasePropertyDAOImpl implements PropertyDAO {
 		try(
 			Connection oracleConn = ConnectionFactory.getConnection();
 			PreparedStatement oracleStmt = oracleConn.prepareStatement(sql);
-			//prepared는 동적으로 바꿀수없다. ?는 쿼리 파라미터.
 		) {
 			oracleStmt.setString(1, propertyName);
-			ResultSet rs = oracleStmt.executeQuery(sql);
+			ResultSet rs = oracleStmt.executeQuery();
 			ResultSetMetaData rsmd = rs.getMetaData();
 			int count = rsmd.getColumnCount();
 			headers = new String[count];
@@ -87,7 +84,30 @@ public class DataBasePropertyDAOImpl implements PropertyDAO {
 	@Override
 	public void insertProperty(PropertyVO propertyVO) {
 		if(1==1)
-			throw new RuntimeException("해당 뷰는 insert대상이 아님.");
+			throw new RuntimeException("해당 뷰는 insert 대상이 아님.");
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

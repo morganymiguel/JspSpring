@@ -11,55 +11,64 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/factorial")
 public class FactorialServlet extends HttpServlet{
-
 	private long factorial(int number){
 		if(number<=0){
-			throw new IllegalArgumentException("연산은 양수만 처리함.");//????
+			throw new IllegalArgumentException("연산은 양수만 처리함.");
 		}
-		if(number == 1){
+//	 	10*9*8*7*6*...*1;
+		if(number==1){
 			return 1;		
 		}else{
-			return number * factorial(number -1);		
-			
+			return number * factorial(number-1);
 		}
 	}
-//	Java -> JSON: marshalling
+	
+//	Java -> JSON : marshalling
 	
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		String operand = request.getParameter("operand");
-		if(operand != null && operand.matches("\\d{1,3}")){
-			int number = Integer.parseInt(operand);//파싱과 포맷팅
+		if(operand!=null && operand.matches("\\d{1,3}")){
+			
+			int number = Integer.parseInt(operand);
 			long result = factorial(number);
 			
-			request.setAttribute("number",number);
-			request.setAttribute("result",result);
+			request.setAttribute("number", number);
+			request.setAttribute("result", result);
 			
-			String json = String.format("{ \"operand\" : %d, \"result\" : %d }",number,result);
-			request.setAttribute("json",json);
+			String json = String.format("{ \"operand\" : %d, \"result\" : %d }", number, result);
 			
-		}else if(operand != null && !operand.matches("\\d{1,3}")){
+			request.setAttribute("json", json);
+			
+			
+		}else if(operand!=null && !operand.matches("\\d{1,3}")){
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-			return;
+			return;		
 		}
 		
 		String accept = request.getHeader("Accept");
 		if(accept.contains("json")) {
 			response.setContentType("application/json;charset=UTF-8");
 			try(
-				PrintWriter out = response.getWriter();
+				PrintWriter out = response.getWriter();	
 			){
 				out.print(request.getAttribute("json"));
 			}
 			
 		}else {
 			String view = "/02/factorial.jsp";
-			request.getRequestDispatcher(view).forward(request,response);
-			
+			request.getRequestDispatcher(view).forward(request, response);
 		}
 	}
-		
-	
 }
+
+
+
+
+
+
+
+
+
+

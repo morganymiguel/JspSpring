@@ -19,16 +19,29 @@ public class ServerTimeServlet extends HttpServlet {
 	private int count = 1;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		response.setIntHeader("Refresh", 1);//동기요청때만 작동함.
 		
-		if(count++ > 5 )
+		if(count++ > 5)
 			response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
+		
+//		response.setIntHeader("Refresh", 1);
 		response.setContentType("text/html;charset=UTF-8");
-		response.setHeader("Cache-Control","max-age=5");
-//		response.setHeader("Cache-Control","no-store");
+		response.setHeader("Cache-Control", "max-age=5");
 		response.getWriter()
 				.append(new Date().toString())
 				.close();
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -12,6 +12,7 @@ public class CalculateVO implements Serializable{
 	public String getExpression() {
 		return operator.getExpression(leftOp, rightOp);
 	}
+	
 	public int getLeftOp() {
 		return leftOp;
 	}

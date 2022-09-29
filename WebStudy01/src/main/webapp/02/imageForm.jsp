@@ -9,34 +9,46 @@
  			}
  		</style>
  		<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
- 		<script type ="text/javascript">
- 	//	$(function(){ })= 
- 		const PATTERN = "#cPath#/image?name=%V";
- 		$(document).ready(function(){
- 			$("form").on("submit",function(event){
- 				event.preventDefault();
- 				//$("img) img 전부
- 				/* let name = this.name.value; */ 
- 				let name = $(this).find("[name='name']").val();
-				let newImg = $("<img>").attr("src", PATTERN.replace("%V",name));//새로만든다
- 				$("#imageArea").html(newImg);
-				
-				return false;
+ 		<script type="text/javascript">
+ 			const PATTERN = "#cPath#/image?name=%V";
+ 			$(document).ready(function(){
+	 			$("form").on("submit", function(event){
+	 				event.preventDefault();
+// 	 				<img src="#cPath#/image?name=cat1.jpg"/>
+// 					let name = this.name.value;
+					let name = $(this).find("[name='name']").val();
+					let newImg = $("<img>").attr("src", PATTERN.replace("%V", name));
+					$("#imageArea").html(newImg);
+	 				return false;
+	 			});
  			});
- 		});
- 		</script>                           
+ 		</script>
  	</head>
  	<body>                               
  		<h4> 이미지 파일 선택</h4>       
- 		<form action='${cPath}/image'>       
- 			<select name='name'>
- 			${options}
-<%--  				<%= request.getAttribute("options") %>          --%>
+ 		<form action='${cPath }/image'>       
+ 			<select name='name'>    
+ 				${options }    
  			</select>                        
 			<input type='submit' value='전송' />
  		</form>   
- 		<div id ="imageArea">
+ 		<div id="imageArea">
  			
- 		</div>
+ 		</div>                           
  	</body>                               
- </html>                                  
+ </html>     
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                              
