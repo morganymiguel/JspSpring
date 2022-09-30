@@ -69,7 +69,7 @@
 		    PROD_ID, 			PROD_NAME,			PROD_LGU,    LPROD_NM, 
 			PROD_COST,			PROD_PRICE, 
 			PROD_SALE, 			PROD_OUTLINE,			PROD_DETAIL, 
-			PROD_IMG, 			PROD_TOTALSTOCK,			PROD_INSDATE, 
+			PROD_IMG, 			PROD_TOTALSTOCK,			TO_CHAR(PROD_INSDATE, 'YYYY-MM-DD') PROD_INSDATE, 
 			PROD_PROPERSTOCK, 			PROD_SIZE,			PROD_COLOR, 
 			PROD_DELIVERY, 			PROD_UNIT,			PROD_QTYIN, 
 			PROD_QTYSALE, 			PROD_MILEAGE,
@@ -137,17 +137,13 @@
 	<update id="updateProd" parameterType="ProdVO">
 		UPDATE PROD
 		SET
-			PROD_NAME = #{prodName,jdbcType=VARCHAR}
-			, PROD_LGU = #{prodLgu,jdbcType=CHAR}
-			, PROD_BUYER = #{prodBuyer,jdbcType=CHAR}
-			, PROD_COST = #{prodCost,jdbcType=NUMERIC}
+			PROD_COST = #{prodCost,jdbcType=NUMERIC}
 			, PROD_PRICE = #{prodPrice,jdbcType=NUMERIC}
 			, PROD_SALE = #{prodSale,jdbcType=NUMERIC}
 			, PROD_OUTLINE = #{prodOutline,jdbcType=VARCHAR}
 			, PROD_DETAIL = #{prodDetail,jdbcType=CLOB}
 			, PROD_IMG = #{prodImg,jdbcType=VARCHAR}
 			, PROD_TOTALSTOCK = #{prodTotalstock,jdbcType=NUMERIC}
-			, PROD_INSDATE = TO_DATE(#{prodInsdate,jdbcType=DATE}, 'YYYY-MM-DD')
 			, PROD_PROPERSTOCK = #{prodProperstock,jdbcType=NUMERIC}
 			, PROD_SIZE = #{prodSize,jdbcType=VARCHAR}
 			, PROD_COLOR = #{prodColor,jdbcType=VARCHAR}

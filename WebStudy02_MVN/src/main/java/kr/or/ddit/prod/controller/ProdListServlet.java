@@ -79,7 +79,7 @@ public class ProdListServlet extends HttpServlet{
 			currentPage = Integer.parseInt(pageParam);
 		}
 		
-		PagingVO<ProdVO> pagingVO = new PagingVO<>(3, 3);
+		PagingVO<ProdVO> pagingVO = new PagingVO<>(7, 5);
 		pagingVO.setCurrentPage(currentPage);
 		pagingVO.setDetailCondition(detailCondition);
 		

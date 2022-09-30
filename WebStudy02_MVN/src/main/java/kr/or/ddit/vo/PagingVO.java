@@ -56,15 +56,15 @@ public class PagingVO<T> {
 		this.dataList = dataList;
 	}
 	
-	String pattern = "<a href='#' data-page='%d'>%s</a>";
-	public String getPagingHTML() {
+	private static final String PATTERN = "<a href='#' data-page='%d'>%s</a>";
+	public String getPagingHTML_Simple() {
 		StringBuffer html = new StringBuffer();
 		
 		endPage = endPage > totalPage ?  totalPage : endPage;
 		
 		if(startPage > blockSize) {
 			html.append(
-				String.format(pattern, startPage-blockSize, "이전")	
+				String.format(PATTERN, startPage-blockSize, "이전")	
 			);
 		}
 		
@@ -73,14 +73,14 @@ public class PagingVO<T> {
 				html.append(page);
 			}else {
 				html.append(
-					String.format(pattern, page, page)
+					String.format(PATTERN, page, page)
 				);
 			}
 		}
 		
 		if(endPage < totalPage) {
 			html.append(
-				String.format(pattern, endPage+1, "다음")	
+				String.format(PATTERN, endPage+1, "다음")	
 			);
 		}
 		
@@ -101,7 +101,75 @@ public class PagingVO<T> {
 //	  </ul>
 //	</nav>
 	
-//	public String getPagingHTMLBS
+	private static final String BSPATTERN = "<li class='page-item %s'>" +
+			"<a class='page-link' href='#' data-page='%d'>%s</a>" +
+			"</li>";
+	
+	public String getPagingHTML() {
+		StringBuffer html = new StringBuffer();
+		html.append(" <nav aria-label='Page navigation example'>        ");
+		html.append("   <ul class='pagination justify-content-center'>  ");
+		// previous
+		if(startPage > blockSize) {
+			html.append(
+				String.format(
+					BSPATTERN 
+					, ""
+					, 1
+					, "<<"		
+				)	
+			);
+		}
+		
+		boolean disabled = startPage <= 1;
+		html.append(
+			String.format(
+				BSPATTERN 
+				, disabled?"disabled":""
+				, disabled?1:startPage-blockSize
+				, "이전"		
+			)	
+		);
+		// page link
+		endPage = endPage > totalPage ?  totalPage : endPage;
+		for(int page = startPage; page <= endPage; page++) {
+			boolean active = page == currentPage;
+			html.append(
+				String.format(
+					BSPATTERN 
+					, active?"active":""
+					, page
+					, page		
+				)	
+			);
+		}
+		// next
+		disabled = endPage >= totalPage;
+		html.append(
+			String.format(
+				BSPATTERN 
+				, disabled?"disabled":""
+				, disabled?totalPage:endPage+1
+				, "다음"		
+			)	
+		);
+		// to end
+		if(totalPage > blockSize && totalPage > endPage ) {
+			html.append(
+				String.format(
+					BSPATTERN 
+					, ""
+					, totalPage
+					, ">>"		
+				)	
+			);
+		}
+
+		html.append("   </ul>                                           ");
+		html.append(" </nav>                                            ");
+		return html.toString();
+	}
+	
 }
 
 

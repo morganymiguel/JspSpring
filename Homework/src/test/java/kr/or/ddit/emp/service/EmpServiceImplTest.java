@@ -25,7 +25,8 @@ public class EmpServiceImplTest {
 
 	@Test
 	public void testCreateEmp() {
-		fail("Not yet implemented");
+		EmpVO emp = service.createEmp(null)
+	
 	}
 
 }
