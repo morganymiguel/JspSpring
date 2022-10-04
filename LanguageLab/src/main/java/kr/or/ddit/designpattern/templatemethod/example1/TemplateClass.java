@@ -5,7 +5,6 @@ public abstract class TemplateClass {
 		stepOne();
 		stepTwo();
 		stepThree();
-		
 	}
 	private void stepOne() {
 		System.out.println("1단계");

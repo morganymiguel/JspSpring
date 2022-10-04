@@ -11,16 +11,16 @@ import java.util.Map.Entry;
 import org.apache.commons.beanutils.BeanUtils;
 
 public class BeanUtilsTest {
-	
 	public static void main(String[] args) {
 		Map<String, Object> map = new HashMap<>();
-		map.put("prop1","VALUE1");
-		map.put("prop2","VALUE2");
+		map.put("prop1", "VALUE1");
+		map.put("prop2", "VALUE2");
 		
 		TestVO vo = new TestVO();
 		
 		Class<? extends TestVO> clz = vo.getClass();
-		Field[] fields =  clz.getDeclaredFields();
+		
+		Field[] fields = clz.getDeclaredFields();
 		for(Field fld : fields) {
 			String fldName = fld.getName();
 			System.out.println(fldName);
@@ -36,14 +36,15 @@ public class BeanUtilsTest {
 		System.out.println(vo);
 		
 		vo = new TestVO();
-		for( Entry<String, Object> entry: map.entrySet()) {
+		
+		for( Entry<String, Object> entry : map.entrySet()) {
 //			System.out.println(entry.getKey());
 			String key = entry.getKey();
 			Object value = entry.getValue();
 			
-			try {
+			 try {
 				Field fld = clz.getDeclaredField(key);
-//				vo.setProp1("value1");
+//				vo.setProp1("VALUE1");
 				String setterName = "set" + key.substring(0, 1).toUpperCase() + key.substring(1);
 				Method setter = clz.getDeclaredMethod(setterName, value.getClass());
 				setter.invoke(vo, value);
@@ -52,19 +53,18 @@ public class BeanUtilsTest {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("AAAAAAAAAAA");
+		
 		System.out.println(vo);
+		
+		vo = new TestVO();
 		
 		try {
 			BeanUtils.populate(vo, map);
 		} catch (IllegalAccessException | InvocationTargetException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("BBBBBBBBBBBBBBBBBBB");
-		System.out.println(vo);
 		
+		System.out.println(vo);
 	}
-	
 	
 }
