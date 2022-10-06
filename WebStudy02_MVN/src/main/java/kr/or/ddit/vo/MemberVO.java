@@ -1,6 +1,8 @@
 package kr.or.ddit.vo;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.Base64;
 import java.util.Set;
 
 import javax.validation.constraints.Email;
@@ -11,11 +13,13 @@ import javax.validation.groups.Default;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import kr.or.ddit.file.MultipartFile;
 import kr.or.ddit.validate.DeleteGroup;
 import kr.or.ddit.validate.InsertGroup;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 회원 관리(Domain Layer)
@@ -43,6 +47,7 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(of="memId")
 @ToString(exclude = {"memPass", "memRegno1", "memRegno2"})
+@Slf4j
 public class MemberVO implements Serializable{
 	
 	private int rnum;
@@ -87,6 +92,23 @@ public class MemberVO implements Serializable{
 	
 	private String memRole;
 	
+	private byte[] memImg;
+	private MultipartFile memImage;
+	public void setMemImage(MultipartFile memImage) throws IOException {
+		if(memImage==null || memImage.isEmpty()) return;
+		this.memImage = memImage;
+		this.memImg = memImage.getBytes();
+	}
+	
+	public String getBase64Img() {
+		if(memImg==null) {
+			return null;
+		}else {
+			String base64Text = Base64.getEncoder().encodeToString(memImg);
+			log.info("base64 encoded text : {}", base64Text);
+			return base64Text;
+		}
+	}
 	
 	public String getMemTest() {
 		return "테스트";

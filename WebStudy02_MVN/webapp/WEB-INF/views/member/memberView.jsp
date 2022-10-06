@@ -19,6 +19,13 @@
 		<td>${member['memRegno1'] }</td>
 	</tr>
 	<tr>
+		<th>회원이미지</th>
+		<td>	
+			<img src="data:image/*;base64,${member.base64Img }"/>
+			
+		</td>
+	</tr>
+	<tr>
 		<th>MEM_REGNO2</th>
 		<td>${member['memRegno2'] }</td>
 	</tr>
