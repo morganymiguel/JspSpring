@@ -2,10 +2,18 @@ package kr.or.ddit.sample.service;
 
 import java.util.Arrays;
 
+import javax.annotation.Resource;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import kr.or.ddit.sample.dao.SampleDAO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@Service
 public class SampleServiceImpl implements SampleService {
 	// 1. 결합력 최상
 //	private SampleDAO dao = new SampleDAOImpl_MariaDB();
@@ -13,6 +21,7 @@ public class SampleServiceImpl implements SampleService {
 //	private SampleDAO dao = new SampleDAOFactory().getSampleDAO();
 	// 3. Strategy Pattern : 전략 주입자 필요. 주입 방식 (setter, constructor)
 	// 4. DI Container 활용.
+//	@Resource(name="dao_oracle")
 	private SampleDAO dao;
 	
 	public SampleServiceImpl() {
@@ -20,6 +29,9 @@ public class SampleServiceImpl implements SampleService {
 		log.info("{} 객체 생성, 기본 생성자", this);
 	}
 	
+//	@Autowired // getBean(Class)->getBean("id")
+	@Inject
+	@Named("dao_oracle")
 	public SampleServiceImpl(SampleDAO dao) {
 		super();
 		log.info("{} 객체 생성, dao 파라미터를 받는 생성자", this);

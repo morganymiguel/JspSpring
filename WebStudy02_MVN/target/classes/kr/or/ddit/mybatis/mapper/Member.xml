@@ -97,8 +97,8 @@
 			   , MEM_JOB             
 			   , MEM_LIKE            
 			   , MEM_MEMORIAL        
-			   , MEM_MEMORIALDAY 
-			   , MEM_IMG    
+			   , MEM_MEMORIALDAY    
+			   , MEM_IMG 
 			) VALUES (               
 					#{memId,jdbcType=VARCHAR}
 					, #{memPass,jdbcType=VARCHAR}
@@ -138,7 +138,6 @@
 			<if test="memImg neq null and memImg.length gt 0">
 				, MEM_IMG = #{memImg,jdbcType=BLOB}
 			</if>
-			 
 		WHERE MEM_ID = #{memId,jdbcType=VARCHAR}	
 	</update>
 	<delete id="deleteMember" parameterType="string">
