@@ -1,11 +1,9 @@
 package kr.or.ddit.sample.view;
 
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import lombok.extern.slf4j.Slf4j;
-
 
 @Slf4j
 public class DIContainterTestView {
@@ -15,14 +13,11 @@ public class DIContainterTestView {
 		
 		context.registerShutdownHook();
 		
-
 //		SampleView view1 = (SampleView) context.getBean("sampleView1");
 //		SampleView view2 = (SampleView) context.getBean("sampleView2");
-//		log.info("주입된 객체: {}", view1);
-//		log.info("주입된 객체: {}", view2);
-//		log.info("동일 객체 여부: {}", view1==view2);
-//		context.close();
+//		log.info("주입된 객체 : {}", view1);
+//		log.info("주입된 객체 : {}", view2);
+//		log.info("동일 객체 여부 : {}", view1==view2);
 		
-	
 	}
 }

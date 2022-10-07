@@ -7,10 +7,6 @@ import kr.or.ddit.sample.view.SampleView;
 
 public class AutoDITestView {
 	public static void main(String[] args) {
-		
-//		containner
-//		경로설정
-//		sampleview입력받아
 		ConfigurableApplicationContext context =
 				new GenericXmlApplicationContext("classpath:/kr/or/ddit/auto/conf/AutoDI-Context.xml");
 		context.registerShutdownHook();
@@ -18,4 +14,5 @@ public class AutoDITestView {
 		SampleView view = context.getBean(SampleView.class);
 		view.renderMessage(4);
 	}
+	
 }

@@ -20,5 +20,4 @@ public class CollectionDIVO {
 	private Properties props;
 	
 	private String[] array;
-	
 }

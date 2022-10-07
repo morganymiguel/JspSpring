@@ -23,7 +23,7 @@
 		c:initialSize="#{dbInfo['initialSize']}"
 		c:maxTotal="#{dbInfo['maxTotal']*4}"
 		c:maxIdle="#{dbInfo['maxIdle']}"
-		c:maxWait="#{dbInfo['maxWait']}"
+		c:maxWait="#{dbInfo['maxWait']+4}"
 		
 	/>
 	<context:property-placeholder location="classpath:/kr/or/ddit/di/DBInfo.properties"/>

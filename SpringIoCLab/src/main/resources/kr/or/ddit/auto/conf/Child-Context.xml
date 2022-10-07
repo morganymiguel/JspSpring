@@ -6,9 +6,12 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	<context:component-scan base-package="kr.or.ddit.sample" use-default-filters="false">
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>	
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>	
+		<context:include-filter type="annotation" 
+			expression="org.springframework.stereotype.Component"/>
+		<context:exclude-filter type="annotation" 
+			expression="org.springframework.stereotype.Repository"/>	
+		<context:exclude-filter type="annotation" 
+			expression="org.springframework.stereotype.Service"/>	
 	</context:component-scan>
-	
+
 </beans>

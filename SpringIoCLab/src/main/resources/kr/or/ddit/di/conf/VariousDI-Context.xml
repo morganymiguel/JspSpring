@@ -5,7 +5,8 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="vo1" class="kr.or.ddit.di.VariousDIVO"
+
+	<bean id="vo1" class="kr.or.ddit.di.VariousDIVO" 
 		p:number="32"
 		p:dblNumber="23.4"
 		p:boolData="true"
@@ -14,9 +15,8 @@
 		
 		p:fsFile="file:D:/contents/images/cat1.jpg"
 		p:cpFile="classpath:/log4j2.xml"
-	
+		
 		p:dbInfo-ref="dbInfo"
 	/>
-	
-	
+
 </beans>

@@ -10,17 +10,15 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CollectionDITestView {
 	public static void main(String[] args) {
-		// container 생성, - 구현체 필요함 --
-		ConfigurableApplicationContext context = 
+		ConfigurableApplicationContext context =
 				new ClassPathXmlApplicationContext("/kr/or/ddit/di/conf/CollectionDI-Context.xml");
 		context.registerShutdownHook();
 		
-		CollectionDIVO vo1 = context.getBean("colVO1",CollectionDIVO.class);
-		CollectionDIVO vo2 = context.getBean("colVO2",CollectionDIVO.class);
-		log.info("{}",vo1);
-		log.info("{}",vo2);
+		CollectionDIVO vo1 = context.getBean("colVO1", CollectionDIVO.class);
+		CollectionDIVO vo2 = context.getBean("colVO2", CollectionDIVO.class);
+		log.info("{}", vo1);
+		log.info("{}", vo2);
 		Date now = context.getBean(Date.class);
-		log.info("{}: {}",now, new Date());
-		
+		log.info("{} : {}", now, new Date());
 	}
 }
