@@ -31,7 +31,7 @@
 		p:mapperLocations="classpath:/kr/or/ddit/mybatis/mappers/*.xml"
 	/>
 	
-<!-- 	3. SqlSessionTemplate  등록 -->
+<!-- 	3. SqlSessionTemplate  등록 : Optional -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" 
 		c:sqlSessionFactory-ref="sqlSessionFactory"
 	/>
@@ -41,6 +41,7 @@
 <!-- kr.or.ddit.member.prod.dao -->
 	<mybatis-spring:scan base-package="kr.or.ddit.**.dao"
 		annotation="org.apache.ibatis.annotations.Mapper"
+		factory-ref="sqlSessionFactory"
 	/>
 </beans>
 
