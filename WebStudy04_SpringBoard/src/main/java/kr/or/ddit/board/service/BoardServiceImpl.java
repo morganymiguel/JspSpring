@@ -41,8 +41,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public List<BoardVO> retrieveBoardList(PagingVO<BoardVO> pagingVO) {
-		return boardDAO.selectBoardList(pagingVO)
-				;
+		return boardDAO.selectBoardList(pagingVO);
 	}
 
 	@Override
@@ -50,16 +49,35 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.selectTotalRecord(pagingVO);
 	}
 
+	private boolean boardAuthenticate(BoardVO board) {
+		BoardVO saved = retrieveBoard(board.getBoNo());
+		String inputPass = board.getBoPass();
+		String savedPass = saved.getBoPass();
+		return savedPass.equals(inputPass);
+	}
+	
 	@Override
 	public ServiceResult modifyBoard(BoardVO board) {
-		// TODO Auto-generated method stub
-		return null;
+		ServiceResult result = null;
+		if(boardAuthenticate(board)) {
+			int rowcnt = boardDAO.updateBoard(board);
+			result = rowcnt > 0 ? ServiceResult.OK : ServiceResult.FAIL;
+		}else {
+			result = ServiceResult.INVALIDPASSWORD;
+		}
+		return result;
 	}
 
 	@Override
 	public ServiceResult removeBoard(BoardVO board) {
-		// TODO Auto-generated method stub
-		return null;
+		ServiceResult result = null;
+		if(boardAuthenticate(board)) {
+			int rowcnt = boardDAO.deleteBoard(board);
+			result = rowcnt > 0 ? ServiceResult.OK : ServiceResult.FAIL;
+		}else {
+			result = ServiceResult.INVALIDPASSWORD;
+		}
+		return result;
 	}
 	
 }
