@@ -1,9 +1,14 @@
 package kr.or.ddit.board.vo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.groups.Default;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.ddit.validate.DeleteGroup;
 import kr.or.ddit.validate.InsertGroup;
@@ -37,6 +42,19 @@ public class BoardVO {
 	private Integer boHit;
 	private Integer boRec;
 	private Integer boParent;
+	
+	private List<MultipartFile> boFiles;
+	public void setBoFiles(List<MultipartFile> boFiles) {
+		if(boFiles==null || boFiles.isEmpty()) return;
+		this.boFiles = boFiles;
+		this.attatchList = new ArrayList<>();
+		for(MultipartFile file  : boFiles) {
+			if(file.isEmpty()) continue;
+			attatchList.add(new AttatchVO(file));
+		}
+	}
+	
+	private List<AttatchVO> attatchList;
 }
 
 

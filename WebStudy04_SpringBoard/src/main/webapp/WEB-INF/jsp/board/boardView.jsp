@@ -48,7 +48,7 @@
 	</tr>
 	<tr>
 		<td colspan="2">
-			<c:url value="/board/boardUpdac vte.do" var="updateURL">
+			<c:url value="/board/boardUpdate.do" var="updateURL">
 				<c:param name="what" value="${board.boNo }" />
 			</c:url>
 			<a href="${updateURL }" class="btn btn-primary">글 수정</a>

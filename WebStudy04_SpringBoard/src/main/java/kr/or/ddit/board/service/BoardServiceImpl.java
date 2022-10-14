@@ -24,9 +24,16 @@ public class BoardServiceImpl implements BoardService {
 		log.info("주입된 객체 : {}", boardDAO);
 	}
 	
+	private int processAttatchList(BoardVO board) {
+		// 2진 데이터 저장
+		// 메타데이터 저장
+		return 0;
+	}
+	
 	@Override
 	public ServiceResult createBoard(BoardVO board) {
 		int rowcnt = boardDAO.insertBoard(board);
+		rowcnt += processAttatchList(board);
 		return rowcnt > 0 ? ServiceResult.OK : ServiceResult.FAIL;
 	}
 
