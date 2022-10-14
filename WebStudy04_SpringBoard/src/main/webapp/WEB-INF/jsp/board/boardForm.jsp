@@ -45,8 +45,8 @@
 		</td>
 	</tr>
 	<tr>
-		<th>첨부파일</th>
-		<td\>
+		<th><spring:message code="board.boFiles"/></th>
+		<td>
 			<input type="file" name="boFiles" />
 			<input type="file" name="boFiles" />
 			<input type="file" name="boFiles" />

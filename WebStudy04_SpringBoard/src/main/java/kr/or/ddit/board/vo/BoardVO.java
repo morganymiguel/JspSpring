@@ -23,7 +23,7 @@ import lombok.ToString;
  */
 @Data
 @EqualsAndHashCode(of="boNo")
-@ToString(exclude= {"boPass", "boContent"})
+@ToString(exclude= {"boPass", "boContent", "boFiles", "attatchList"})
 public class BoardVO {
 	@NotNull(groups= {UpdateGroup.class, DeleteGroup.class}) //
 	private Integer boNo;
@@ -54,6 +54,7 @@ public class BoardVO {
 		}
 	}
 	
+	private int startNo;
 	private List<AttatchVO> attatchList;
 }
 

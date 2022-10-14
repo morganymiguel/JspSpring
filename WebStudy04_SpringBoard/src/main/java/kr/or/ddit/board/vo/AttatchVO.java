@@ -1,5 +1,7 @@
 package kr.or.ddit.board.vo;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.UUID;
 
 import javax.validation.constraints.NotBlank;
@@ -12,9 +14,11 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @EqualsAndHashCode(of="attNo")
+@ToString(exclude="adaptee")
 @NoArgsConstructor
 public class AttatchVO {
 	private MultipartFile adaptee;
@@ -42,4 +46,21 @@ public class AttatchVO {
 	@NotBlank
 	private String attFancysize;
 	private Integer attDownload;
+	
+	public void saveTo(File saveFolder) throws IOException {
+		if(adaptee==null) return;
+		File saveFile= new File(saveFolder, attSavename);
+		adaptee.transferTo(saveFile);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
