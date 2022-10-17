@@ -56,6 +56,8 @@ public class BoardVO {
 	
 	private int startNo;
 	private List<AttatchVO> attatchList;
+	
+	private int[] delAttNos;
 }
 
 

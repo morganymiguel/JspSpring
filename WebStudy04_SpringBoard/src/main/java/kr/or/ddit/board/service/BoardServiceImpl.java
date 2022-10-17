@@ -2,16 +2,17 @@
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.ddit.board.dao.AttatchDAO;
 import kr.or.ddit.board.dao.BoardDAO;
@@ -43,6 +44,7 @@ public class BoardServiceImpl implements BoardService {
 		int rowcnt = 0;
 		List<AttatchVO> attatchList = board.getAttatchList();
 		if(attatchList!=null && !attatchList.isEmpty()) {
+//			if(1==1) throw new RuntimeException("트랜잭션 관리 여부 확인용 강제 예외 발생");
 			// 메타데이터 저장
 			rowcnt = attatchDAO.insertAttatches(board);
 			// 2진 데이터 저장
@@ -57,11 +59,11 @@ public class BoardServiceImpl implements BoardService {
 		return rowcnt;
 	}
 	
+	@Transactional // 선언적 프로그래밍 기법(AOP)
 	@Override
 	public ServiceResult createBoard(BoardVO board) {
 		int rowcnt = boardDAO.insertBoard(board);  // 1.
 		rowcnt += processAttatchList(board);
-		
 		return rowcnt > 0 ? ServiceResult.OK : ServiceResult.FAIL;
 	}
 
@@ -76,12 +78,16 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public List<BoardVO> retrieveBoardList(PagingVO<BoardVO> pagingVO) {
+		
 		return boardDAO.selectBoardList(pagingVO);
+		
 	}
 
 	@Override
 	public int retrieveBoardCount(PagingVO<BoardVO> pagingVO) {
+		
 		return boardDAO.selectTotalRecord(pagingVO);
+		
 	}
 
 	private boolean boardAuthenticate(BoardVO board) {
@@ -91,11 +97,16 @@ public class BoardServiceImpl implements BoardService {
 		return savedPass.equals(inputPass);
 	}
 	
+	@Transactional
 	@Override
 	public ServiceResult modifyBoard(BoardVO board) {
 		ServiceResult result = null;
 		if(boardAuthenticate(board)) {
 			int rowcnt = boardDAO.updateBoard(board);
+			// 1. 신규파일등록  : 2진, 메타데이타
+			rowcnt += processAttatchList(board);
+			// 2. 기존 파일 삭제 : 2진, 메타데이타
+			processDeleteAttatch(board);
 			result = rowcnt > 0 ? ServiceResult.OK : ServiceResult.FAIL;
 		}else {
 			result = ServiceResult.INVALIDPASSWORD;
@@ -103,6 +114,28 @@ public class BoardServiceImpl implements BoardService {
 		return result;
 	}
 
+	private int processDeleteAttatch(BoardVO board) {
+		int[] delAttNos = board.getDelAttNos();
+		if(delAttNos==null || delAttNos.length == 0) return 0;
+		Arrays.sort(delAttNos);
+ 		List<AttatchVO> attatchList = boardDAO.selectBoard(board.getBoNo()).getAttatchList();
+		List<String> saveNames = attatchList.stream()
+				.filter(attatch->{
+					return Arrays.binarySearch(delAttNos, attatch.getAttNo()) >= 0;
+				}).map(attatch->{
+					return attatch.getAttSavename();
+				}).collect(Collectors.toList());
+		int rowcnt = attatchDAO.deleteAttatches(delAttNos);
+		// 2진 데이터 삭제
+		if(!saveNames.isEmpty()) {
+			for(String attSavename : saveNames) {
+				File deleteFile = new File(saveFolder, attSavename);
+				FileUtils.deleteQuietly(deleteFile);
+			}
+		}
+		return rowcnt;
+	}
+	
 	private int processDeleteAttatches(BoardVO board) {
 		List<AttatchVO> attatchList = boardDAO.selectBoard(board.getBoNo()).getAttatchList();
 		
@@ -125,6 +158,7 @@ public class BoardServiceImpl implements BoardService {
 		return rowcnt;
 	}
 	
+	@Transactional
 	@Override
 	public ServiceResult removeBoard(BoardVO board) {
 		ServiceResult result = null;
@@ -142,6 +176,14 @@ public class BoardServiceImpl implements BoardService {
 	public int recommend(int boNo) {
 		boardDAO.incrementRec(boNo);
 		return boardDAO.selectBoard(boNo).getBoRec();
+	}
+	
+	@Override
+	public AttatchVO retrieveAttatch(int attNo) {
+		AttatchVO attatch = attatchDAO.selectAttatch(attNo);
+		if(attatch == null)
+			throw new RuntimeException("해당 파일 없음.");
+		return attatch;
 	}
 }
 
