@@ -40,7 +40,7 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
-		
+
 		<!-- 트랜잭션 관리 지원 - AOP 방법론 -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -59,6 +59,13 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		
+		<!-- Spring websocket -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
 
