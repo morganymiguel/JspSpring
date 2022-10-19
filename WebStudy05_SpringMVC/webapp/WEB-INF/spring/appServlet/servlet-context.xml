@@ -47,6 +47,9 @@
 		p:order="1"
 	/>
 	
+	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+	<bean id="xmlView" class="org.springframework.web.servlet.view.xml.MappingJackson2XmlView" />
+	
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" 
 		p:order="2"
 	/>

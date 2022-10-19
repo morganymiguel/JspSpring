@@ -4,17 +4,25 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import kr.or.ddit.TestContextConfiguration;
 import kr.or.ddit.vo.PagingVO;
 import kr.or.ddit.vo.ProdVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@RunWith(SpringRunner.class)
+@TestContextConfiguration
 public class ProdDAOImplTest {
 	
-	ProdDAO dao = new ProdDAOImpl();
+	@Inject
+	ProdDAO dao;
 	ProdVO prod;
 	
 	@Before

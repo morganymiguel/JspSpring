@@ -4,14 +4,22 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import kr.or.ddit.TestContextConfiguration;
 import kr.or.ddit.vo.BuyerVO;
 import kr.or.ddit.vo.PagingVO;
 
+@RunWith(SpringRunner.class)
+@TestContextConfiguration
 public class BuyerDAOImplTest {
-	BuyerDAO dao = new BuyerDAOImpl();
+	@Inject
+	BuyerDAO dao;
 
 	PagingVO<BuyerVO> pagingVO;
 	

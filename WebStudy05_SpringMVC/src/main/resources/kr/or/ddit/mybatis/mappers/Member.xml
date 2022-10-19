@@ -4,7 +4,7 @@
 	<sql id="searchFrag">
 		WHERE MEM_DELETE IS NULL  
 		<trim prefix="AND (" suffix=")">
-			<if test="@org.apache.commons.lang3.StringUtils@isNotBlank(simpleCondition.searchWord)">
+			<if test="simpleCondition neq null and @org.apache.commons.lang3.StringUtils@isNotBlank(simpleCondition.searchWord)">
 				<choose>
 					<when test="'name' eq simpleCondition.searchType">
 						INSTR(MEM_NAME, #{simpleCondition.searchWord}) > 0

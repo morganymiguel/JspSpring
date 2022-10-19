@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>    
 <!-- // 상품아이디, 상품명, 판매가, 구매가, 마일리지.  -->
 <!-- // + 분류명, 거래처명, 해당 상품의 구매자수(mem_count) -->
 <table class="table table-bordered table-striped">
 	<thead class="table-dark">
 		<tr>
-			<th>상품명</th>
-			<th>분류명</th>
-			<th>판매가</th>
-			<th>구매가</th>
-			<th>마일리지</th>
-			<th>거래처명</th>
-			<th>구매자수</th>
+			<th><spring:message code="prod.prodName"/></th>
+			<th><spring:message code="prod.prodLgu"/></th>
+			<th><spring:message code="prod.prodPrice"/></th>
+			<th><spring:message code="prod.prodCost"/></th>
+			<th><spring:message code="prod.prodMileage"/></th>
+			<th><spring:message code="prod.prodBuyer"/></th>
+			<th><spring:message code="prod.memCount"/></th>
 		</tr>
 	</thead>
 	<tbody id="listBody">
@@ -62,7 +63,7 @@
 						</select>
 					</div>
 					<div class="col-auto">
-						<input type="text" name="prodName" value="${pagingVO.detailCondition.prodName}"
+						<input type="text" name="prodName" value="${detailCondition.prodName}"
 							 class="form-control" placeholder="상품명"
 						/>
 					</div>
@@ -77,9 +78,9 @@
 <form id="searchForm" class="border border-danger border-3">
 	<h4>검색조건 전송 UI - searchForm</h4>
 	<input type="text" name="page" />
-	<input type="text" name="prodLgu" value="${pagingVO.detailCondition.prodLgu}"/>
-	<input type="text" name="prodBuyer"  value="${pagingVO.detailCondition.prodBuyer}"/>
-	<input type="text" name="prodName"  value="${pagingVO.detailCondition.prodName}"/>
+	<input type="text" name="prodLgu" value="${detailCondition.prodLgu}"/>
+	<input type="text" name="prodBuyer"  value="${detailCondition.prodBuyer}"/>
+	<input type="text" name="prodName"  value="${detailCondition.prodName}"/>
 </form>
 <script>
 	$.ajax({
@@ -91,7 +92,7 @@
 			$.each(lprodList, function(index, lprod){
 				let option = $("<option>").attr("value", lprod.lprodGu)
 											.text(lprod.lprodNm);
-				if("${pagingVO.detailCondition.prodLgu}" == lprod.lprodGu){
+				if("${detailCondition.prodLgu}" == lprod.lprodGu){
 					option.prop("selected", true);
 				}
 				

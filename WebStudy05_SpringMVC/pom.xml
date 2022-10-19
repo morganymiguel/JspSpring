@@ -67,7 +67,7 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		
+
 		<!-- Spring websocket -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -219,6 +219,14 @@
 			<version>${org.springframework-version}</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- websocket test 용 -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-websocket</artifactId>
+			<version>8.5.83</version>
+			<scope>test</scope>
+		</dependency>
+
 
 	</dependencies>
 </project>

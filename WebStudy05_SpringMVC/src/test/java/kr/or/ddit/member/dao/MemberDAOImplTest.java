@@ -4,27 +4,36 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import kr.or.ddit.TestContextConfiguration;
 import kr.or.ddit.vo.MemberVO;
 import kr.or.ddit.vo.PagingVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@RunWith(SpringRunner.class)
+@TestContextConfiguration
 public class MemberDAOImplTest {
 //	private static final  Logger log = LoggerFactory.getLogger(MemberDAOImplTest.class);
-	
-	MemberDAO dao = new MemberDAOImpl();
+	@Inject
+	MemberDAO dao;
 	
 	MemberVO member; 
 	@Before
 	public void setUp() {
 		member = new MemberVO();
-		member.setMemId("b003");
+		member.setMemId("b005");
 		member.setMemPass("java");
 		member.setMemName("신규");
+		member.setMemRegno1("111111");
+		member.setMemRegno2("1111111");
 		member.setMemZip("000");
 		member.setMemAdd1("대전");
 		member.setMemAdd2("오류");

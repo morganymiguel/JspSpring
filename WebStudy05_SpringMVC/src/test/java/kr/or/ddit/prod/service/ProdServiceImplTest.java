@@ -4,16 +4,24 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
-import org.junit.Test;
+import javax.inject.Inject;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import kr.or.ddit.TestContextConfiguration;
 import kr.or.ddit.vo.PagingVO;
 import kr.or.ddit.vo.ProdVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@RunWith(SpringRunner.class)
+@TestContextConfiguration
 public class ProdServiceImplTest {
 	
-	ProdService service = new ProdServiceImpl();
+	@Inject
+	ProdService service;
 
 	@Test
 	public void testCreateProd() {

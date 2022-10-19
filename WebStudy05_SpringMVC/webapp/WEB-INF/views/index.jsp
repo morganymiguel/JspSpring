@@ -5,9 +5,9 @@
 <c:if test="${not empty sessionScope.authMember }">
 	<a href="<c:url value='/mypage.do'/>">${authMember.memName }[${authMember.memRole }]</a>님 로그인 상태.
 	<pre>
-	Principal : <%=request.getUserPrincipal().getName() %>
-		${pageContext.request.userPrincipal.realUser.memRole }
+	Principal : ${pageContext.request.userPrincipal.name }
+		${pageContext.request.userPrincipal }
 	Principal type : <%=request.getUserPrincipal().getClass() %>
 	</pre>
 </c:if>
-request type : <%=request.getClass()%>
+request type : <%=request.getClass() %>

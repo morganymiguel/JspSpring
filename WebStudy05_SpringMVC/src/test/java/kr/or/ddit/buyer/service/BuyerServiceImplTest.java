@@ -2,14 +2,22 @@ package kr.or.ddit.buyer.service;
 
 import static org.junit.Assert.*;
 
-import org.junit.Test;
+import javax.inject.Inject;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import kr.or.ddit.TestContextConfiguration;
 import kr.or.ddit.vo.BuyerVO;
 import kr.or.ddit.vo.PagingVO;
 
+@RunWith(SpringRunner.class)
+@TestContextConfiguration
 public class BuyerServiceImplTest {
 	
-	BuyerService service = new BuyerServiceImpl();
+	@Inject
+	BuyerService service;
 
 	@Test
 	public void testCreateBuyer() {

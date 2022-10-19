@@ -1,175 +1,156 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
-<form method="post" enctype="multipart/form-data">      
-	<input type="hidden" class="editable" name="prodId" value="${prod.prodId }" />
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>    
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>    
+<form:form modelAttribute="prod" method="post" enctype="multipart/form-data">
+	<%--==============수정 폼 =============--%>      
+	<form:hidden path="prodId"  />
+	<%--================================--%>      
 	<table class="table table-bordered">
 		<tr>
-			<th>상품명</th>
+			<th><spring:message code="prod.prodName" /></th>
 			<td>
-				<input type="text" name="prodName" class="form-control"
-				required value="${prod.prodName }" />
-				<span class="error">${errors.prodName }</span>
+				<form:input path="prodName" class="form-control" required="true" />
+				<form:errors path="prodName" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
-			<th class="fst-italic text-danger">분류코드</th>
+			<th><spring:message code="prod.prodLgu" /></th>
 			<td>
-				<select name="prodLgu" required class="form-control">
+				<form:select path="prodLgu" required="true" class="form-control editable">
 					<option value>상품분류</option>
 					<c:forEach items="${lprodList }" var="lprod">
-						<option value="${lprod.lprodGu }"
-							${lprod.lprodGu eq prod.prodLgu ? "selected" :"" }
-						>${lprod.lprodNm }</option>
+						<form:option value="${lprod.lprodGu }" label="${lprod.lprodNm }" />
 					</c:forEach>
-				</select>
-				<span class="error">${errors.prodLgu }</span>
-			</td>
-		</tr>
-		<tr>
-			<th class="fst-italic text-danger">거래처코드</th>
-			<td>
-				<select name="prodBuyer" required class="form-control">
-					<option value>거래처</option>
-					<c:forEach items="${buyerList }" var="buyer">
-						<option value="${buyer.buyerId }" class="${buyer.buyerLgu }"
-							${buyer.buyerId eq prod.prodBuyer ? "selected":"" }
-						>
-							${buyer.buyerName }
-						</option>
-					</c:forEach>
-				</select>
 				
-				<span class="error">${errors.prodBuyer }</span>
+				</form:select>
+				<form:errors path="prodLgu" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
-			<th>구매가</th>
+			<th><spring:message code="prod.prodBuyer" /></th>
 			<td>
-				<input type="number" name="prodCost" class="form-control editable"
-				required value="${prod.prodCost }" />
-				<span class="error">${errors.prodCost }</span>
+				<form:select path="prodBuyer" required="true" class="form-control editable">
+					<option value>거래처</option>
+<%-- 					<form:options items="${buyerList }" itemValue="buyerId" itemLabel="buyerName" /> --%>
+					<c:forEach items="${buyerList }" var="buyer">
+						<form:option value="${buyer.buyerId }" label="${buyer.buyerName }" class="${buyer.buyerLgu }" />
+					</c:forEach>
+				</form:select>
+				<form:errors path="prodBuyer" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
-			<th>판매가</th>
+			<th><spring:message code="prod.prodCost" /></th>
 			<td>
-				<input type="number" name="prodPrice" class="form-control editable"
-				required value="${prod.prodPrice }" />
-				<span class="error">${errors.prodPrice }</span>
+				<form:input path="prodCost" class="form-control editable" required="true" />
+				<form:errors path="prodCost" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
-			<th>세일가</th>
+			<th><spring:message code="prod.prodPrice" /></th>
 			<td>
-				<input type="number" name="prodSale" class="form-control editable"
-				required value="${prod.prodSale }" />
-				<span class="error">${errors.prodSale }</span>
+				<form:input path="prodPrice" class="form-control editable" required="true" />
+				<form:errors path="prodPrice" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
-			<th>개요</th>
+			<th><spring:message code="prod.prodSale" /></th>
 			<td>
-				<input type="text" name="prodOutline" class="form-control editable"
-				required value="${prod.prodOutline }" />
-				<span class="error">${errors.prodOutline }</span>
+				<form:input path="prodSale" class="form-control editable" required="true" />
+				<form:errors path="prodSale" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
-			<th>상세정보</th>
+			<th><spring:message code="prod.prodOutline" /></th>
 			<td>
-				<textarea name="prodDetail" class="form-control editable">${prod.prodDetail }</textarea>
-				<span class="error">${errors.prodDetail }</span>
+				<form:input path="prodOutline" class="form-control" required="true" />
+				<form:errors path="prodOutline" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
-			<th>상품이미지</th>
+			<th><spring:message code="prod.prodDetail" /></th>
 			<td>
-				<input type="file" name="prodImage" class="form-control editable"
-				required  />
-				<span class="error">${errors.prodImage }</span>
+				<form:input path="prodDetail" class="form-control" />
+				<form:errors path="prodDetail" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
-			<th>총재고</th>
+			<th><spring:message code="prod.prodImg" /></th>
 			<td>
-				<input type="number" name="prodTotalstock"
-				class="form-control editable" required value="${prod.prodTotalstock }" />
-				<span
-				class="error">${errors.prodTotalstock }</span>
+				<form:input path="prodImg" class="form-control" required="true" />
+				<form:errors path="prodImg" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
-			<th>입고일</th>
+			<th><spring:message code="prod.prodTotalstock" /></th>
 			<td>
-				<input type="date" name="prodInsdate" class="form-control"
-				value="${prod.prodInsdate }" />
-				<span class="error">${errors.prodInsdate }</span>
+				<form:input path="prodTotalstock" class="form-control" required="true" />
+				<form:errors path="prodTotalstock" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
-			<th>적정재고</th>
+			<th><spring:message code="prod.prodInsdate" /></th>
 			<td>
-				<input type="number" name="prodProperstock"
-				class="form-control editable" required value="${prod.prodProperstock }" />
-				<span
-				class="error">${errors.prodProperstock }</span>
+				<form:input type="date" path="prodInsdate" class="form-control" />
+				<form:errors path="prodInsdate" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
-			<th>크기</th>
+			<th><spring:message code="prod.prodProperstock" /></th>
 			<td>
-				<input type="text" name="prodSize" class="form-control editable"
-				value="${prod.prodSize }" />
-				<span class="error">${errors.prodSize }</span>
+				<form:input path="prodProperstock" class="form-control editable" required="true" />
+				<form:errors path="prodProperstock" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
-			<th>색상</th>
+			<th><spring:message code="prod.prodSize" /></th>
 			<td>
-				<input type="text" name="prodColor" class="form-control"
-				value="${prod.prodColor }" />
-				<span class="error">${errors.prodColor }</span>
+				<form:input path="prodSize" class="form-control editable" />
+				<form:errors path="prodSize" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
-			<th>배송방법</th>
+			<th><spring:message code="prod.prodColor" /></th>
 			<td>
-				<input type="text" name="prodDelivery" class="form-control editable"
-				value="${prod.prodDelivery }" />
-				<span class="error">${errors.prodDelivery }</span>
+				<form:input path="prodColor" class="form-control editable" />
+				<form:errors path="prodColor" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
-			<th>단위</th>
+			<th><spring:message code="prod.prodDelivery" /></th>
 			<td>
-				<input type="text" name="prodUnit" class="form-control editable"
-				value="${prod.prodUnit }" />
-				<span class="error">${errors.prodUnit }</span>
+				<form:input path="prodDelivery" class="form-control editable" />
+				<form:errors path="prodDelivery" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
-			<th>입고량</th>
+			<th><spring:message code="prod.prodUnit" /></th>
 			<td>
-				<input type="number" name="prodQtyin" class="form-control editable"
-				value="${prod.prodQtyin }" />
-				<span class="error">${errors.prodQtyin }</span>
+				<form:input path="prodUnit" class="form-control editable" />
+				<form:errors path="prodUnit" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
-			<th>판매량</th>
+			<th><spring:message code="prod.prodQtyin" /></th>
 			<td>
-				<input type="number" name="prodQtysale" class="form-control editable"
-				value="${prod.prodQtysale }" />
-				<span class="error">${errors.prodQtysale }</span>
+				<form:input path="prodQtyin" class="form-control editable" />
+				<form:errors path="prodQtyin" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
-			<th>마일리지</th>
+			<th><spring:message code="prod.prodQtysale" /></th>
 			<td>
-				<input type="number" name="prodMileage" class="form-control editable"
-				value="${prod.prodMileage }" />
-				<span class="error">${errors.prodMileage }</span>
+				<form:input path="prodQtysale" class="form-control editable" />
+				<form:errors path="prodQtysale" element="span" cssClass="error" />
+			</td>
+		</tr>
+		<tr>
+			<th><spring:message code="prod.prodMileage" /></th>
+			<td>
+				<form:input path="prodMileage" class="form-control editable" />
+				<form:errors path="prodMileage" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
@@ -180,6 +161,7 @@
 			</td>
 		</tr>
 	</table>
+</form:form>	
 <script type="text/javascript">
 	let prodBuyerTag = $("[name=prodBuyer]");
 	$("[name=prodLgu]").on("change", function(event){
@@ -190,23 +172,6 @@
 	});
 	
 	<c:if test="${command eq 'UPDATE' }">
-		$(":input[name]:not(.editable)").prop("disabled", true);
+		$(":input[name]:not(.editable)").prop("readonly", true);
 	</c:if>
 </script>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-</form>

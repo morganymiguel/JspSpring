@@ -16,7 +16,7 @@
 		<tr>
 			<th><spring:message code="member.memPass" /></th>
 			<td>
-				<input type="password" name="memPass" class="form-control" required="true" />
+				<input type="password" name="memPass" class="form-control editable" required="true" />
 				<form:errors path="memPass" element="span" cssClass="error" />
 			</td>
 		</tr>
@@ -30,7 +30,7 @@
 		<tr>
 			<th><spring:message code="member.memImg" /></th>
 			<td>
-				<input type="file" name="memImage" />
+				<input type="file" name="memImage" class="form-control editable"/>
 				<form:errors path="memImage" element="span" cssClass="error" />
 			</td>
 		</tr>
@@ -58,35 +58,35 @@
 		<tr>
 			<th><spring:message code="member.memZip" /></th>
 			<td>
-				<form:input path="memZip" class="form-control" required="true" />
+				<form:input path="memZip" class="form-control editable" required="true" />
 				<form:errors path="memZip" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
 			<th><spring:message code="member.memAdd1" /></th>
 			<td>
-				<form:input path="memAdd1" class="form-control" required="true" />
+				<form:input path="memAdd1" class="form-control editable" required="true" />
 				<form:errors path="memAdd1" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
 			<th><spring:message code="member.memAdd2" /></th>
 			<td>
-				<form:input path="memAdd2" class="form-control" required="true" />
+				<form:input path="memAdd2" class="form-control editable" required="true" />
 				<form:errors path="memAdd2" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
 			<th><spring:message code="member.memHometel" /></th>
 			<td>
-				<form:input path="memHometel" class="form-control" />
+				<form:input path="memHometel" class="form-control editable" />
 				<form:errors path="memHometel" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
 			<th><spring:message code="member.memComtel" /></th>
 			<td>
-				<form:input path="memComtel" class="form-control" />
+				<form:input path="memComtel" class="form-control editable" />
 				<form:errors path="memComtel" element="span" cssClass="error" />
 			</td>
 		</tr>
@@ -100,35 +100,35 @@
 		<tr>
 			<th><spring:message code="member.memMail" /></th>
 			<td>
-				<form:input path="memMail" class="form-control" required="true" />
+				<form:input path="memMail" class="form-control editable" required="true" />
 				<form:errors path="memMail" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
 			<th><spring:message code="member.memJob" /></th>
 			<td>
-				<form:input path="memJob" class="form-control" />
+				<form:input path="memJob" class="form-control editable" />
 				<form:errors path="memJob" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
 			<th><spring:message code="member.memLike" /></th>
 			<td>
-				<form:input path="memLike" class="form-control" />
+				<form:input path="memLike" class="form-control editable" />
 				<form:errors path="memLike" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
 			<th><spring:message code="member.memMemorial" /></th>
 			<td>
-				<form:input path="memMemorial" class="form-control" />
+				<form:input path="memMemorial" class="form-control editable" />
 				<form:errors path="memMemorial" element="span" cssClass="error" />
 			</td>
 		</tr>
 		<tr>
 			<th><spring:message code="member.memMemorialday" /></th>
 			<td>
-				<form:input type="date" path="memMemorialday" class="form-control" />
+				<form:input type="date" path="memMemorialday" class="form-control editable" />
 				<form:errors path="memMemorialday" element="span" cssClass="error" />
 			</td>
 		</tr>
