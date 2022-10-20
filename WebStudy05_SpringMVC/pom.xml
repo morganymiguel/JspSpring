@@ -9,6 +9,7 @@
 	<properties>
 		<java-version>1.8</java-version>
 		<org.springframework-version>4.3.25.RELEASE</org.springframework-version>
+		<org.springframework.security-version>4.2.14.RELEASE</org.springframework.security-version>
 	</properties>
 	<build>
 		<plugins>
@@ -45,6 +46,13 @@
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
+		</dependency>
+		
+		<!-- 암호화 지원용 -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${org.springframework.security-version}</version>
 		</dependency>
 
 		<!-- 트랜잭션 관리 지원 - AOP 방법론 -->

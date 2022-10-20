@@ -2,8 +2,10 @@ package kr.or.ddit.member.service;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kr.or.ddit.commons.exception.UserNotFoundException;
@@ -16,7 +18,15 @@ import kr.or.ddit.vo.PagingVO;
 public class MemberServiceImpl implements MemberService {
 	@Inject
 	private MemberDAO dao;
+	@Resource(name="passwordEncoder")
+	private PasswordEncoder passwordEncoder;
 
+	private void encryptMember(MemberVO member) {
+		String plain = member.getMemPass();
+		String encoded = passwordEncoder.encode(plain);
+		member.setMemPass(encoded);
+	}
+	
 	@Override
 	public ServiceResult createMember(MemberVO member) {
 		ServiceResult result = null;
@@ -24,6 +34,9 @@ public class MemberServiceImpl implements MemberService {
 			retrieveMember(member.getMemId());
 			result = ServiceResult.PKDUPLICATED;
 		}catch (UserNotFoundException e) {
+			//=======암호화===========
+			encryptMember(member);
+			//======================
 			int rowcnt = dao.insertMember(member);
 			result = rowcnt > 0 ? ServiceResult.OK : ServiceResult.FAIL;
 		}
