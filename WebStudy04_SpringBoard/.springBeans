@@ -12,12 +12,14 @@
 		<config>src/main/webapp/WEB-INF/spring/datasource-context.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/aop-context.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/websocket-context.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/security-context.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>src/main/webapp/WEB-INF/spring/crypto-context.xml</config>
 	</autoconfigs>
 	<configSets>
 		<configSet>
-			<name><![CDATA[dataSource]]></name>
+			<name><![CDATA[webStudy04_root]]></name>
 			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
 			<incomplete>false</incomplete>
 			<configs>

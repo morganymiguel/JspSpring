@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<security:authentication-manager id="authenticationManager">
+		<security:authentication-provider user-service-ref="authService">
+<!-- 			<security:user-service> -->
+<!-- 				<security:user name="a001" password="{bcrypt}$2a$10$/SFS/wHIzxQzTZJA/LcUge1tCKhttYx2AfFgI0cSFdVdJvkg2REdi" authorities="ROLE_USER"/> -->
+<!-- 				<security:user name="b001" password="{bcrypt}$2a$10$/SFS/wHIzxQzTZJA/LcUge1tCKhttYx2AfFgI0cSFdVdJvkg2REdi" authorities="ROLE_USER"/> -->
+<!-- 				<security:user name="c001" password="{bcrypt}$2a$10$/SFS/wHIzxQzTZJA/LcUge1tCKhttYx2AfFgI0cSFdVdJvkg2REdi" authorities="ROLE_ADMIN"/> -->
+<!-- 			</security:user-service> -->
+			<security:password-encoder ref="passwordEncoder" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+	<bean id="authenticationSuccessHandler" class="kr.or.ddit.security.handler.AuthMemberAuthenticationSuccessHandler" 
+		p:defaultTargetUrl="/"
+		p:alwaysUseDefaultTargetUrl="true"
+	/>
+
+	<security:http authentication-manager-ref="authenticationManager" 
+			auto-config="true">
+		<security:form-login
+			login-page="/login/loginForm.do"
+			username-parameter="memId"
+			password-parameter="memPass"
+			login-processing-url="/login/loginCheck.do"
+			authentication-success-handler-ref="authenticationSuccessHandler"
+		/>
+		<security:logout 
+			logout-url="/login/logout.do"
+			logout-success-url="/"
+		/>	
+		<security:intercept-url pattern="/board/boardInsert.do" access="hasRole('ADMIN')"/>	
+		<security:intercept-url pattern="/board/boardUpdate.do" access="hasRole('ADMIN')"/>	
+		<security:intercept-url pattern="/board/**" access="hasAnyRole('ADMIN', 'USER')"/>	
+		<security:intercept-url pattern="/login/**" access="permitAll"/>
+		<security:intercept-url pattern="/after/**" access="isAuthenticated()"/>
+		<security:intercept-url pattern="/**" access="permitAll"/>	
+		<security:csrf />
+	</security:http>
+	
+	<mvc:view-controller path="/login/loginForm.do" view-name="login/loginForm"/>
+</beans>
+
+
+
+

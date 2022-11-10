@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>	
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %> 
 <!doctype html>
 <html>
 	<head>
@@ -10,6 +11,8 @@
 		<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 		<meta name="generator" content="Hugo 0.88.1">
 		<meta name="theme-color" content="#7952b3">
+		
+		<security:csrfMetaTags/>
 
 		<title><tiles:getAsString name="title" /></title>
 		
@@ -48,6 +51,19 @@
 				
 				<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 					<div class="flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+					<!-- Toast 알림창 -->
+					  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+						  <div id="liveToast" class="toast bg-info" role="alert" aria-live="assertive" aria-atomic="true">
+						    <div class="toast-header">
+						      <i class="bi bi-info-square p-2"></i>
+						      <strong class="me-auto">알림</strong>
+						      <small>방금전</small>
+						      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+						    </div>
+						    <div class="toast-body">
+						    </div>
+						  </div>
+						</div>
 					<!-- Main Content Area start -->
 						<div class="border border-primary">
 						

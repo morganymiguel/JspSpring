@@ -1,10 +1,12 @@
 package kr.or.ddit.board.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +20,8 @@ import kr.or.ddit.board.service.BoardService;
 import kr.or.ddit.board.vo.BoardVO;
 import kr.or.ddit.board.vo.PagingVO;
 import kr.or.ddit.board.vo.SearchVO;
+import kr.or.ddit.vo.MemberVO;
+import kr.or.ddit.vo.MemberVOWrapper;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -51,7 +55,14 @@ public class BoardRetrieveController {
 	}
 	
 	@RequestMapping(value="boardList.do", method=RequestMethod.GET)
-	public String listUI() {
+	public String listUI(
+		Principal principal
+		, Authentication authentication
+	) {
+		MemberVOWrapper adapter = (MemberVOWrapper) authentication.getPrincipal();
+		MemberVO authMember = adapter.getRealUser();
+		log.info("주입된 인증 객체 : {}",  authentication);
+		log.info("실제 사용자 정보 : {}", authMember);
 		return "board/boardList";
 	}
 	

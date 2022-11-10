@@ -24,7 +24,11 @@
 <!-- 	ViewResolver : Logical View Name 를 기반으로 View Layer 를 검색하는 역할.			 -->
 <!-- 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean> -->
 <!-- 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean> -->
-	<mvc:annotation-driven validator="validator"></mvc:annotation-driven>
+	<mvc:annotation-driven validator="validator">
+		<mvc:argument-resolvers>
+			<bean class="org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver" />
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven>
 	
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" 
 		p:validationMessageSource-ref="messageSource"

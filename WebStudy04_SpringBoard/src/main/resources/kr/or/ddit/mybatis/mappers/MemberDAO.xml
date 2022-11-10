@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.ddit.member.dao.MemberDAO">
+	<resultMap type="MemberVO" id="memberMap" autoMapping="true">
+		<id property="memId" column="MEM_ID"/>
+		<collection property="memRoles" ofType="string">
+			<result column="AUTHORITY"/>
+		</collection>
+	</resultMap>
+	<select id="findByPK" parameterType="string" resultMap="memberMap">
+		SELECT A.MEM_ID, MEM_NAME, AUTHORITY
+		    , MEM_PASS
+		FROM MEMBER A LEFT OUTER JOIN AUTHORITIES B 
+		    on (A.MEM_ID = B.MEM_ID)
+		WHERE A.MEM_ID = #{username}
+	</select>
+</mapper>

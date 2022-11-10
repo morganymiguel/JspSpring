@@ -10,12 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class HelloServlet
  */
-@WebServlet("index.do")
+@WebServlet("/index.do")
 public class HelloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
     public HelloServlet() {
-    	
+        super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
