@@ -72,7 +72,7 @@
 	
 	let makeTrTag = function(board){
 		let tr = $("<tr>");
-		let aTag = $("<a>").attr("href", "${pageContext.request.contextPath}/board/boardView.do?what="+board.boNo)
+		let aTag = $("<a>").attr("href", "${pageContext.request.contextPath}/board/"+board.boNo)
 							.text(board.boTitle);
 		tr.append(
 			$("<td>").html(board.boNo)

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.ddit.board.reply.dao.ReplyDAO">
+	<select id="selectReplyList" parameterType="PagingVO" resultType="ReplyVO">
+		SELECT REP_NO, 				BO_NO, 				REP_CONTENT
+			, REP_WRITER, 				REP_MAIL, 				REP_PASS
+			, REP_DATE, 					REP_PARENT
+		FROM FREEREPLY
+		WHERE BO_NO = #{detailCondition.boNo}
+		ORDER BY REP_NO DESC
+	</select>
+	<insert id="insertReply" parameterType="ReplyVO">
+		<selectKey resultType="int" keyProperty="repNo" order="BEFORE">
+			SELECT NVL(MAX(REP_NO), 0) + 1
+			FROM FREEREPLY
+		</selectKey>
+		INSERT INTO FREEREPLY
+		(
+			REP_NO
+			, BO_NO
+			, REP_CONTENT
+			, REP_WRITER
+			, REP_MAIL
+			, REP_PASS
+			, REP_DATE
+			, REP_PARENT
+		)VALUES(
+			#{repNo,jdbcType=NUMERIC}
+			, #{boNo,jdbcType=NUMERIC}
+			, #{repContent,jdbcType=VARCHAR}
+			, #{repWriter,jdbcType=VARCHAR}
+			, #{repMail,jdbcType=VARCHAR}
+			, #{repPass,jdbcType=VARCHAR}
+			, #{repDate,jdbcType=DATE}
+			, #{repParent,jdbcType=NUMERIC}
+		)
+	</insert>
+</mapper>

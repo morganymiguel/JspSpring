@@ -1,4 +1,4 @@
-package kr.or.ddit.dynamic.controller;
+package kr.or.ddit.etc.controller;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;

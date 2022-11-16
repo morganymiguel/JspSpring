@@ -5,6 +5,6 @@ bin
 build
 .classpath
 .project
-
+.readme
 /.recommenders/
 target

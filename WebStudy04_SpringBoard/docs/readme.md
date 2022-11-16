@@ -84,3 +84,12 @@ springSecurityFilterChain 이 스프링 컨테이너 내부에서 동작함.
 		/>
 	</http>
 
+
+### 추가 사항
+
+
+1.  공통 모듈 DAO 활용 : AbstractCommonDAO, CommonDAOImpl
+2.  FancyTree + Adapter Pattern 활용 예제 : EmployeeTreeController
+3.	Has 관계 바인딩 + Session Model Attribute 활용 예제 : HasAggregationController
+4.	Dynamic UI Generation (dynamic css): DynamicUIGenerateController
+

@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -88,8 +89,10 @@ public class BoardRetrieveController {
 //		return "board/boardList";
 	}
 	
-	@RequestMapping("boardView.do")
-	public ModelAndView boardView(@RequestParam(name="what", required=true) int boNo) {
+	@RequestMapping("{what}")
+	public ModelAndView boardView(
+		@PathVariable(name="what", required=true) int boNo
+	) {
 		BoardVO board = service.retrieveBoard(boNo);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("board", board);

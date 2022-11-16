@@ -20,6 +20,9 @@
       <a class="nav-link" href="${pageContext.request.contextPath }/dynamic/uiGen.do">동적UI</a>
     </li>
     <li class="nav-item text-nowrap">
+      <a class="nav-link" href="${pageContext.request.contextPath }/etc/hasAgg1">Has 바인딩</a>
+    </li>
+    <li class="nav-item text-nowrap">
       <a class="nav-link" href="?language=en">영어</a>
     </li>
     <li class="nav-item text-nowrap">

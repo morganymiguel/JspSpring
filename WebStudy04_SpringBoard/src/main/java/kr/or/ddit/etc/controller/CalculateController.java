@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.or.ddit.board.vo.CalculateVO;
+import kr.or.ddit.etc.vo.CalculateVO;
 
 @Controller
 @RequestMapping("/calculate")
